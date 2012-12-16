@@ -1,0 +1,18 @@
+#
+# .screenrc.local - GNU screen host local user configuration file
+#
+# $Id: .screenrc.local.nadleeh 221 2010-05-09 12:04:11Z yoshikaw $
+#
+
+# copy the screen pastbuffer to the MacOSX pastebord
+bindkey -m ' ' eval 'stuff \040' 'writebuf' 'exec sh -c "/usr/bin/pbcopy < screen/screen-exchange"'
+bindkey -m Y   eval 'stuff Y'    'writebuf' 'exec sh -c "/usr/bin/pbcopy < screen/screen-exchange"'
+bindkey -m W   eval 'stuff W'    'writebuf' 'exec sh -c "/usr/bin/pbcopy < screen/screen-exchange"'
+
+# alias for remote login
+# override default `^V'(digraph) mapping
+bind ^V eval 'command -c rlogin'           'echo "login to:                [0]                  [1]xeus              [2]vmm.vm            [3]                  [4]intra             [5]                  [6]                  [7]                  [8]                  [9]qnap         "'
+bind -c rlogin 1 eval 'screen -t xeus  10 ssh xeus'
+bind -c rlogin 2 eval 'screen -t vmm   20 ssh vmm'
+bind -c rlogin 4 eval 'screen -t intra 40 ssh intra' eval 'encoding eucjp'
+bind -c rlogin 9 eval 'screen -t qnap  90 ssh qnap'
