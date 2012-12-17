@@ -181,7 +181,7 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 # 補完される前にオリジナルのコマンドまで展開してチェックする
 setopt complete_aliases
 
-if [ $(uname) = 'Darwin'];then
+if [ $(uname) = 'Darwin' ];then
     alias ls="ls -G"
     if [ -f /usr/local/bin/gls ];then
         alias ls="gls --color=auto"
@@ -225,7 +225,7 @@ alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 ### Emacs ###
 alias e='emacs'
 
-if [ $(which colordiff) ];then
+if [ -f /usr/local/bin/colordiff ];then
     alias diff=$(which colordiff)
 fi
 
@@ -258,15 +258,16 @@ alias gst='git status'
 __git_complete g _main_git
 
 
-zsh-highlit="$HOME/git/zsh-syntax-highlighting"
-if [ -d ${zsh-highlit} ];then
-    source ${zsh-highlit}/zsh-syntax-highlighting.zsh
+zsh_syntax=$HOME/git/zsh-syntax-highlighting;
+if [ -d ${zsh_syntax} ];then
+    source ${zsh_syntax}/zsh-syntax-highlighting.zsh
 fi
 
-zsh-completions="$HOME/git/zsh-completions"
-fi [ -d ${zsh-completions}]
-    fpath=(${zsh-completions}/src $fpath)
+zsh_completions=$HOME/git/zsh-completions
+if [ -d ${zsh_completions} ];then
+    fpath=(${zsh_completions}/src $fpath)
 fi
 
 # 他の設定ファイルを読み込む
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
