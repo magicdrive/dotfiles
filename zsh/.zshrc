@@ -13,7 +13,7 @@ bindkey "" delete-char
 # 関数                                        #
 ###############################################
 
-functions_file="$HOME/.zsh/finctions.zsh"
+functions_file="$HOME/.zsh/functions.zsh"
 [ -f ${functions_file} ] && source ${functions_file}
 
 ###############################################
@@ -117,7 +117,7 @@ setopt prompt_subst
 # ^[  は「エスケープ」
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
 #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-PROMPT="%F{white}%B[%b%f%F{white}%n%f%F{white}%B@%b%f%F{white}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{white}%B]%b%f %F{black}%B%#%b%f "
+PROMPT="%F{green}%B[%b%f%F{green}%n%f%F{green}%B@%b%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}%B]%b%f %F{black}%B%#%b%f "
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
