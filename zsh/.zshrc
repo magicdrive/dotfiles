@@ -117,7 +117,7 @@ setopt prompt_subst
 # ^[  は「エスケープ」
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
 #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-PROMPT="%F{green}%B[%b%f%F{green}%n%f%F{green}%B@%b%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}%B]%b%f %F{black}%B%#%b%f "
+PROMPT="%F{green}[%f%F{green}%n%f%F{green}%B@%b%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %F{black}%B%#%b%f "
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
