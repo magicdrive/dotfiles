@@ -226,6 +226,8 @@ if [ -d /usr/local/vim-7.3 ];then
 elif [ -d /Applications/MacVim.app ];then
     alias vim='macvim'
 fi
+
+alias vim="LANG=en_US.UTF8 vim"
 alias vi="vim"
 alias v='vim'
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
