@@ -218,16 +218,17 @@ if [ -d /Applications/CocoaEmacs.app ];then
     alias cocoa_emacs='/Applications/CocoaEmacs.app/Contents/MacOS/Emacs -nw'
 fi
 
+vim_lang="LANG=en_US.UTF8"
+
 ### Vim ###
 alias vim_origin='/bin/vim'
 if [ -d /usr/local/vim-7.3 ];then
-    alias vim=/usr/local/vim-7.3/bin/vim
-    alias vimdiff=/usr/local/vim-7.3/bin/vimdiff
+    alias vim="${vim_lang} /usr/local/vim-7.3/bin/vim"
+    alias vimdiff="${vim_lang} /usr/local/vim-7.3/bin/vimdiff"
 elif [ -d /Applications/MacVim.app ];then
     alias vim='macvim'
 fi
 
-alias vim="LANG=en_US.UTF8 vim"
 alias vi="vim"
 alias v='vim'
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
