@@ -51,7 +51,13 @@ setopt print_eight_bit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # lsコマンドの補完候補にも色付き表示
-eval `gdircolors`
+
+if [ $(uname) = 'Darwin' ];then
+    eval `gdircolors`
+else
+    eval `dircolors`
+fi
+
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
 # kill の候補にも色付き表示
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
@@ -186,6 +192,8 @@ if [ $(uname) = 'Darwin' ];then
     if [ -f /usr/local/bin/gls ];then
         alias ls="gls --color=auto"
     fi
+else
+    alias ls="ls --color=auto"
 fi
 
 alias h='history -E -32'
