@@ -27,7 +27,7 @@ function man() {
 
 
 function vimsub {
-    if [ $# -le 3 ] || [ $1 = '-h' ] ; then
+    if [ $# -lt 3 ] || [ $1 = '-h' ] ; then
         cat << 'EOS'
         interactive character replacement using vim.
         Usage:
