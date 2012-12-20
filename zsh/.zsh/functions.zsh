@@ -25,6 +25,19 @@ function man() {
         man $@
 }
 
+
+function vimsub {
+    if [ $# -le 3 ] || [ $1 = '-h' ] ; then
+        cat << 'EOS'
+        interactive character replacement using vim.
+        Usage:
+            vimsub [BEFOR] [AFTER] [FILE]
+EOS
+    else
+        vim -c "argdo %s/$1/$2/gce | update" $3
+    fi
+}
+
 function rebind() {
     local ___key=$1
     if [ "$___key" = 't' ];then
