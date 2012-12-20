@@ -218,7 +218,7 @@ if [ -d /Applications/CocoaEmacs.app ];then
     alias cocoa_emacs='/Applications/CocoaEmacs.app/Contents/MacOS/Emacs -nw'
 fi
 
-vim_lang="LANG=en_US.UTF8"
+vim_lang="LANG=C"
 
 ### Vim ###
 alias vim_origin='/bin/vim'
