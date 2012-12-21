@@ -229,8 +229,8 @@ elif [ -d /Applications/MacVim.app ];then
     alias vim='macvim'
 fi
 
-alias vi="vim"
-alias v='vim'
+alias v="vim"
+alias vi='vim -v -u /dev/null --noplugin'
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 
 ### Emacs ###

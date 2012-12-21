@@ -34,7 +34,10 @@ function vimsub {
             vimsub [BEFOR] [AFTER] [FILE]
 EOS
     else
-        vim -c "argdo %s/$1/$2/gce | update" $3
+        local before=$1
+        local after=$2
+        shift 2
+        vim -c "argdo %s/${before}/${after}/gce | update" $@
     fi
 }
 
