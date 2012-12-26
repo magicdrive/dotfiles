@@ -230,7 +230,7 @@ elif [ -d /Applications/MacVim.app ];then
 fi
 
 alias v="vim"
-alias vi='vim -v -u /dev/null --noplugin'
+alias vi='vim -v -u ~/git/dotfiles/vi/virc.vim'
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 
 ### Emacs ###
