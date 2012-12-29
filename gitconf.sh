@@ -5,7 +5,7 @@ git config --global push.default tracking
 git config --global core.pager 'less -FRX'
 
 git config --global alias.st  '-p status'
-git config --global alias.ss  '-p status -s'
+git config --global alias.ss  '-p status -sb'
 git config --global alias.co   checkout
 git config --global alias.ci  'commit -v'
 git config --global alias.ca  'commit -av'
@@ -15,7 +15,7 @@ git config --global alias.di   diff
 git config --global alias.dc  'diff --cached'
 
 git config --global alias.br   branch
-git config --global alias.nbr 'checkout -b'
+git config --global alias.cb  'checkout -b'
 git config --global alias.sw   checkout
 
 git config --global alias.mup   'submodule update --init --recursive'
@@ -23,6 +23,7 @@ git config --global alias.madd  'submodule add'
 git config --global alias.mst   '-p submodule status --recursive'
 git config --global alias.msync 'submodule sync'
 git config --global alias.meach 'submodule each'
+git config --global alias.mclean "\!sh -c 'git submodule foreach \"git clean \$@\"' ."
 git config --global alias.mff   "\!sh -c 'for d in \"\${@-.}\"; do (cd \"\$d\" && [ -f .git ] && git fetch && git checkout origin); done' ."
 
 git config --global alias.um  "\!sh -c 'git pull \"\$@\" && git mup' ."
@@ -40,7 +41,9 @@ git config --global alias.rim 'rebase -i master'
 git config --global alias.rc  'rebase --continue'
 git config --global alias.rab 'rebase --abort'
 git config --global alias.rs  'rebase --skip'
+git config --global alias.mab 'merge --abort'
 git config --global alias.chp  cherry-pick
+git config --global alias.mt   mergetool
 
 git config --global alias.unadd    'reset --'
 git config --global alias.rollback 'reset HEAD^ --'
@@ -67,3 +70,5 @@ git config --global alias.xa  'stash apply'
 git config --global alias.xs  'stash show'
 git config --global alias.xp  'stash show -p'
 git config --global alias.xup '!git xi && git up && git xo'
+
+git config --global alias.www  browse-remote
