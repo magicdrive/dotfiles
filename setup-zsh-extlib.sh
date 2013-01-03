@@ -11,6 +11,4 @@ do
     git clone git://github.com/zsh-users/$x $HOME/git/$x;
 done;
 
-source ./zsh/.zshrc
-
 exit 0;
