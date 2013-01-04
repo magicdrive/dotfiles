@@ -252,6 +252,14 @@ alias tmkill='tmux kill-server'
 alias tmkillsession='tmux kill-session -t'
 alias t='__tmux_attach'
 
+### screen
+alias sc="screen"
+
+### byobu
+alias b="byobu"
+
+
+### ls
 alias cd..='cd ..'
 alias sl='ls'
 alias la='ls -a'

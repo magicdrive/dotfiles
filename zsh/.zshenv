@@ -21,7 +21,11 @@ export TMUXIP='lan'
 export LESS='-R'
 
 #java
-export JAVA_HOME="/Library/Java/Home"
+if [ $(uname) = 'Darwin' ];then
+    export JAVA_HOME="/Library/Java/Home"
+else
+    export JAVA_HOME="/usr/local/java/Home"
+fi
 export PATH="$JAVA_HOME/bin:$PATH:"
 
 #perlbrew

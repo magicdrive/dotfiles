@@ -164,7 +164,7 @@ windowlist string '%{.g}%3n %{.y}%f%09=%{dg} %t %='
 # |09/24 13:23:54 hostname 0 zsh  1 man  2 vim  3 tail  11 to... (load average)| <--- hardstatus
 # +----------------------------------------------------------------------------+
 
-caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+caption always '%?%F%{= rW}%:%{= Kk}%?%2n%f%07=%t%='
 # caption string description:
 #
 # %?          - Start of a conditional statement.
