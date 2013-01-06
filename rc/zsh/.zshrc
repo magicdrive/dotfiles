@@ -279,6 +279,8 @@ alias g='git'
 alias gst='git status'
 __git_complete g _main_git
 
+### Mosh
+compdef mosh=ssh
 
 # zsh syntax
 zsh_syntax=$HOME/git/zsh-syntax-highlighting;
