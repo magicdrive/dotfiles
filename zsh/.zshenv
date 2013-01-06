@@ -29,9 +29,11 @@ fi
 export PATH="$JAVA_HOME/bin:$PATH:"
 
 #perlbrew
-if [ -d $HOME/perl5/perlbrew ]; then
-    source $HOME/perl5/perlbrew/etc/bashrc
-    alias perlbrew="$HOME/perl5/perlbrew/bin/perlbrew"
+#export PERLBREW_HOME=$HOME/.perlbrew/perl5
+export PERLBREW_HOME=$HOME/perl5/perlbrew
+if [ -d ${PERLBREW_HOME} ]; then
+    export PATH="${PERLBREW_HOME}/bin:$PATH"
+    source ${PERLBREW_HOME}/etc/bashrc
 fi
 
 # node.js

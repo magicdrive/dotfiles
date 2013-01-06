@@ -13,8 +13,7 @@ bindkey "" delete-char
 # 関数                                        #
 ###############################################
 
-functions_file="$HOME/.zsh/functions.zsh"
-[ -f ${functions_file} ] && source ${functions_file}
+source $HOME/.zsh/functions/*
 
 ###############################################
 # 補完関係                                    #
