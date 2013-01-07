@@ -13,8 +13,7 @@ bindkey "" delete-char
 # 関数                                        #
 ###############################################
 
-functions_file="$HOME/.zsh/functions.zsh"
-[ -f ${functions_file} ] && source ${functions_file}
+source $HOME/.zsh/functions/*
 
 ###############################################
 # 補完関係                                    #
@@ -231,8 +230,10 @@ fi
 
 alias v=vim
 alias vi=vim
-alias vim_simple='vim -v -u ~/git/dotfiles/vi/virc.vim'
-alias sudovi="sudo vim_simple"
+
+vim_simple='vim -u ~/git/dotfiles/vi/virc.vim'
+alias vim-simple="${vim_simple}"
+alias sudovi="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 
 ### Emacs ###
