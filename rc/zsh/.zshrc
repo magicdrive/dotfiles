@@ -280,15 +280,24 @@ alias gst='git status'
 __git_complete g _main_git
 
 
+# zsh syntax
 zsh_syntax=$HOME/git/zsh-syntax-highlighting;
 if [ -d ${zsh_syntax} ];then
     source ${zsh_syntax}/zsh-syntax-highlighting.zsh
 fi
 
+# zsh completion
 zsh_completions=$HOME/git/zsh-completions
 if [ -d ${zsh_completions} ];then
     fpath=(${zsh_completions}/src $fpath)
 fi
+
+# perlbrew completion
+perlbrew_completefile=${PERLBREW_HOME}/etc/perlbrew-completion.bash
+if [ -d ${PERLBREW_HOME} ];then
+    source ${perlbrew_completefile}
+fi
+
 
 # 他の設定ファイルを読み込む
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local

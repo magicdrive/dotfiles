@@ -1,0 +1,1 @@
+/home/ikegami/git/dotfiles/zsh/.zsh
