@@ -4,7 +4,7 @@
 # install dotfiles
 #
 
-execdatetime=$(date +%Y-%m-%d_%H:%M:%S)
+execdatetime=$(date +%Y-%m-%d-%H:%M:%S)
 cur_dir=$(pwd)
 
 ## dotfiles list
@@ -22,10 +22,10 @@ function install_files () {
 
     for x in `echo "$*"`;
     do
-        if [ -f ${HOME}/${x} ];then
-            mv ${HOME}/${x} ${HOME}/${x}.${execdatetime}.backup;
+        if [ -e ${HOME}/${x} ];then
+           cp -af  ${HOME}/${x} ${HOME}/${x}.${execdatetime}.backup;
         fi
-        ln -s ${cur_dir}/rc/${dir}/${x} $HOME/${x}
+        ln -sf ${cur_dir}/rc/${dir}/${x} $HOME/${x}
     done;
 }
 

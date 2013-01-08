@@ -1,1 +1,1 @@
-/home/ikegami/git/dotfiles/zsh/.zsh
+/Users/hiroshi_ikegami/git/dotfiles/rc/zsh/.zsh
