@@ -295,7 +295,7 @@ if [ -d ${zsh_completions} ];then
 fi
 
 # perlbrew completion
-perlbrew_completefile=${PERLBREW_HOME}/etc/perlbrew-completion.bash
+perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
 if [ -d ${PERLBREW_HOME} ];then
     source ${perlbrew_completefile}
 fi

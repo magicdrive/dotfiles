@@ -68,6 +68,9 @@ function __tmux_attach() {
     if [ $# -ne '0' ];then
         tmux_name=$1;
     fi
+
+    [ ${tmux_name} = '' ] && tmux_name=0
+
     tmux attach -t $tmux_name > /dev/null 2>&1 || tmux new-session -s $tmux_name; 
 }
 
