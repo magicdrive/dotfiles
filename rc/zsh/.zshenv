@@ -12,6 +12,13 @@ export LESS='-R'
 export PAGER='less'
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
 
+
+#Android 
+export ANDROID_SDK_ROOT=/Applications/android-sdk-macosx
+export ANDROID_HOME=/Applications/android-sdk-macosx
+export ANDROID_NDK_HOME=/usr/local/opt/android-ndk
+
+
 #tmux
 export TMUXPLATFORM='mac'
 export TMUX_DEFAULTNAME='ikegami'
