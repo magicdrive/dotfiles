@@ -1,1 +1,0 @@
-/Users/hiroshi_ikegami/git/dotfiles/rc/zsh/.zsh
