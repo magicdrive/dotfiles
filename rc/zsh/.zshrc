@@ -231,7 +231,7 @@ fi
 alias v=vim
 alias vi=vim
 
-vim_simple='vim -u ~/git/dotfiles/vi/virc.vim'
+vim_simple='vim -u ~/git/dotfiles/rc/vi/virc.vim'
 alias vim-simple="${vim_simple}"
 alias sudovi="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
@@ -300,6 +300,11 @@ if [ -d ${PERLBREW_HOME} ];then
     source ${perlbrew_completefile}
 fi
 
+# nvm completion
+nvm_completefile=~/.nvm/bash_completion
+if [ -f ${nvm_completefile} ];then
+    source ${nvm_completefile}
+fi
 
 # 他の設定ファイルを読み込む
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local

@@ -80,7 +80,7 @@ function history-all {
     history -E 1 
 }
 
-function module-starter() {
+function __module-starter() {
   if [ $# -ne 0 ]; then
     module-starter --author="Hiroshi IKEGAMI" --email=magicdriv@cpan.org --module=$1
   else 
