@@ -13,7 +13,7 @@ if [ $# -gt 1  ]; then
 fi
 }
 
-if [ $(uname) == 'Darwin' ];then
+if [ $(uname) = 'Darwin' ];then
     function purge_swap() {
     sudo launchctl unload /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist;
     sudo launchctl load /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist;
