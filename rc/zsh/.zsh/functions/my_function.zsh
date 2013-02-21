@@ -13,6 +13,13 @@ if [ $# -gt 1  ]; then
 fi
 }
 
+if [ $(uname) == 'Darwin' ];then
+    function purge_swap() {
+    sudo launchctl unload /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist;
+    sudo launchctl load /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist;
+    }
+fi
+
 function man() {
 env \
     LESS_TERMCAP_mb=$'\E[01;31m' \
@@ -26,7 +33,7 @@ env \
 }
 
 function psgrep {
-    ps -ef | grep $@
+ps -ef | grep $@
 }
 
 
@@ -46,49 +53,49 @@ fi
 }
 
 function rebind() {
-    local ___key=$1
-    if [ "$___key" = 't' ];then
-        tmux set-option -g prefix C-t && tmux bind-key C-t send-prefix
-        tmux unbind-key C-q && tmux unbind-key C-z
-    elif [ "$___key" = 'z' ];then
-        tmux set-option -g prefix C-z && tmux bind-key C-z send-prefix
-        tmux unbind-key C-q && tmux unbind-key C-t
-    elif [ "$___key" = 'q' ];then
-        tmux set-option -g prefix C-q && tmux bind-key C-q send-prefix
-        tmux unbind-key C-z && tmux unbind-key C-t
-    else
-        cat << 'EOS'
-        rebind tmux prefix key
-        Usage:
-        rebind [z|t|q]
+local ___key=$1
+if [ "$___key" = 't' ];then
+    tmux set-option -g prefix C-t && tmux bind-key C-t send-prefix
+    tmux unbind-key C-q && tmux unbind-key C-z
+elif [ "$___key" = 'z' ];then
+    tmux set-option -g prefix C-z && tmux bind-key C-z send-prefix
+    tmux unbind-key C-q && tmux unbind-key C-t
+elif [ "$___key" = 'q' ];then
+    tmux set-option -g prefix C-q && tmux bind-key C-q send-prefix
+    tmux unbind-key C-z && tmux unbind-key C-t
+else
+    cat << 'EOS'
+    rebind tmux prefix key
+    Usage:
+    rebind [z|t|q]
 EOS
-        return;
-    fi
-    tmux unbind-key C-b
+    return;
+fi
+tmux unbind-key C-b
 }
 
 function __tmux_attach() {
-    local tmux_name=$TMUX_DEFAULTNAME;
-    if [ $# -ne '0' ];then
-        tmux_name=$1;
-    fi
+local tmux_name=$TMUX_DEFAULTNAME;
+if [ $# -ne '0' ];then
+    tmux_name=$1;
+fi
 
-    [ ${tmux_name} = '' ] && tmux_name=0
+[ ${tmux_name} = '' ] && tmux_name=0
 
-    tmux attach -t $tmux_name > /dev/null 2>&1 || tmux new-session -s $tmux_name; 
+tmux attach -t $tmux_name > /dev/null 2>&1 || tmux new-session -s $tmux_name; 
 }
 
 
 # 全履歴の一覧を出力する
 function history-all { 
-    history -E 1 
+history -E 1 
 }
 
 function __module-starter() {
-  if [ $# -ne 0 ]; then
+if [ $# -ne 0 ]; then
     module-starter --author="Hiroshi IKEGAMI" --email=magicdriv@cpan.org --module=$1
-  else 
+else 
     module-starter
-  fi
+fi
 }
 
