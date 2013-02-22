@@ -197,6 +197,8 @@ fi
 
 alias h='history -E -32'
 
+alias pathdump="echo $PATH | sed -e 's/:/\n/g'"
+
 # ack with pager
 alias acl="ack --pager='less -R'"
 alias zload="source $HOME/.zshrc"
