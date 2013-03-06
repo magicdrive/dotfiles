@@ -47,10 +47,10 @@ if [ -d ${PERLBREW_HOME} ]; then
 fi
 
 # python
-# pythonbrew
-export PYTHONBREW_HOME=$HOME/.pythonbrew
+# pythonz
+export PYTHONBREW_HOME=$HOME/.pythonz
 if [ -d ${PERLBREW_HOME} ]; then
-    source ~/.pythonbrew/etc/bashrc
+    source ~/.pythonz/etc/bashrc
 fi
 
 # node.js
