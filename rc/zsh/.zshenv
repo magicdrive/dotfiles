@@ -48,8 +48,8 @@ fi
 
 # python
 # pythonz
-export PYTHONBREW_HOME=$HOME/.pythonz
-if [ -d ${PERLBREW_HOME} ]; then
+export PYTHONZ_HOME=$HOME/.pythonz
+if [ -d ${PYTHONZ_HOME} ]; then
     source ~/.pythonz/etc/bashrc
 fi
 
