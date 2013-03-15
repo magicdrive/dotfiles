@@ -80,22 +80,12 @@ if [ $# -ne '0' ];then
     tmux_name=$1;
 fi
 
-[ ${tmux_name} = '' ] && tmux_name=0
-
-tmux attach -t $tmux_name || tmux new-session -s $tmux_name; 
+tmux attach -t $tmux_name || sleep 0.0001 && tmux new-session -s $tmux_name; 
 }
 
 
 # 全履歴の一覧を出力する
 function history-all { 
 history -E 1 
-}
-
-function __module-starter() {
-if [ $# -ne 0 ]; then
-    module-starter --author="Hiroshi IKEGAMI" --email=magicdriv@cpan.org --module=$1
-else 
-    module-starter
-fi
 }
 

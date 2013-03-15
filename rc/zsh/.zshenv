@@ -15,7 +15,7 @@ export LESS='-R'
 export PAGER='less'
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
 
-#Android 
+# Android 
 if [ $(uname -s) = 'Darwin' ];then
     export ANDROID_SDK_ROOT=/Applications/android-sdk-macosx
     export ANDROID_HOME=/Applications/android-sdk-macosx
@@ -30,7 +30,7 @@ else
 fi
 export TMUX_DEFAULTNAME='main'
 
-#java
+### java
 if [ $(uname -s) = 'Darwin' ];then
     export JAVA_HOME="/Library/Java/Home"
 else
@@ -38,7 +38,7 @@ else
 fi
 export PATH="$JAVA_HOME/bin:$PATH:"
 
-# perl
+### perl
 # perlbrew
 export PERLBREW_HOME=$HOME/perl5/perlbrew
 if [ -d ${PERLBREW_HOME} ]; then
@@ -46,14 +46,19 @@ if [ -d ${PERLBREW_HOME} ]; then
     source ${PERLBREW_HOME}/etc/bashrc
 fi
 
-# python
+### python
 # pythonz
 export PYTHONZ_HOME=$HOME/.pythonz
 if [ -d ${PYTHONZ_HOME} ]; then
     source ~/.pythonz/etc/bashrc
 fi
+# virtualenvs
+export WORKON_HOME=$HOME/.virtualenvs
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
-# node.js
+### node.js
 # nvm
 if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
