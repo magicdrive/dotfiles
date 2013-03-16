@@ -17,7 +17,7 @@ if [ $(uname) = 'Darwin' ];then
     function purge_swap() {
     sudo launchctl unload /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist;
     sudo launchctl load /System/Library/LaunchDaemons/com.apple.dynamic_pager.plist;
-    }
+}
 fi
 
 function man() {
@@ -75,12 +75,17 @@ tmux unbind-key C-b
 }
 
 function __tmux_attach() {
+
+if [ $TMUX ];then
+    return
+fi
+
 local tmux_name=$TMUX_DEFAULTNAME;
 if [ $# -ne '0' ];then
     tmux_name=$1;
 fi
 
-tmux attach -t $tmux_name || sleep 0.0001 && tmux new-session -s $tmux_name; 
+tmux attach -t $tmux_name || sleep 0 && tmux new-session -s $tmux_name; 
 }
 
 
