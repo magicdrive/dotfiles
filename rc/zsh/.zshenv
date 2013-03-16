@@ -41,7 +41,7 @@ export PATH="$JAVA_HOME/bin:$PATH:"
 ### perl
 # perlbrew
 export PERLBREW_HOME=$HOME/perl5/perlbrew
-if [ -d ${PERLBREW_HOME} ]; then
+if [ -f ${PERLBREW_HOME}/etc/bashrc ]; then
     export PATH="${PERLBREW_HOME}/bin:$PATH"
     source ${PERLBREW_HOME}/etc/bashrc
 fi
@@ -56,6 +56,15 @@ fi
 export WORKON_HOME=$HOME/.virtualenvs
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+
+### ruby
+#rbenv
+export RBENV_HOME=$HOME/.rbenv
+if [ -d ${RBENV_HOME} ];then
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
 fi
 
 ### node.js
