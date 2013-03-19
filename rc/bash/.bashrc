@@ -31,3 +31,5 @@ alias pdoc="perldoc"
 alias pfunc="perldoc perlfunc"
 alias perlbrew="~/perl5/perlbrew/bin/perlbrew"
 source ~/perl5/perlbrew/etc/bashrc
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

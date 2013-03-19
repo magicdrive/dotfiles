@@ -311,3 +311,5 @@ fi
 # 他の設定ファイルを読み込む
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

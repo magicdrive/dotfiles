@@ -67,7 +67,7 @@ if [ -d ${RBENV_HOME} ];then
     eval "$(rbenv init -)"
 fi
 
-### node.js
+# node.js
 # nvm
 if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
