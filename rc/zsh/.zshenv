@@ -38,6 +38,20 @@ else
 fi
 export PATH="$JAVA_HOME/bin:$PATH:"
 
+### scala
+export PLAY_VERSION=2.1.0
+if [ -d $HOME/.play-${PLAY_VERSION} ];then
+    export PATH=$PATH:$HOME/.play-${PLAY_VERSION}
+fi
+if [ $(uname -s) = 'Linux' ];then
+    export SCALA_HOME="/usr/local/scala/Home"
+fi
+
+### groovy
+if [ $(uname -s) = 'Linux' ];then
+    export SCALA_HOME="/usr/local/groovy/Home"
+fi
+
 ### perl
 # perlbrew
 export PERLBREW_HOME=$HOME/perl5/perlbrew
