@@ -223,12 +223,6 @@ vim_lang="LANG=C"
 
 ### Vim ###
 alias vim_origin='/bin/vim'
-if [ -d /usr/local/vim-7.3 ];then
-    alias vim="${vim_lang} /usr/local/vim-7.3/bin/vim"
-    alias vimdiff="${vim_lang} /usr/local/vim-7.3/bin/vimdiff"
-elif [ -d /Applications/MacVim.app ];then
-    alias vim='macvim'
-fi
 
 alias v=vim
 alias vi=vim

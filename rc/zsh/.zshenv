@@ -43,13 +43,15 @@ export PLAY_VERSION=2.1.0
 if [ -d $HOME/.play-${PLAY_VERSION} ];then
     export PATH=$PATH:$HOME/.play-${PLAY_VERSION}
 fi
-if [ $(uname -s) = 'Linux' ];then
+if [ -d /usr/local/scala ];then
     export SCALA_HOME="/usr/local/scala/Home"
+    export PATH="$SCALA_HOME/bin:$PATH:"
 fi
 
 ### groovy
-if [ $(uname -s) = 'Linux' ];then
-    export SCALA_HOME="/usr/local/groovy/Home"
+if [ -d /usr/local/groovy ];then
+    export GROOVY_HOME="/usr/local/groovy/Home"
+    export PATH="$GROOVY_HOME/bin:$PATH:"
 fi
 
 ### perl
