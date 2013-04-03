@@ -288,6 +288,7 @@ fi
 zsh_completions=$HOME/git/zsh-completions
 if [ -d ${zsh_completions} ];then
     fpath=(${zsh_completions}/src $fpath)
+    autoload -U compinit ; compinit
 fi
 
 # perlbrew completion
