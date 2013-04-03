@@ -47,7 +47,8 @@ git config --global alias.rab 'rebase --abort'
 git config --global alias.rs  'rebase --skip'
 git config --global alias.mab 'merge --abort'
 git config --global alias.chp  cherry-pick
-git config --global alias.mt   mergetool
+git config --global alias.mt   'mergetool -t'
+git config --global alias.mtv   'mergetool -t vimdiff'
 
 git config --global alias.unadd    'reset --'
 git config --global alias.rollback 'reset HEAD^ --'
