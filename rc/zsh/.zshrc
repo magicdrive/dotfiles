@@ -297,6 +297,12 @@ if [ -d ${PERLBREW_HOME} ];then
     source ${perlbrew_completefile}
 fi
 
+# z
+z_home=$HOME/git/z
+if [ -d ${z_home} ];then
+    _Z_CMD=j source  ${z_home}/z.sh
+fi
+
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
 if [ -f ${nvm_completefile} ];then
@@ -305,6 +311,3 @@ fi
 
 # 他の設定ファイルを読み込む
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
