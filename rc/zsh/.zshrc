@@ -230,6 +230,7 @@ alias vi=vim
 vim_simple='vim -u ~/git/dotfiles/rc/vi/virc.vim'
 alias vim-simple="${vim_simple}"
 alias sudovi="sudo ${vim_simple}"
+alias svim="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 
 ### Emacs ###
@@ -248,13 +249,13 @@ alias tl='tmux list-sessions'
 alias tmkill='tmux kill-server'
 alias tmkillsession='tmux kill-session -t'
 alias t='__tmux_attach'
+export TMUX_MOUSE=on
 
 ### screen
 alias sc="screen"
 
 ### byobu
 alias b="byobu"
-
 
 ### ls
 alias cd..='cd ..'
@@ -300,7 +301,9 @@ fi
 # z
 z_home=$HOME/git/z
 if [ -d ${z_home} ];then
-    _Z_CMD=j source  ${z_home}/z.sh
+    _Z_NO_COMPLETE_CD=1
+    _Z_CMD=j 
+    source  ${z_home}/z.sh
 fi
 
 # nvm completion

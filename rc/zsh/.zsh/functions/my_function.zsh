@@ -1,9 +1,8 @@
 function backup() {
     local OPTION=''
     if [ $# -ne 0 ]; then
-        [ -d "$1" ] && OPTION="-a"
         local FILE=$1
-        cp $OPTION $FILE $FILE.`date +%Y-%m-%d_%H:%M:%S`.bak
+        cp -a $FILE $FILE.`date +%Y-%m-%d_%H:%M:%S`.bak
     fi
 }
 
@@ -20,24 +19,24 @@ if [ $(uname) = 'Darwin' ];then
     }
 fi
 
-function man() {
+man() {
     env \
-        LESS_TERMCAP_mb=$'\E[01;31m' \
-        LESS_TERMCAP_md=$'\E[01;38;5;74m' \
-        LESS_TERMCAP_me=$'\E[0m' \
-        LESS_TERMCAP_se=$'\E[0m' \
-        LESS_TERMCAP_so=$'\E[38;5;246m' \
-        LESS_TERMCAP_ue=$'\E[0m' \
-        LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+        LESS_TERMCAP_mb=$(printf "\e[01;31m") \
+        LESS_TERMCAP_md=$(printf "\e[01;38;5;74m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;46;32m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[04;35;5;146m") \
         man $@
 }
 
-function psgrep {
+psgrep() {
     ps -ef | grep $@
 }
 
 
-function vimsub {
+vimsub() {
     if [ $# -lt 3 ] || [ $1 = '-h' ] ; then
         cat << 'EOS'
         interactive character replacement using vim.
@@ -52,7 +51,7 @@ EOS
     fi
 }
 
-function rebind() {
+rebind() {
 local ___key=$1
     if [ "$___key" = 't' ];then
         tmux set-option -g prefix C-t && tmux bind-key C-t send-prefix
@@ -79,6 +78,22 @@ function __tmux_attach() {
     local tmux_name=$TMUX_DEFAULTNAME;
     [ $# -ne '0' ] && tmux_name=$1;
     tmux attach -t $tmux_name || sleep 0 && tmux new-session -s $tmux_name; 
+}
+
+mouse-toggle() {
+    if [ ${TMUX_MOUSE} == 'on' ];then
+        tmux set-option -g mouse-select-pane off
+        tmux set-option -g mode-mouse off
+        tmux set-option -g mouse-resize-pane off
+        tmux set-option -g mouse-select-pane off
+        export TMUX_MOUSE=off
+    else
+        tmux set-option -g mouse-select-pane on
+        tmux set-option -g mode-mouse on
+        tmux set-option -g mouse-resize-pane on
+        tmux set-option -g mouse-select-pane on
+        export TMUX_MOUSE=on
+    fi
 }
 
 # 全履歴の一覧を出力する
