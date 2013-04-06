@@ -2,14 +2,37 @@ function backup() {
     local OPTION=''
     if [ $# -ne 0 ]; then
         local FILE=$1
-        cp -a $FILE $FILE.`date +%Y-%m-%d_%H:%M:%S`.bak
+        cp -a ${FILE} ${FILE}.`date +%Y-%m-%d_%H:%M:%S`.bak
     fi
+}
+
+function mkcd() {
+    if [ $# -ne 1 ]; then
+        return
+    fi
+    mkdir -p $@;
+    cd $@;
 }
 
 function maven() {
     if [ $# -gt 1  ]; then
         mvn archetype:create -DgroupId=$1 -DartifactId=$2
     fi
+}
+
+function sbt-gen() {
+   mkdir -p src/{main,test}/{java,scala,resources}
+   mkdir project
+   touch project/Build.scala
+   local projectname=$1
+   cat << EOS  > build.sbt
+name := "${projectname}"
+
+version := "1.0"
+
+scalaVersion := "2.9.2"
+EOS
+
 }
 
 if [ $(uname) = 'Darwin' ];then
@@ -95,6 +118,7 @@ mouse-toggle() {
         export TMUX_MOUSE=on
     fi
 }
+alias mtoggle=mouse-toggle
 
 # 全履歴の一覧を出力する
 function history-all { 
