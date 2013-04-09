@@ -5,9 +5,19 @@ echo "Loading $HOME/.zshrc"
 # キーバインド                                #
 ###############################################
 
-# Emacsライクキーバインド
-bindkey -e
+# VIMライクキーバインド
+bindkey -v
 bindkey "" delete-char
+bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
+bindkey "^F" forward-char
+bindkey "^B" backward-char
+bindkey "^A" beginning-of-line
+bindkey "^E" end-of-line
+bindkey "^H" backward-delete-char
+bindkey "^?" backward-delete-char
+
+source $HOME/.zsh/zsh_vim_visualmode.zsh
 
 ###############################################
 # 関数                                        #
@@ -80,7 +90,7 @@ setopt append_history        # 履歴を追加 (毎回 .zsh_history を作るの
 setopt inc_append_history    # 履歴をインクリメンタルに追加
 setopt hist_no_store         # historyコマンドは履歴に登録しない
 setopt hist_reduce_blanks    # 余分な空白は詰めて記録
-#setopt hist_ignore_space    # 先頭がスペースの場合、ヒストリに追加しない
+setopt hist_ignore_space    # 先頭がスペースの場合、ヒストリに追加しない
 
 # cd - と入力してTabキーで今までに移動したディレクトリを一覧表示
 setopt auto_pushd
@@ -117,6 +127,7 @@ bindkey "^S" history-incremental-search-forward
 ###############################################
 # プロンプトに escape sequence (環境変数) を通す
 setopt prompt_subst
+autoload -U colors; colors
 [ -f $HOME/.zsh/git-completion.bash ] && source $HOME/.zsh/git-completion.bash
 
 # ^[  は「エスケープ」
@@ -127,7 +138,24 @@ PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" 
 
 PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
 SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
-RPROMPT="$(date +%Y/%m/%d) %T"                                # 右に表示したいプロンプト(24時間制での現在時刻)
+#RPROMPT="$(date +%Y/%m/%d) %T"                                # 右に表示したいプロンプト(24時間制での現在時刻)
+RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+
+function zle-line-init zle-keymap-select {
+  case $KEYMAP in
+    vicmd)
+    RPROMPT="[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+    ;;
+    main|viins)
+    RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+    ;;
+  esac
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+
 
 setopt transient_rprompt                    # 右プロンプトに入力がきたら消す
 
