@@ -7,7 +7,7 @@ echo "Loading $HOME/.zshrc"
 
 # VIMライクキーバインド
 bindkey -v
-bindkey "" delete-char
+bindkey "^D" delete-char
 bindkey "^P" up-line-or-history
 bindkey "^N" down-line-or-history
 bindkey "^F" forward-char
@@ -16,6 +16,18 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^H" backward-delete-char
 bindkey "^?" backward-delete-char
+bindkey "^W" backward-kill-word
+bindkey "^K" kill-line
+bindkey "^Y" yank
+
+
+function starteditor() {
+  exec < /dev/tty
+  ${EDITOR}
+  zle reset-prompt
+}
+zle -N starteditor
+bindkey '^O' starteditor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
@@ -202,8 +214,6 @@ unsetopt no_clobber          # リダイレクトで上書きを許可
 # カーソル位置から前方削除(Ctrl-u)
 #bindkey '^k' backward-kill-line
 
-# Ctrl-h で単語ごとに削除
-#bindkey "^h" backward-kill-word
 # / を単語の一部とみなさない記号の環境変数から削除
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
