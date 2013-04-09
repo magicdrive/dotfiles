@@ -5,21 +5,29 @@ echo "Loading $HOME/.zshrc"
 # キーバインド                                #
 ###############################################
 
-# VIMライクキーバインド
-bindkey -v
-bindkey "^D" delete-char
-bindkey "^P" up-line-or-history
-bindkey "^N" down-line-or-history
-bindkey "^F" forward-char
-bindkey "^B" backward-char
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^H" backward-delete-char
-bindkey "^?" backward-delete-char
-bindkey "^W" backward-kill-word
-bindkey "^K" kill-line
-bindkey "^Y" yank
+# Vim like key binding
+set -o vi
 
+# instert mode
+bindkey -M viins "^D" delete-char
+bindkey -M viins "^P" up-line-or-history
+bindkey -M viins "^N" down-line-or-history
+bindkey -M viins "^F" forward-char
+bindkey -M viins "^B" backward-char
+bindkey -M viins "^[" vi-cmd-mode
+bindkey -M viins "^A" beginning-of-line
+bindkey -M viins "^E" end-of-line
+bindkey -M viins "^H" backward-delete-char
+bindkey -M viins "^?" backward-delete-char
+bindkey -M viins "^W" backward-kill-word
+bindkey -M viins "^K" kill-line
+bindkey -M viins "^Y" yank
+# cmd mode
+bindkey -M vicmd "^W" backward-kill-line
+bindkey -M vicmd "^F" forward-char
+bindkey -M vicmd "^B" backward-char
+
+alias :q="exit"
 
 function starteditor() {
   exec < /dev/tty
@@ -27,7 +35,8 @@ function starteditor() {
   zle reset-prompt
 }
 zle -N starteditor
-bindkey '^O' starteditor
+bindkey -M vicmd '^G' starteditor
+bindkey -M viins '^G' starteditor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
