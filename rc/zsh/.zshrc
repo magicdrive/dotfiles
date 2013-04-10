@@ -160,7 +160,6 @@ PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" 
 
 PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
 SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
-#RPROMPT="$(date +%Y/%m/%d) %T"                                # 右に表示したいプロンプト(24時間制での現在時刻)
 RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
 
 function zle-line-init zle-keymap-select {
@@ -322,6 +321,8 @@ alias perlfunc="perldoc -f"
 ### Git
 alias g='git'
 alias gst='git status'
+alias gpsh='git push'
+alias gpl='git pull'
 __git_complete g _main_git
 
 ### Mosh
@@ -360,5 +361,6 @@ if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
 
-# 他の設定ファイルを読み込む
+# read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+

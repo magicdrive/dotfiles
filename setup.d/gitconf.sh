@@ -11,6 +11,9 @@ git config --global alias.ci  'commit -v'
 git config --global alias.ca  'commit -av'
 git config --global alias.cam 'commit --amend -v'
 
+git config --global alias.psh push
+git config --global alias.pl pull
+
 git config --global alias.sb   show-branch
 git config --global alias.sba  'show-branch --all'
 git config --global alias.cfm  '!git sb && git br && git st'
