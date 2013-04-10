@@ -28,6 +28,7 @@ bindkey -M vicmd "^F" forward-char
 bindkey -M vicmd "^B" backward-char
 
 alias :q="exit"
+alias :Q="exit"
 
 function starteditor() {
   exec < /dev/tty
