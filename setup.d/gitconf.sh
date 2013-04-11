@@ -12,7 +12,7 @@ git config --global alias.ca  'commit -av'
 git config --global alias.cam 'commit --amend -v'
 
 git config --global alias.psh push
-git config --global alias.pl pull
+git config --global alias.pul pull
 
 git config --global alias.sb   show-branch
 git config --global alias.sba  'show-branch --all'
