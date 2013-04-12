@@ -10,6 +10,7 @@ export EDITOR=vim
 
 #less color
 export LESS='-R'
+alias less_color="LESSOPEN=\"| /usr/local/bin/src-hilite-lesspipe.sh %s\" less"
 
 #PAGER
 export PAGER='less'
@@ -74,14 +75,12 @@ if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
-
 ### ruby
 #rbenv
 export RBENV_ROOT=$HOME/.rbenv
 if [ -d ${RBENV_ROOT} ];then
     export PATH="$RBENV_ROOT/shims:$RBENV_ROOT/bin:$PATH"
     eval "$(rbenv init - zsh)"
-#    export CC=/usr/bin/gcc-4.2
 fi
 
 # node.js
