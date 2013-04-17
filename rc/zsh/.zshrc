@@ -322,7 +322,7 @@ alias perlfunc="perldoc -f"
 alias g='git'
 alias gst='git status'
 alias gpsh='git push'
-alias gpl='git pull'
+alias gpul='git pull'
 __git_complete g _main_git
 
 ### Mosh

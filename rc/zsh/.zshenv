@@ -81,6 +81,7 @@ export RBENV_HOME=$HOME/.rbenv
 if [ -d ${RBENV_HOME} ];then
     export PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
+    export PATH="$HOME/.rbenv/shims:$PATH"
 fi
 
 # node.js
