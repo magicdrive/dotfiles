@@ -104,7 +104,7 @@ __tmux_attach() {
     [ $TMUX ] && return
     local tmux_name=$TMUX_DEFAULTNAME;
     [ $# -ne '0' ] && tmux_name=$1;
-    tmux attach -t ${tmux_name} || $(sleep 0 && tmux new-session -s ${tmux_name});
+    tmux attach -d -t ${tmux_name} || $(sleep 0 && tmux new-session -s ${tmux_name});
 }
 
 mouse-toggle() {
