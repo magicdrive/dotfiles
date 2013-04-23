@@ -1,4 +1,4 @@
-function backup() {
+backup() {
     local OPTION=''
     if [ $# -ne 0 ]; then
         local FILE=$1
@@ -6,7 +6,7 @@ function backup() {
     fi
 }
 
-function mkcd() {
+mkcd() {
     if [ $# -ne 1 ]; then
         return
     fi
@@ -14,13 +14,13 @@ function mkcd() {
     cd $@;
 }
 
-function maven() {
+maven() {
     if [ $# -gt 1  ]; then
         mvn archetype:create -DgroupId=$1 -DartifactId=$2
     fi
 }
 
-function sbt-gen() {
+sbt-gen() {
    mkdir -p src/{main,test}/{java,scala,resources}
    mkdir project
    touch project/Build.scala
@@ -87,20 +87,24 @@ local ___key=$1
         tmux unbind-key C-z && tmux unbind-key C-t
     else
         cat << 'EOS'
-        rebind tmux prefix key
-        Usage:
-        rebind [z|t|q]
+rebind tmux prefix key
+Usage:
+rebind [z|t|q]
 EOS
         return;
     fi
     tmux unbind-key C-b
 }
 
-function __tmux_attach() {
+gen-gitkeep() {
+   find . -type d -name .git -prune -p -type d -empty -print -exec touch {}/.gitkeep \; 
+}
+
+__tmux_attach() {
     [ $TMUX ] && return
     local tmux_name=$TMUX_DEFAULTNAME;
     [ $# -ne '0' ] && tmux_name=$1;
-    tmux attach -t $tmux_name || sleep 0 && tmux new-session -s $tmux_name; 
+    tmux attach -t ${tmux_name} || $(sleep 0 && tmux new-session -s ${tmux_name});
 }
 
 mouse-toggle() {
@@ -120,7 +124,6 @@ mouse-toggle() {
 }
 alias mtoggle=mouse-toggle
 
-# 全履歴の一覧を出力する
 function history-all { 
     history -E 1 
 }
