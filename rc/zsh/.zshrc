@@ -296,7 +296,7 @@ alias tl='tmux list-sessions'
 alias tmkill='tmux kill-server'
 alias tmkillsession='tmux kill-session -t'
 alias t='__tmux_attach'
-export TMUX_MOUSE=on
+export TMUX_MOUSE=off
 
 ### screen
 alias sc="screen"
