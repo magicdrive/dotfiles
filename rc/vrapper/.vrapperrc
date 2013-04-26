@@ -1,0 +1,26 @@
+"### Vrapperrc for version 0.26.0 or higher
+
+"### mapping {{{
+
+" default cursor speed too late!
+nnoremap <C-p> 5j
+nnoremap <C-n> 5k 
+
+" C-h availavle
+inoremap <C-h> <BS>
+
+" insert mode for like emacs
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
+nnoremap ; :
+nmap <C-l> <ESC>
+
+set scrolljump=15
+
+"}}}
+
+
+"__END__
