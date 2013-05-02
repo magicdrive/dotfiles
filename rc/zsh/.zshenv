@@ -77,10 +77,11 @@ fi
 
 ### ruby
 #rbenv
-export RBENV_HOME=$HOME/.rbenv
-if [ -d ${RBENV_HOME} ];then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+export RBENV_ROOT=$HOME/.rbenv
+if [ -d ${RBENV_ROOT} ];then
+    export PATH="$RBENV_ROOT/shims:$RBENV_ROOT/bin:$PATH"
+    eval "$(rbenv init - zsh)"
+#    export CC=/usr/bin/gcc-4.2
 fi
 
 # node.js
