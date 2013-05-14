@@ -1,1 +1,16 @@
-npm -g install hotnode jshint grunt mocha forever less coffee-script coffeelint typescript
+#! /bin/sh
+
+npm -g install \
+    hotnode \
+    bower \
+    jshint \
+    grunt \
+    mocha \
+    forever \
+    less \
+    coffee-script \
+    coffeelint \
+    typescript \
+    yo \
+    generator-webapp \
+;
