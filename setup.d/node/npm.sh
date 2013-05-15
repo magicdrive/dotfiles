@@ -13,4 +13,6 @@ npm -g install \
     typescript \
     yo \
     generator-webapp \
+    generator-angular \
+    generator-karma \
 ;
