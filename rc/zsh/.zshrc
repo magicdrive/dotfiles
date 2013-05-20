@@ -250,13 +250,8 @@ alias pathdump="echo $PATH | sed -e 's/:/\n/g'"
 alias acl="ack --pager='less -R'"
 alias zload="source $HOME/.zshrc"
 
-### macvim ###
-# 日本語設定で起動
-if [ -d /Applications/MacVim.app ];then
-    alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias mvim='macvim'
-fi
 
+### Emacs ###
 ### carbon emacs ###
 if [ -d /Applications/CarbonEmacs.app ];then
     alias carbon_emacs='/Applications/CarbonEmacs.app/Contents/MacOS/Emacs -nw'
@@ -266,11 +261,17 @@ if [ -d /Applications/CocoaEmacs.app ];then
     alias cocoa_emacs='/Applications/CocoaEmacs.app/Contents/MacOS/Emacs -nw'
 fi
 
+### macvim ###
+# 日本語設定で起動
+if [ -d /Applications/MacVim.app ];then
+    alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias mvim='macvim'
+fi
+
 vim_lang="LANG=C"
 
 ### Vim ###
 alias vim_origin='/bin/vim'
-
 alias v=vim
 alias vi=vim
 
@@ -279,13 +280,15 @@ alias vim-simple="${vim_simple}"
 alias sudovi="sudo ${vim_simple}"
 alias svim="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
-
-### Emacs ###
-alias e='emacs'
+alias e=$Editor
 
 if [ -f /usr/local/bin/colordiff ];then
     alias diff=$(which colordiff)
 fi
+
+### gradle
+export GRADLE_OPT="--daemon"
+alias gradle="gradle $GRADLE_OPT"
 
 ### tmux
 alias tmux='tmux -2'

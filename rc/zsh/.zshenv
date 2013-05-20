@@ -16,6 +16,9 @@ alias less_color="LESSOPEN=\"| /usr/local/bin/src-hilite-lesspipe.sh %s\" less"
 export PAGER='less'
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
 
+export CC='ccache gcc'
+export CXX='ccache g++'
+
 # Android 
 if [ $(uname -s) = 'Darwin' ];then
     export ANDROID_SDK_ROOT=/Applications/android-sdk-macosx
