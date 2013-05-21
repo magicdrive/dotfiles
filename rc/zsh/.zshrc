@@ -61,7 +61,7 @@ setopt auto_cd
 setopt auto_menu
 
 # 自動修正機能(候補を表示)
-#setopt correct
+setopt correct
 
 # 補完候補を詰めて表示
 setopt list_packed
@@ -256,11 +256,13 @@ alias zload="source $HOME/.zshrc"
 if [ -d /Applications/CarbonEmacs.app ];then
     alias carbon_emacs='/Applications/CarbonEmacs.app/Contents/MacOS/Emacs -nw'
 fi
+
 ### cocoa emacs ###
 if [ -d /Applications/CocoaEmacs.app ];then
     alias cocoa_emacs='/Applications/CocoaEmacs.app/Contents/MacOS/Emacs -nw'
 fi
 
+### Vim ###
 ### macvim ###
 # 日本語設定で起動
 if [ -d /Applications/MacVim.app ];then
@@ -268,9 +270,6 @@ if [ -d /Applications/MacVim.app ];then
     alias mvim='macvim'
 fi
 
-vim_lang="LANG=C"
-
-### Vim ###
 alias vim_origin='/bin/vim'
 alias v=vim
 alias vi=vim
@@ -280,7 +279,7 @@ alias vim-simple="${vim_simple}"
 alias sudovi="sudo ${vim_simple}"
 alias svim="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
-alias e=$Editor
+alias e=$EDITOR
 
 if [ -f /usr/local/bin/colordiff ];then
     alias diff=$(which colordiff)
