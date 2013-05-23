@@ -133,3 +133,5 @@ function history-all {
     history -E 1 
 }
 
+function gi() { curl http://gitignore.io/api/$@ ;}
+
