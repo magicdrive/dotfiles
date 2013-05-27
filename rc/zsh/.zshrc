@@ -150,7 +150,9 @@ bindkey "^S" history-incremental-search-forward
 # プロンプトに escape sequence (環境変数) を通す
 setopt prompt_subst
 autoload -U colors; colors
-[ -f $HOME/.zsh/git-completion.bash ] && source $HOME/.zsh/git-completion.bash
+
+# compfunctions
+for x in $(ls $HOME/.zsh/compfunction);do source $HOME/.zsh/compfunction/${x}; done;
 
 # ^[  は「エスケープ」
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
@@ -175,8 +177,6 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
-
-
 
 setopt transient_rprompt                    # 右プロンプトに入力がきたら消す
 
@@ -280,6 +280,9 @@ alias sudovi="sudo ${vim_simple}"
 alias svim="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 alias e=$EDITOR
+compdef vi=vim
+compdef e=vim
+compdef v=vim
 
 if [ -f /usr/local/bin/colordiff ];then
     alias diff=$(which colordiff)
@@ -325,7 +328,7 @@ alias g='git'
 alias gst='git status'
 alias gpsh='git push'
 alias gpul='git pull'
-__git_complete g _main_git
+compdef g=git
 
 ### Mosh
 compdef mosh=ssh
@@ -339,7 +342,7 @@ fi
 # zsh completion
 zsh_completions=$HOME/git/zsh-completions
 if [ -d ${zsh_completions} ];then
-    fpath=(${zsh_completions}/src $fpath)
+    fpath+=(${zsh_completions}/src $fpath)
     autoload -U compinit ; compinit
 fi
 
