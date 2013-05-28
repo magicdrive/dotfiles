@@ -49,13 +49,20 @@ if [ -d $HOME/.play-${PLAY_VERSION} ];then
 fi
 if [ -d /usr/local/scala ];then
     export SCALA_HOME="/usr/local/scala/Home"
-    export PATH="$SCALA_HOME/bin:$PATH:"
+    export PATH="${SCALA_HOME}/bin:${PATH}:"
 fi
 
 ### groovy
 if [ -d /usr/local/groovy ];then
     export GROOVY_HOME="/usr/local/groovy/Home"
-    export PATH="$GROOVY_HOME/bin:$PATH:"
+    export PATH="${GROOVY_HOME}/bin:${PATH}:"
+fi
+
+### golang
+if [ -d /usr/local/go ];then
+    export GOROOT="/usr/local/go"
+    export GOPATH="${HOME}/.gopath"
+    export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
 
 ### perl
