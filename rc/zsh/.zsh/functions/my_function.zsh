@@ -114,18 +114,16 @@ __tmux_attach() {
 
 mouse-toggle() {
     if [ ${TMUX_MOUSE} == 'on' ];then
-        tmux set-option -g mouse-select-pane off
-        tmux set-option -g mode-mouse off
-        tmux set-option -g mouse-resize-pane off
-        tmux set-option -g mouse-select-pane off
-        export TMUX_MOUSE=off
+        local switch=off
     else
-        tmux set-option -g mouse-select-pane on
-        tmux set-option -g mode-mouse on
-        tmux set-option -g mouse-resize-pane on
-        tmux set-option -g mouse-select-pane on
-        export TMUX_MOUSE=on
+        local switch=on
     fi
+
+    tmux set-option -g mouse-select-pane ${switch}
+    tmux set-option -g mode-mouse ${switch}
+    tmux set-option -g mouse-resize-pane ${switch}
+    tmux set-option -g mouse-select-pane ${switch}
+    export TMUX_MOUSE=${switch}
 }
 alias mtoggle=mouse-toggle
 
