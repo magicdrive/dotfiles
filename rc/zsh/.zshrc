@@ -36,8 +36,8 @@ function starteditor() {
   zle reset-prompt
 }
 zle -N starteditor
-bindkey -M vicmd '^G' starteditor
-bindkey -M viins '^G' starteditor
+bindkey -M vicmd '^J' starteditor
+bindkey -M viins '^J' starteditor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
