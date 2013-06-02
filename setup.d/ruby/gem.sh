@@ -1,4 +1,4 @@
 #! /bin/sh
 
-gem i sass compass rails sinatra padrino
+gem i sass compass rails sinatra padrino rbenv-rehash
 
