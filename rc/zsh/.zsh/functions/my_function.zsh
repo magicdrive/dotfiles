@@ -101,8 +101,12 @@ gen-gitkeep() {
 }
 
 __tmux_attach() {
-    [ $TMUX ] && return
-    local tmux_name=$TMUX_DEFAULTNAME;
+    if [ ${TMUX} ];then
+        echo 'sessions should be nested with care, unset $TMUX to force';
+        return;
+    fi
+
+    local tmux_name=${TMUX_DEFAULTNAME};
     [ $# -ne '0' ] && tmux_name=$1;
 
     tmux attach -t ${tmux_name}
