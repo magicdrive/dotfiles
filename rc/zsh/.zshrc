@@ -30,6 +30,16 @@ bindkey -M vicmd "^B" backward-char
 alias :q="exit"
 alias :Q="exit"
 
+function edit-file() {
+    emulate -L zsh
+    local -a words
+    words=("${(z)LBUFFER}")
+    zle -I
+    eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
+}
+zle -N edit-file
+bindkey '^O' edit-file
+
 function starteditor() {
   exec < /dev/tty
   ${EDITOR}
