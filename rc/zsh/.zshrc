@@ -55,7 +55,9 @@ source $HOME/.zsh/zsh_vim_visualmode.zsh
 # 関数                                        #
 ###############################################
 
-source $HOME/.zsh/functions/*
+for x in `ls $HOME/.zsh/functions`;do
+    source $HOME/.zsh/functions/${x}
+done
 
 ###############################################
 # 補完関係                                    #

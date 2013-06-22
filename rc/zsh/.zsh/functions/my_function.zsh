@@ -103,7 +103,7 @@ gen-gitkeep() {
 __tmux_attach() {
     if [ ${TMUX} ];then
         echo 'sessions should be nested with care, unset $TMUX to force';
-        return;
+        return 1;
     fi
 
     local tmux_name=${TMUX_DEFAULTNAME};
@@ -131,9 +131,5 @@ mouse-toggle() {
 }
 alias mtoggle=mouse-toggle
 
-function history-all { 
-    history -E 1 
-}
-
-function gi() { curl http://gitignore.io/api/$@ ;}
+function history-all { history -E 1 }
 
