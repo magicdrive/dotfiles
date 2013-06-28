@@ -337,7 +337,7 @@ alias perlfunc="perldoc -f"
 
 ### Git
 alias g='git'
-alias gs='git status'
+alias gsts='git status'
 alias gpsh='git push'
 alias gpul='git pull'
 compdef g=git
