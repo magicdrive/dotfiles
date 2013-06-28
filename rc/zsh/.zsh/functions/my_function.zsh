@@ -111,8 +111,7 @@ __tmux_attach() {
 
     tmux attach -t ${tmux_name}
     if [ $? -ne '0' ]; then
-        sleep 0;
-        tmux new-session -s ${tmux_name};
+        :; tmux new-session -s ${tmux_name};
     fi
 }
 

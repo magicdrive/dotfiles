@@ -92,6 +92,11 @@ if [ -d ${RBENV_ROOT} ];then
     export PATH="$RBENV_ROOT/shims:$RBENV_ROOT/bin:$PATH"
     eval "$(rbenv init - zsh)"
 fi
+#mruby
+export MRUBY_ROOT=$HOME/git/mruby
+if [ -d ${MRUBY_ROOT} ];then
+    export PATH="$MRUBY_ROOT/bin:$PATH"
+fi
 
 # node.js
 # nvm
