@@ -41,4 +41,5 @@ EOS
 }
 
 alias ccd="__ccache_switch"
+alias ccached="__ccache_switch"
 
