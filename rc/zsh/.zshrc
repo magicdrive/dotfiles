@@ -73,7 +73,7 @@ setopt auto_cd
 setopt auto_menu
 
 # 自動修正機能(候補を表示)
-setopt correct
+#setopt correct
 
 # 補完候補を詰めて表示
 setopt list_packed
@@ -95,10 +95,10 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # lsコマンドの補完候補にも色付き表示
 
-if [ $(uname) = 'Darwin' ];then
-    eval `gdircolors`
-else
+if [ $(uname) = 'Linux' ];then
     eval `dircolors`
+else
+    eval `gdircolors`
 fi
 
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
