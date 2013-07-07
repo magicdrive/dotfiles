@@ -378,6 +378,12 @@ if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
 
+### if debian-based
+if [ -f /etc/debian_version ];then
+    alias aptitude="sudo aptitude"
+    alias apt-get="sudo apt-get"
+fi
+
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
