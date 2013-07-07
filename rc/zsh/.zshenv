@@ -104,4 +104,10 @@ if [ -f ~/.nvm/nvm.sh ]; then
     source ~/.nvm/nvm.sh
 fi
 
+### llvm
+export LLVM_HOME=/usr/local/llvm/HOME
+if [ -e ${LLVM_HOME} ];then
+    export PATH="${LLVM_HOME}/bin:$PATH"
+fi
+
 #__END__
