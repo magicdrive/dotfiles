@@ -38,7 +38,7 @@ function edit-file() {
     eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
 }
 zle -N edit-file
-bindkey '^O' edit-file
+bindkey '^X^O' edit-file
 
 function starteditor() {
   exec < /dev/tty
@@ -46,8 +46,8 @@ function starteditor() {
   zle reset-prompt
 }
 zle -N starteditor
-bindkey -M vicmd '^J' starteditor
-bindkey -M viins '^J' starteditor
+bindkey -M vicmd '^X^J' starteditor
+bindkey -M viins '^X^J' starteditor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
