@@ -4,6 +4,7 @@
 
 export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
 export LANG='en_US.UTF-8'
+export LC_ALL="en_GB.utf8"
 
 # editor
 export EDITOR=vim
