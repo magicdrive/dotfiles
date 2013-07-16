@@ -3,14 +3,9 @@
 # install gems
 
 yes | gem i \
-    sass \
-    compass \
     rbenv-rehash \
-    nokogiri \
+    bundle \
     pry \
-    capistrano \
-    capistrano-ext \
-    capistrano_colors \
 ;
 
 exit 0;
