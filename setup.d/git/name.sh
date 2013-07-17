@@ -1,12 +1,31 @@
 #! /bin/bash
 
-echo 'Please tell me, user.name:'
-read name
-git config --global user.name ${name}
+#
+# "$ git config name" wrapper
+#
 
-echo 'Please tell me, user.email:'
+case $1 in
+    local)
+        rangename="local"
+        range=""
+        ;;
+    global)
+        rangename="global"
+        range="--global"
+        ;;
+    *)
+        rangename="global"
+        range="--global"
+        ;;
+esac
+
+echo "Please tell me, ${rangename} user.name:"
+read name
+git config ${range} user.name ${name}
+
+echo "Please tell me, ${range} user.email:"
 read email
-git config --global user.email ${email}
+git config ${range} global user.email ${email}
 
 
 exit 0;
