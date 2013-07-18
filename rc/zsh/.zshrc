@@ -238,6 +238,42 @@ unsetopt no_clobber          # リダイレクトで上書きを許可
 # / を単語の一部とみなさない記号の環境変数から削除
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
+###############################################
+# completions                                 #
+###############################################
+# zsh syntax
+zsh_syntax=$HOME/git/zsh-syntax-highlighting;
+if [ -d ${zsh_syntax} ];then
+    source ${zsh_syntax}/zsh-syntax-highlighting.zsh
+fi
+
+# zsh completion
+zsh_completions=$HOME/git/zsh-completions
+if [ -d ${zsh_completions} ];then
+    fpath+=(${zsh_completions}/src $fpath)
+    autoload -U compinit ; compinit
+fi
+
+# perlbrew completion
+perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
+if [ -d ${PERLBREW_HOME} ];then
+    source ${perlbrew_completefile}
+fi
+
+# z
+z_home=$HOME/git/z
+if [ -d ${z_home} ];then
+    _Z_NO_COMPLETE_CD=1
+    _Z_CMD=j 
+    source  ${z_home}/z.sh
+fi
+
+# nvm completion
+nvm_completefile=~/.nvm/bash_completion
+if [ -f ${nvm_completefile} ];then
+    source ${nvm_completefile}
+fi
+
 
 ###############################################
 # エイリアス                                  #
@@ -342,41 +378,15 @@ alias gpsh='git push'
 alias gpul='git pull'
 compdef g=git
 
-### Mosh
+### ruby-bundler
+alias brails="bundle exec rails"
+alias brake="bundle exec rake"
+alias be="bundle exec"
+compdef brials=rails
+compdef brake=rake
+
+### mosh
 compdef mosh=ssh
-
-# zsh syntax
-zsh_syntax=$HOME/git/zsh-syntax-highlighting;
-if [ -d ${zsh_syntax} ];then
-    source ${zsh_syntax}/zsh-syntax-highlighting.zsh
-fi
-
-# zsh completion
-zsh_completions=$HOME/git/zsh-completions
-if [ -d ${zsh_completions} ];then
-    fpath+=(${zsh_completions}/src $fpath)
-    autoload -U compinit ; compinit
-fi
-
-# perlbrew completion
-perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
-if [ -d ${PERLBREW_HOME} ];then
-    source ${perlbrew_completefile}
-fi
-
-# z
-z_home=$HOME/git/z
-if [ -d ${z_home} ];then
-    _Z_NO_COMPLETE_CD=1
-    _Z_CMD=j 
-    source  ${z_home}/z.sh
-fi
-
-# nvm completion
-nvm_completefile=~/.nvm/bash_completion
-if [ -f ${nvm_completefile} ];then
-    source ${nvm_completefile}
-fi
 
 ### if debian-based
 if [ -f /etc/debian_version ];then

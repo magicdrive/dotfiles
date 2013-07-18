@@ -21,11 +21,11 @@ esac
 
 echo "Please tell me, ${rangename} user.name:"
 read name
-git config ${range} user.name ${name}
+git config ${range} user.name "${name}"
 
 echo "Please tell me, ${range} user.email:"
 read email
-git config ${range} global user.email ${email}
+git config ${range} global user.email "${email}"
 
 
 exit 0;
