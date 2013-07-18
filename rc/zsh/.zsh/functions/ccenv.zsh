@@ -31,7 +31,7 @@ __cc_switch() {
             ;;
         * )
             cat << EOS
-usage: ccenv [--help|-h] [off|gcc|clang|env]
+usage: ccenv [--help|-h] [off] [gcc|clang|ccache-gcc|ccache-clang]
 
 ccached commands are:
     gcc           set CC and CXX gcc
