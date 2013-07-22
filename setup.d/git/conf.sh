@@ -15,6 +15,7 @@ git config --global alias.psh push
 git config --global alias.pul pull
 
 git config --global alias.parallel-pull 'parallel -j 4 -e "pull --rebase"'
+git config --global alias.multipull     'parallel -j 4 -e "pull --rebase"'
 
 git config --global alias.sb   show-branch
 git config --global alias.sba  'show-branch --all'
@@ -26,6 +27,8 @@ git config --global alias.dc  'diff --cached'
 git config --global alias.br   branch
 git config --global alias.cb  'checkout -b'
 git config --global alias.sw   checkout
+
+git config --global alias.lf   ls-files
 
 git config --global alias.mup   'submodule update --init --recursive'
 git config --global alias.madd  'submodule add'
@@ -53,7 +56,7 @@ git config --global alias.rs  'rebase --skip'
 git config --global alias.mab 'merge --abort'
 git config --global alias.chp  cherry-pick
 git config --global alias.mt   'mergetool -t'
-git config --global alias.mtv   'mergetool -t vimdiff'
+git config --global alias.mtv  'mergetool -t vimdiff'
 
 git config --global alias.unadd    'reset --'
 git config --global alias.rollback 'reset HEAD^ --'
