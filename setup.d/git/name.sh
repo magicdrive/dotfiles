@@ -9,10 +9,6 @@ case $1 in
         rangename="local"
         range=""
         ;;
-    global)
-        rangename="global"
-        range="--global"
-        ;;
     *)
         rangename="global"
         range="--global"
@@ -21,11 +17,11 @@ esac
 
 echo "Please tell me, ${rangename} user.name:"
 read name
-git config ${range} user.name "${name}"
+git config --replace-all ${range} user.name "${name}"
 
 echo "Please tell me, ${rangename} user.email:"
 read email
-git config ${range} user.email "${email}"
+git config --replace-all ${range} user.email "${email}"
 
 
 exit 0;
