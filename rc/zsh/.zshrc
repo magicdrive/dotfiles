@@ -40,14 +40,14 @@ function edit-file() {
 zle -N edit-file
 bindkey '^X^O' edit-file
 
-function starteditor() {
-  exec < /dev/tty
-  ${EDITOR}
-  zle reset-prompt
+function start_editor() {
+    exec < /dev/tty
+    ${EDITOR}
+    zle reset-prompt
 }
 zle -N starteditor
-bindkey -M vicmd '^X^J' starteditor
-bindkey -M viins '^X^J' starteditor
+bindkey -M vicmd '^X^J' start_editor
+bindkey -M viins '^X^J' start_editor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
@@ -107,8 +107,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31
 
 autoload -U compinit; compinit
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                             /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
-                             /usr/local/git/bin $HOME/bin
+    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
+    /usr/local/git/bin $HOME/bin
 
 ###############################################
 # 履歴関係                                    #
@@ -166,26 +166,26 @@ autoload -U colors; colors
 # compfunctions
 for x in $(ls $HOME/.zsh/compfunction);do source $HOME/.zsh/compfunction/${x}; done;
 
-# ^[  は「エスケープ」
-#PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
-#PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %B%#%b "
-PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+    # ^[  は「エスケープ」
+    #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
+    #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
+    PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %B%#%b "
+    PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
-SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
-RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
-
-function zle-line-init zle-keymap-select {
-  case $KEYMAP in
-    vicmd)
-    RPROMPT="[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
-    ;;
-    main|viins)
+    PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
+    SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
     RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
-    ;;
-  esac
-  zle reset-prompt
+
+    function zle-line-init zle-keymap-select {
+    case $KEYMAP in
+        vicmd)
+            RPROMPT="[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+            ;;
+        main|viins)
+            RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+            ;;
+    esac
+    zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -241,6 +241,10 @@ WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 ###############################################
 # completions                                 #
 ###############################################
+
+# my completions
+fpath+=($HOME/.zsh/completions $fpath)
+
 # zsh syntax
 zsh_syntax=$HOME/git/zsh-syntax-highlighting;
 if [ -d ${zsh_syntax} ];then
@@ -251,7 +255,6 @@ fi
 zsh_completions=$HOME/git/zsh-completions
 if [ -d ${zsh_completions} ];then
     fpath+=(${zsh_completions}/src $fpath)
-    autoload -U compinit ; compinit
 fi
 
 # perlbrew completion
@@ -260,7 +263,7 @@ if [ -d ${PERLBREW_HOME} ];then
     source ${perlbrew_completefile}
 fi
 
-#pythonz completion
+# pythonz completion
 pythonz_completionfile=~/.pythonz/etc/bash_completion.d/pythonz_completion.sh
 if [ -d ${PYTHONZ_HOME} ];then
     source ${pythonz_completionfile}
@@ -280,6 +283,7 @@ if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
 
+autoload -U compinit ; compinit
 
 ###############################################
 # エイリアス                                  #
@@ -388,8 +392,8 @@ compdef g=git
 alias brails="bundle exec rails"
 alias brake="bundle exec rake"
 alias be="bundle exec"
-compdef brials=rails
-compdef brake=rake
+
+alias relogin="exec zsh -l"
 
 ### mosh
 compdef mosh=ssh

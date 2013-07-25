@@ -31,4 +31,3 @@ function __pythonz_virtualenv_switch() {
 }
 
 alias pythonv="__pythonz_virtualenv_switch"
-
