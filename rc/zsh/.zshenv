@@ -2,7 +2,8 @@
 ### env define
 ###
 
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
+export MANPATH="$HOME/share/man:$MANPATH"
 
 ### laguage
 export LANG='en_US.UTF-8'
@@ -12,13 +13,12 @@ export LC_ALL='en_US.UTF-8'
 # editor
 export EDITOR=vim
 
+#PAGER
+export PAGER='less'
+
 #less color
 export LESS='-R'
 alias less_color="LESSOPEN=\"| /usr/local/bin/src-hilite-lesspipe.sh %s\" less"
-
-#PAGER
-export PAGER='less'
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
 
 # Android 
 if [ $(uname -s) = 'Darwin' ];then
