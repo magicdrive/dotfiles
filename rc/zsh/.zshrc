@@ -166,17 +166,20 @@ autoload -U colors; colors
 # compfunctions
 for x in $(ls $HOME/.zsh/compfunction);do source $HOME/.zsh/compfunction/${x}; done;
 
-    # ^[  は「エスケープ」
-    #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
-    #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-    PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %B%#%b "
-    PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+# ^[  は「エスケープ」
+#PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
+#PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
+PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %B%#%b "
+PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-    PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
-    SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
-    RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
+SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
 
-    function zle-line-init zle-keymap-select {
+# right prompt
+RPROMPT="$RPROMPT""[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} "
+RPROMPT="$RPROMPT""$(date +%Y/%m/%d) %T "
+
+function zle-line-init zle-keymap-select {
     case $KEYMAP in
         vicmd)
             RPROMPT="[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
