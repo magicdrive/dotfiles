@@ -1,0 +1,8 @@
+# compdef pythonv
+
+_pythonv {
+    python_list=( $(pythonz list | perl -p -e "s/(?:^#[\s\S]*$|[ ]+)//g") ) 
+    compadd ${python_list}
+}
+
+compdef _pythonv pythonv

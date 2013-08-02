@@ -3,6 +3,7 @@
 ###
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
+export MANPATH="$HOME/share/man:$MANPATH"
 
 ### laguage
 export LANG='en_US.UTF-8'
