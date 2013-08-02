@@ -2,23 +2,26 @@
 ### env define
 ###
 
-export PATH="/usr/local/sbin:/usr/local/bin:$PATH"
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
 
 ### laguage
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
-# editor
+# EDITOR
 export EDITOR=vim
-
-#less color
-export LESS='-R'
-alias less_color="LESSOPEN=\"| /usr/local/bin/src-hilite-lesspipe.sh %s\" less"
 
 #PAGER
 export PAGER='less'
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
+export LESS='-R'
+if [ $(uname -s) = 'Darwin' ];then
+    lesspipe_sh=/usr/local/bin/src-hilite-lesspipe.sh
+else
+    lesspipe_sh=/usr/share/source-highlight/src-hilite-lesspipe.sh
+fi
+alias less_color="LESSOPEN=\"| ${lesspipe_sh} %s\" less"
+
 
 # Android 
 if [ $(uname -s) = 'Darwin' ];then
