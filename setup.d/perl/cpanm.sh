@@ -1,6 +1,7 @@
 #! /bin/sh
 
 cpanm Class::Inspector
+cpanm Carton
 cpanm App::Ack
 cpanm Perl::Tidy
 cpanm Furl
