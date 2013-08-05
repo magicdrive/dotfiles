@@ -3,6 +3,7 @@
 # install gems
 
 yes | gem i \
+    rack \
     rbenv-rehash \
     bundle \
     pry \
