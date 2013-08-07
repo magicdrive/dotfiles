@@ -16,8 +16,6 @@ alias poweroff="sudo shutdown -h now"
 
 
 #mysql
-alias mysql_start="sudo /Library/StartupItems/MySQLCOM/MySQLCOM start"
-alias mysql_stop="sudo /Library/StartupItems/MySQLCOM/MySQLCOM stop"
 alias mysql="/usr/local/mysql/bin/mysql"
 
 #java
@@ -32,4 +30,3 @@ alias pfunc="perldoc perlfunc"
 alias perlbrew="~/perl5/perlbrew/bin/perlbrew"
 source ~/perl5/perlbrew/etc/bashrc
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
