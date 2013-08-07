@@ -11,6 +11,7 @@ npm -g install \
     coffee-script \
     coffeelint \
     typescript \
+    tsi \
     yo \
     generator-webapp \
     generator-angular \
