@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
 #
-# cc dispatcher
+# cc setting switcher
 #
 
 __cc_switch() {
@@ -41,7 +41,7 @@ ccached commands are:
     off           unset CC and CXX
     show          show CC and CXX args
 EOS
-            return;
+            return 1;
             ;;
     esac
     echo "CC=${CC}"

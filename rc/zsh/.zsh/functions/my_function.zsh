@@ -97,7 +97,7 @@ EOS
 }
 
 gen-gitkeep() {
-   find . -type d -name .git -prune -p -type d -empty -print -exec touch {}/.gitkeep \; 
+   find . -type dir -name .git -prune -or -type dir -empty -print -exec touch {}/.gitignore \; 
 }
 
 __tmux_attach() {
@@ -116,7 +116,10 @@ __tmux_attach() {
 }
 
 mouse-toggle() {
-    if [ ${TMUX_MOUSE} == 'on' ];then
+
+    if [ "${TMUX_MOUSE}" = '' ] && export TMUX_MOUSE=off; 
+
+    if [ "${TMUX_MOUSE}" == 'on' ];then
         local switch=off
     else
         local switch=on
