@@ -46,6 +46,7 @@ else
     export JAVA_HOME="/usr/local/java/Home"
 fi
 export PATH="$JAVA_HOME/bin:$PATH:"
+export MANPATH="${JAVA_HOME}/man:$MANPATH"
 
 ### scala
 export PLAY_VERSION=2.1.0
@@ -55,12 +56,14 @@ fi
 if [ -d /usr/local/scala ];then
     export SCALA_HOME="/usr/local/scala/Home"
     export PATH="${SCALA_HOME}/bin:${PATH}:"
+    export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
 
 ### groovy
 if [ -d /usr/local/groovy ];then
     export GROOVY_HOME="/usr/local/groovy/Home"
     export PATH="${GROOVY_HOME}/bin:${PATH}:"
+    export MANPATH="${GROOVY_HOME}/man:$MANPATH"
 fi
 
 ### golang
@@ -110,9 +113,10 @@ if [ -f ~/.nvm/nvm.sh ]; then
 fi
 
 ### llvm
-export LLVM_HOME=/usr/local/llvm/HOME
+export LLVM_HOME=/usr/local/llvm
 if [ -e ${LLVM_HOME} ];then
     export PATH="${LLVM_HOME}/bin:$PATH"
+    export MANPATH="${LLVM_HOME}/share/man:$MANPATH"
 fi
 
 #__END__

@@ -45,7 +45,7 @@ function start_editor() {
     ${EDITOR}
     zle reset-prompt
 }
-zle -N starteditor
+zle -N start_editor
 bindkey -M vicmd '^X^J' start_editor
 bindkey -M viins '^X^J' start_editor
 
@@ -398,6 +398,12 @@ alias be="bundle exec"
 
 alias relogin="exec zsh -l"
 
+### browser-mac
+if [ "$(uname -s)" = 'Darwin' ];then
+    alias chrome="open -a Google\ Chrome"
+    alias firefox="open -a Firefox"
+fi
+
 ### mosh
 compdef mosh=ssh
 
@@ -409,4 +415,3 @@ fi
 
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-
