@@ -1,12 +1,11 @@
 export PATH=/opt/local/bin/:/opt/loval/sbin:$PATH
 
 ##export PS1="[\u@\h \w] \\$ "
+#PS1="\h@\u:\w\$(__git_ps1) \$ "
 
-source ~/.zsh/git-completion.bash
+source ~/.zsh/compfunction/git-completion.bash
 
-PS1="\h@\u:\w\$(__git_ps1) \$ "
-        
-export DEV="/Users/hiroshi_ikegami/Documents/development/"
+export PS1="[\u@\h \W/\$(__git_ps1)] % "
 
 alias vi="vim"
 alias ls="ls -G"
