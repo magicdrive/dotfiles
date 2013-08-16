@@ -328,7 +328,6 @@ fi
 # 日本語設定で起動
 if [ -d /Applications/MacVim.app ];then
     alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-    alias mvim='macvim'
 fi
 
 alias vim_origin='/bin/vim'
