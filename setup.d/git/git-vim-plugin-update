@@ -1,0 +1,30 @@
+#! /bin/sh
+
+neobundle_root="$HOME/.vim/bundle/automatic/"
+
+cd ${neobundle_root}
+
+git parallel -j 4 -e "pull --rebase"
+git parallel -j 4 -e "config --remove-section color" > /dev/null
+
+vimproc_build() {
+    local kernelname=$(uname -s)
+    local makefile_name=''
+    case ${kernelname} in
+        Linux) 
+            makefile_name=make_unix.mak
+            ;;
+        Darwin)
+            makefile_name=make_mac.mak
+            ;;
+        FreeBSD)
+            makefile_name=make_unix.mak
+            ;;
+    esac
+
+    cd ${neobundle_root}/vimproc
+    make -f ${makefile_name} clean
+    make -f ${makefile_name}
+}
+
+vimproc_build && exit 0;
