@@ -119,4 +119,13 @@ if [ -e ${LLVM_HOME} ];then
     export MANPATH="${LLVM_HOME}/share/man:$MANPATH"
 fi
 
+# erlang
+export ERLANG_HOME=/usr/local/erlang
+if [ -e ${ERLANG_HOME} ];then
+    export PATH="${ERLANG_HOME}/bin:$PATH"
+    export MANPATH="${ERLANG_HOME}/share/man:$MANPATH"
+
+fi
+
+
 #__END__
