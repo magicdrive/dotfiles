@@ -2,12 +2,12 @@
 
 # install gems
 
-yes | gem i bundler --pre --no-ri --no-rdoc;
-
 yes | gem i \
+    bundler \
     rack \
     rbenv-rehash \
     pry \
+    pry-doc \
     pry-debugger \
     --no-ri --no-rdoc \
 ;

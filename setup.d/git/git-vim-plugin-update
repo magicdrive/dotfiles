@@ -11,14 +11,11 @@ vimproc_build() {
     local kernelname=$(uname -s)
     local makefile_name=''
     case ${kernelname} in
-        Linux) 
+        Linux | FreeBSD)
             makefile_name=make_unix.mak
             ;;
         Darwin)
             makefile_name=make_mac.mak
-            ;;
-        FreeBSD)
-            makefile_name=make_unix.mak
             ;;
     esac
 

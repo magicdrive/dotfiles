@@ -4,6 +4,8 @@ git config --global push.default tracking
 
 git config --global core.pager 'less -FRX'
 
+git config --global alias.fork  'clone --bare'
+
 git config --global alias.st  '-p status'
 git config --global alias.ss  '-p status -sb'
 git config --global alias.co   checkout
@@ -54,9 +56,9 @@ git config --global alias.rc  'rebase --continue'
 git config --global alias.rab 'rebase --abort'
 git config --global alias.rs  'rebase --skip'
 git config --global alias.mab 'merge --abort'
-git config --global alias.chp  cherry-pick
-git config --global alias.mt   'mergetool -t'
-git config --global alias.mtv  'mergetool -t vimdiff'
+git config --global alias.chp cherry-pick
+git config --global alias.mt  'mergetool -t'
+git config --global alias.mtv 'mergetool -t vimdiff'
 
 git config --global alias.unadd    'reset --'
 git config --global alias.rollback 'reset HEAD^ --'
@@ -67,11 +69,12 @@ git config --global alias.ap   'add -p'
 git config --global alias.unap 'reset -p'
 git config --global alias.cop  'checkout -p'
 
-git config --global alias.l   'log --decorate --numstat --summary'
-git config --global alias.ll  'log --decorate --numstat --summary --pretty=fuller -p'
-git config --global alias.wll 'log --decorate --numstat --summary --pretty=fuller -p --word-diff'
-git config --global alias.ol  'log --oneline --decorate'
-git config --global alias.t   'log --graph --oneline --decorate'
+git config --global alias.l     'log --decorate --numstat --summary'
+git config --global alias.ll    'log --decorate --numstat --summary --pretty=fuller -p'
+git config --global alias.wll   'log --decorate --numstat --summary --pretty=fuller -p --word-diff'
+git config --global alias.ol    'log --oneline --decorate'
+git config --global alias.t     'log --graph --oneline --decorate'
+git config --global alias.graph 'log --graph --all --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative'
 
 git config --global alias.g    grep
 
