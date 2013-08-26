@@ -260,6 +260,12 @@ if [ -d ${zsh_completions} ];then
     fpath+=(${zsh_completions}/src $fpath)
 fi
 
+# grunt completion
+grunt_completions=$HOME/git/grunt-zsh-completion
+if [ -d ${grunt_completions} ];then
+    fpath+=(${grunt_completions}/src $fpath)
+fi
+
 # perlbrew completion
 perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
 if [ -d ${PERLBREW_HOME} ];then
