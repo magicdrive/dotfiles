@@ -401,7 +401,7 @@ alias brails="bundle exec rails"
 alias brake="bundle exec rake"
 alias be="bundle exec"
 
-alias sudo-take-over="PATH=$PATH sudo"
+alias tsudo="PATH=$PATH sudo"
 alias relogin="exec zsh -l"
 
 ### browser-mac
