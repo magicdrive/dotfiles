@@ -13,4 +13,5 @@ git clone git://github.com/sstephenson/ruby-build.git ${installdir}/plugins/ruby
 git clone git://github.com/jamis/rbenv-gemset.git ${installdir}/plugins/rbenv-gemset
 git clone git://github.com/ryansouza/rbenv-rehash.git ${installdir}/plugins/rbenv-rehash
 
-exit 0;
+
+exec $SHELL -l

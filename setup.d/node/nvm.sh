@@ -5,4 +5,5 @@ ln -s ~/git/nvm ~/.nvm
 
 source ~/.nvm/nvm.sh
 
-exit 0;
+exec $SHELL -l
+

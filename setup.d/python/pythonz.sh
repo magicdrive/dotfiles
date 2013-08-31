@@ -7,4 +7,4 @@ mkdir -p ${virtualenv_dir}
 pushd ${virtualenv_dir}
 curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 
-exit 0;
+exec $SHELL -l
