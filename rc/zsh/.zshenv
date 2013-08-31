@@ -3,7 +3,7 @@
 ###
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
-export MANPATH="$HOME/share/man:$MANPATH"
+export MANPATH="$HOME/share/man:$(find /usr/local -type dir -name 'man' -maxdepth 4 | perl -p -e "s/\n/:/g"):$MANPATH"
 
 ### laguage
 export LANG='en_US.UTF-8'
@@ -126,6 +126,5 @@ if [ -e ${ERLANG_HOME} ];then
     export MANPATH="${ERLANG_HOME}/share/man:$MANPATH"
 
 fi
-
 
 #__END__
