@@ -5,6 +5,7 @@
 yes | gem i \
     bundler \
     rack \
+    md2man \
     compass \
     rbenv-rehash \
     pry \
