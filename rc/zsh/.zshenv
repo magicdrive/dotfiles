@@ -3,7 +3,7 @@
 ###
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
-export MANPATH="$HOME/share/man:$(find /usr/local -maxdepth 4 -name 'man' -type d | perl -p -e "s/\n/:/g"):$MANPATH"
+export MANPATH="$HOME/share/man:$(find /usr/local -maxdepth 4 -name 'man' -type d 2>/dev/null | perl -p -e "s/\n/:/g"):$MANPATH"
 
 ### laguage
 export LANG='en_US.UTF-8'
