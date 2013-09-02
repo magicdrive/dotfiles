@@ -1,5 +1,5 @@
 #! /bin/sh
 
-pip install pyflakes numpy virtualenv virtualenvwrapper
+pip install pyflakes virtualenv virtualenvwrapper
 
 exit 0;
