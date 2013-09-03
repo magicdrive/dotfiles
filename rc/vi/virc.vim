@@ -5,10 +5,6 @@
 "# vi互換のoff
 set nocompatible
 
-"# keymap prefix
-map <Space> <Plug>(mykey)
-map , <Plug>(mykeylite)
-
 " 強制終了をoff
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
@@ -39,7 +35,7 @@ filetype plugin indent on
 filetype plugin on
 
 "# ESCキー
-noremap <C-@> <ESC>
+noremap  <C-@> <ESC>
 noremap! <C-@> <ESC>
 cnoremap <C-@> <C-c>
 
@@ -62,11 +58,6 @@ if has('unix') && !has('gui_running')
     inoremap <silent> <ESC> <ESC>
     inoremap <silent> <C-[> <ESC>
 endif
-
-"VimScript関連 
-command! SU source %
-command! VE source ~/.vimrc
-nnoremap <Plug>(mykey)v :VE<CR>
 
 " helpを引く
 nnoremap <C-h> :help<Space>
@@ -108,16 +99,10 @@ set wildmode=list,full
 "# コマンドラインの履歴の保存数
 set history=256
 
-"# ファイラー & バッファーリスト
-nnoremap <Plug>(mykey)b :ls<CR>:buffer<Space>
-nnoremap <Plug>(mykey)e :Explore<CR>
-nnoremap <Plug>(mykey)f :edit ./<CR>
-
-
 "# LineNumberのトグル
-nnoremap <silent> <Plug>(mykeylite)n :<C-u>call ToggleNumber()<CR>
+command! NumberToggle :<SID>call ToggleNumber()
 
-function! ToggleNumber()
+function! s:ToggleNumber()
     if &number == '1'
         echo "line number enable"
     else
@@ -126,8 +111,6 @@ function! ToggleNumber()
     set number!
 endfunction
 
-
-"# 検索設定
 
 "# 検索に大文字を含んでいたら大小区別
 set ignorecase
@@ -163,17 +146,15 @@ set shiftwidth=4
 "# {}をインデントして入力
 inoremap {<CR> {<CR>}<LEFT><CR><UP><TAB>
 
-"# エンコーディングの設定
-
 "Encoding 
 set enc=utf-8 
 set fenc=utf-8 
 set fencs=utf-8 
 
 "# Window横分割
-nnoremap <Plug>(mykey)w :<ESC>:new<CR>
+nnoremap <Space>w :<ESC>:new<CR>
 "# Window縦分割
-nnoremap <Plug>(mykey)v :<ESC>:vnew<CR>
+nnoremap <Space>v :<ESC>:vnew<CR>
 
 "# カレントWindow縦最大化
 nnoremap <C-w><C-w> <C-w>_
@@ -191,6 +172,5 @@ nnoremap <C-w><C-j> <C-w>j
 nnoremap <C-w><C-k> <C-w>k
 nnoremap <C-w><C-h> <C-w>h
 nnoremap <C-w><C-l> <C-w>l
-
 
 "__END__

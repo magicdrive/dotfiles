@@ -336,15 +336,14 @@ if [ -d /Applications/MacVim.app ];then
     alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 fi
 
-alias vim_origin='/bin/vim'
-alias v=vim
-alias vi=vim
-
 vim_simple='vim -u ~/git/dotfiles/rc/vi/virc.vim'
 alias vim-simple="${vim_simple}"
 alias sudovi="sudo ${vim_simple}"
-alias svim="sudo ${vim_simple}"
+alias sudo-vim="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
+alias vim_origin='/bin/vim'
+alias v=vim
+alias vi=vim-simple
 alias e=$EDITOR
 compdef vi=vim
 compdef e=vim
