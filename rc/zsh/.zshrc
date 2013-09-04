@@ -38,7 +38,8 @@ function edit-file() {
     eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
 }
 zle -N edit-file
-bindkey '^X^O' edit-file
+bindkey -M vicmd '^G^O' edit-file
+bindkey -M viins '^G^O' edit-file
 
 function start_editor() {
     exec < /dev/tty
@@ -46,8 +47,8 @@ function start_editor() {
     zle reset-prompt
 }
 zle -N start_editor
-bindkey -M vicmd '^X^J' start_editor
-bindkey -M viins '^X^J' start_editor
+bindkey -M vicmd '^G^J' start_editor
+bindkey -M viins '^G^J' start_editor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
@@ -342,12 +343,10 @@ alias sudovi="sudo ${vim_simple}"
 alias sudo-vim="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 alias vim_origin='/bin/vim'
-alias v=vim
 alias vi=vim-simple
 alias e=$EDITOR
 compdef vi=vim
 compdef e=vim
-compdef v=vim
 
 if [ -f /usr/local/bin/colordiff ];then
     alias diff=$(which colordiff)
@@ -371,9 +370,6 @@ export TMUX_MOUSE=off
 ### screen
 alias sc="screen"
 
-### byobu
-alias b="byobu"
-
 ### ls
 alias cd..='cd ..'
 alias sl='ls'
@@ -385,19 +381,15 @@ alias clr='clear'
 
 # perl
 alias cpam="cpanm"
-alias podweb="podwebserver"
 alias perlfunc="perldoc -f"
 
 ### Git
 alias g='git'
 alias gsu='git status'
-alias gpsh='git push'
-alias gpul='git pull'
+alias lsg='git status'
 compdef g=git
 
 ### ruby-bundler
-alias brails="bundle exec rails"
-alias brake="bundle exec rake"
 alias be="bundle exec"
 
 alias tsudo="PATH=$PATH sudo"
