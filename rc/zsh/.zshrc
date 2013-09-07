@@ -393,7 +393,7 @@ compdef g=git
 ### ruby-bundler
 alias be="bundle exec"
 
-alias tsudo="PATH=$PATH sudo"
+alias tsudo="sudo PATH=$PATH"
 alias relogin="exec zsh -l"
 
 ### browser-mac
