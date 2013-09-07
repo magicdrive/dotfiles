@@ -165,7 +165,8 @@ setopt prompt_subst
 autoload -U colors; colors
 
 # compfunctions
-for x in $(ls $HOME/.zsh/compfunction);do source $HOME/.zsh/compfunction/${x}; done;
+compdir=$HOME/.zsh/completions/
+for x in $(ls ${compdir});do source ${compdir}${x}; done;
 
 # ^[  は「エスケープ」
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト

@@ -7,11 +7,6 @@ Session.vim
 .netrwhist
 *~
 
-### Linux ###
-.*
-!.gitignore
-*~
-
 ### OSX ###
 .DS_Store
 .AppleDouble
