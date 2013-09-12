@@ -1,0 +1,43 @@
+#! /bin/bash
+
+#
+# "$ git config name" wrapper
+#
+
+usage_exit() {
+    cat << EOF
+Usage: git author-def [--global|--local]
+
+    git-author-def commands are:
+    -g,--global   :change global config
+    -l,--local    :change local config
+
+
+EOF
+    exit 1;
+}
+
+
+case $1 in
+    -l | --local)
+        rangename="local"
+        range=""
+        ;;
+    -g  | --global)
+        rangename="global"
+        range="--global"
+        ;;
+    *)
+        usage_exit
+        ;;
+esac
+
+echo "${rangename} user.name:"
+read name
+git config --replace-all ${range} user.name "${name}"
+
+echo "${rangename} user.email:"
+read email
+git config --replace-all ${range} user.email "${email}"
+
+exit 0;
