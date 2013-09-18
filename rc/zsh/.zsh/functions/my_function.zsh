@@ -118,7 +118,7 @@ __tmux_attach() {
 
 mouse-toggle() {
 
-    if [ "${TMUX_MOUSE}" = '' ] && export TMUX_MOUSE=off; 
+    if [ "${TMUX_MOUSE}" = '' ] && export TMUX_MOUSE=off;
 
     if [ "${TMUX_MOUSE}" == 'on' ];then
         local switch=off
