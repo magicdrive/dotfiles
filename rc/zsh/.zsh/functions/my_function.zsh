@@ -109,9 +109,10 @@ __tmux_attach() {
     local tmux_name=${TMUX_DEFAULTNAME};
     [ $# -ne '0' ] && tmux_name=$1;
 
-    tmux attach -t ${tmux_name}
-    if [ $? -ne '0' ]; then
-        :; tmux new-session -s ${tmux_name};
+    if [ "$(tmux ls | cut -d ':' -f 1 | grep -e "^${tmux_name}$" | wc -l)" = "0" ]; then
+        tmux new-session -s ${tmux_name};
+    else
+        tmux attach -t ${tmux_name}
     fi
 }
 
