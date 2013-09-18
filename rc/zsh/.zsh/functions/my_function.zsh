@@ -97,7 +97,7 @@ EOS
 }
 
 gen-gitkeep() {
-   find . -type dir -name .git -prune -or -type dir -empty -print -exec touch {}/.gitignore \; 
+   find . -type dir -name .git -prune -or -type dir -empty -print -exec touch {}/.gitignore \;
 }
 
 __tmux_attach() {
@@ -108,8 +108,8 @@ __tmux_attach() {
 
     local tmux_name=${TMUX_DEFAULTNAME};
     [ $# -ne '0' ] && tmux_name=$1;
-
-    if [ "$(tmux ls | cut -d ':' -f 1 | grep -e "^${tmux_name}$" | wc -l)" = "0" ]; then
+    session_exists=$(tmux ls 2>&1 | cut -d ':' -f 1 | grep -e "^${tmux_name}$" | wc -l | perl -pe "s/\s//g")
+    if [ "${session_exists}" = 0 ]; then
         tmux new-session -s ${tmux_name};
     else
         tmux attach -t ${tmux_name}
