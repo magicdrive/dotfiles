@@ -3,7 +3,7 @@
 ###
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
-export MANPATH="$HOME/share/man:$(find /usr/local -maxdepth 4 -name 'man' -type d 2>/dev/null | perl -p -e "s/\n/:/g"):$MANPATH"
+export MANPATH="$HOME/share/man:$(find /usr/local -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'):$MANPATH"
 
 ### laguage
 export LANG='en_US.UTF-8'
@@ -24,7 +24,7 @@ fi
 alias less_color="LESSOPEN=\"| ${lesspipe_sh} %s\" less"
 
 
-# Android 
+# Android
 if [ $(uname -s) = 'Darwin' ];then
     export ANDROID_SDK_ROOT=/Applications/android-sdk-macosx
     export ANDROID_HOME=/Applications/android-sdk-macosx
