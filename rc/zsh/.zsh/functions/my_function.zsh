@@ -116,6 +116,19 @@ __tmux_attach() {
     fi
 }
 
+alias gnu-smalltalk=$(which gst)
+igst() { gnu-smalltalk; }
+__git-status-crever() {
+    if [ "$#" -eq '0' ];then
+        git status
+    elif [ "$#" -eq '1' ] && [ "$1" = 'repl' ];then
+        gnu-smalltalk
+    else
+        gnu-smalltalk "$@"
+    fi
+}
+alias gst=__git-status-crever
+
 mouse-toggle() {
 
     if [ "${TMUX_MOUSE}" = '' ] && export TMUX_MOUSE=off;

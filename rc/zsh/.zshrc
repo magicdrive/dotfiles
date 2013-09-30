@@ -52,6 +52,14 @@ bindkey -M viins '^G^J' start_editor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
+clear-screen-rehash() {
+        zle clear-screen
+        rehash
+        zle reset-prompt
+}
+zle -N clear-screen-rehash
+bindkey '^L' clear-screen-rehash
+
 ###############################################
 # 関数                                        #
 ###############################################
@@ -386,14 +394,15 @@ alias perlfunc="perldoc -f"
 
 ### Git
 alias g='git'
-alias gsu='git status'
+#alias gsu='git status'
 alias lsg='git status'
 compdef g=git
 
 ### ruby-bundler
 alias be="bundle exec"
 
-alias tsudo="sudo PATH=$PATH"
+alias take-over-sudo="sudo PATH=$PATH"
+alias tsudo=take-over-sudo
 alias relogin="exec zsh -l"
 
 ### browser-mac
