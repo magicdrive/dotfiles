@@ -401,7 +401,7 @@ alias perlfunc="perldoc -f"
 
 ### Git
 alias g='git'
-#alias gsu='git status'
+[ $(which git-info) ] && alias gin='git info'
 alias lsg='git status'
 compdef g=git
 
