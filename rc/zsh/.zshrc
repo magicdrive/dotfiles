@@ -60,6 +60,13 @@ clear-screen-rehash() {
 zle -N clear-screen-rehash
 bindkey '^L' clear-screen-rehash
 
+blank_to_git_status() {
+  zle accept-line
+  [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && git status
+}
+zle -N blank_to_git_status
+bindkey '^M' blank_to_git_status
+
 ###############################################
 # 関数                                        #
 ###############################################
