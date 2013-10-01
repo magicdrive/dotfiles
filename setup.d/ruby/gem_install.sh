@@ -8,6 +8,7 @@ yes | gem i \
     md2man \
     compass \
     rbenv-rehash \
+    awesome_print \
     pry \
     pry-doc \
     pry-debugger \
