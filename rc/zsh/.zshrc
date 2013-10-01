@@ -62,10 +62,11 @@ bindkey '^L' clear-screen-rehash
 
 blank_to_git_status() {
     zle accept-line
-    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && git status;
+    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && git -p status
+    zle reset-prompt
 }
 zle -N blank_to_git_status
-bindkey '^M' blank_to_git_status
+bindkey '^K' blank_to_git_status
 
 ###############################################
 # 関数                                        #
@@ -79,8 +80,8 @@ done
 # 補完関係                                    #
 ###############################################
 # 標準の補完設定
-autoload -U compinit
-compinit
+
+autoload -U compinit;compinit
 
 # ディレクトリ名を入力するだけでカレントディレクトリを変更
 setopt auto_cd
@@ -189,8 +190,11 @@ for x in $(ls ${compdir});do source ${compdir}${x}; done;
 PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %B%#%b "
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-PROMPT2="%B%_>%b "                          # forやwhile/複数行入力時などに表示されるプロンプト
-SPROMPT="%r is correct? [n,y,a,e]: "        # 入力ミスを確認する場合に表示されるプロンプト
+# forやwhile/複数行入力時などに表示されるプロンプト
+PROMPT2="%B%_>%b "
+
+# 入力ミスを確認する場合に表示されるプロンプト
+SPROMPT="%r is correct? [n,y,a,e]: "
 
 # right prompt
 RPROMPT="$RPROMPT""[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} "
@@ -210,7 +214,9 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-setopt transient_rprompt                    # 右プロンプトに入力がきたら消す
+# 右プロンプトに入力がきたら消す
+setopt transient_rprompt
+source $HOME/.zsh/vcs_info.zsh
 
 # ターミナルのタイトル
 case "${TERM}" in
@@ -308,8 +314,6 @@ nvm_completefile=~/.nvm/bash_completion
 if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
-
-autoload -U compinit ; compinit
 
 ###############################################
 # エイリアス                                  #
