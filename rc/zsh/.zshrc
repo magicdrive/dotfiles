@@ -62,7 +62,7 @@ bindkey '^L' clear-screen-rehash
 
 blank_to_git_status() {
     zle accept-line
-    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && git -p status
+    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && git status
     zle reset-prompt
 }
 zle -N blank_to_git_status
