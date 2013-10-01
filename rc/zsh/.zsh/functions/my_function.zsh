@@ -116,7 +116,7 @@ __tmux_attach() {
     fi
 }
 
-alias gnu-smalltalk=$(which gst)
+alias gnu-smalltalk=$(which gst 2>/dev/null)
 igst() { gnu-smalltalk; }
 __git-status-crever() {
     if [ "$#" -eq '0' ];then
