@@ -66,7 +66,7 @@ blank_to_git_status() {
     zle reset-prompt
 }
 zle -N blank_to_git_status
-bindkey '^K' blank_to_git_status
+bindkey '^J' blank_to_git_status
 
 ###############################################
 # 関数                                        #
@@ -283,12 +283,6 @@ if [ -d ${zsh_completions} ];then
     fpath+=(${zsh_completions}/src $fpath)
 fi
 
-# grunt completion
-grunt_completions=$HOME/git/grunt-zsh-completion
-if [ -d ${grunt_completions} ];then
-    fpath+=(${grunt_completions}/src $fpath)
-fi
-
 # perlbrew completion
 perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
 if [ -d ${PERLBREW_HOME} ];then
@@ -315,6 +309,7 @@ if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
 
+autoload -U compinit;compinit
 ###############################################
 # エイリアス                                  #
 ###############################################
