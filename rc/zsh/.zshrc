@@ -81,7 +81,7 @@ done
 ###############################################
 # 標準の補完設定
 
-autoload -U compinit;compinit
+#autoload -U compinit;compinit
 
 # ディレクトリ名を入力するだけでカレントディレクトリを変更
 setopt auto_cd
@@ -216,7 +216,7 @@ zle -N zle-keymap-select
 
 # 右プロンプトに入力がきたら消す
 setopt transient_rprompt
-source $HOME/.zsh/vcs_info.zsh
+#source $HOME/.zsh/vcs_info.zsh
 
 # ターミナルのタイトル
 case "${TERM}" in
