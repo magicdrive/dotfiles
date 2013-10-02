@@ -403,6 +403,7 @@ alias g='git'
 [ $(which git-info 2>/dev/null) ] && alias gin='git info'
 alias lsg='git status'
 compdef g=git
+compdef tig=git
 
 ### ruby-bundler
 alias be="bundle exec"
