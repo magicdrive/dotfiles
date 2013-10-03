@@ -61,8 +61,8 @@ zle -N clear-screen-rehash
 bindkey '^L' clear-screen-rehash
 
 blank_to_git_status() {
-    zle accept-line
-    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && git status
+    [ -n "$BUFFER" ] && zle accept-line && return 0
+    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && echo -e "\e[0;33m--- git status ---\e[0m" && git status -sb
     zle reset-prompt
 }
 zle -N blank_to_git_status
@@ -327,7 +327,7 @@ fi
 
 alias h='history -E -32'
 
-alias pathdump="echo $PATH | sed -e 's/:/\n/g'"
+pathdump() { echo $PATH | sed -e 's/:/\n/g'; }
 
 # ack with pager
 alias acl="ack --pager='less -R'"
@@ -410,7 +410,7 @@ alias be="bundle exec"
 
 alias take-over-sudo="sudo PATH=$PATH"
 alias tsudo=take-over-sudo
-alias relogin="exec zsh -l"
+alias relogin="manpath=''; exec zsh -l"
 
 ### browser-mac
 if [ "$(uname -s)" = 'Darwin' ];then
