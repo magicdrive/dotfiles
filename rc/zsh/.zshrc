@@ -61,8 +61,10 @@ zle -N clear-screen-rehash
 bindkey '^L' clear-screen-rehash
 
 blank_to_git_status() {
-    [ -n "$BUFFER" ] && zle accept-line && return 0
-    [ -z "$BUFFER" ] && git rev-parse 2>/dev/null && echo && echo -e "\e[0;33m--- git status ---\e[0m" && git status -sb
+    if [ -z "$BUFFER" ];then
+        git rev-parse 2>/dev/null && echo && echo -e "\e[0;33m--- git status ---\e[0m" && git status -sb
+        git rev-parse 2>/dev/null || zle accept-line
+    fi
     zle reset-prompt
 }
 zle -N blank_to_git_status
@@ -197,18 +199,23 @@ PROMPT2="%B%_>%b "
 SPROMPT="%r is correct? [n,y,a,e]: "
 
 # right prompt
-RPROMPT="$RPROMPT""[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} "
-RPROMPT="$RPROMPT""$(date +%Y/%m/%d) %T "
-
-function zle-line-init zle-keymap-select {
+vim_mode_status() {
     case $KEYMAP in
         vicmd)
-            RPROMPT="[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+            /bin/echo -n "[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
             ;;
-        main|viins)
-            RPROMPT="[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%%%{$reset_color%} $(date +%Y/%m/%d) %T "
+        ""|main|viins)
+            /bin/echo -n "[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
             ;;
     esac
+}
+
+source $HOME/git/zsh-vcs-prompt/zshrc.sh
+ZSH_VCS_PROMPT_ENABLE_CACHING='false'
+
+RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
+function zle-line-init zle-keymap-select {
+    RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
     zle reset-prompt
 }
 zle -N zle-line-init
@@ -216,7 +223,6 @@ zle -N zle-keymap-select
 
 # 右プロンプトに入力がきたら消す
 setopt transient_rprompt
-#source $HOME/.zsh/vcs_info.zsh
 
 # ターミナルのタイトル
 case "${TERM}" in
