@@ -210,8 +210,10 @@ vim_mode_status() {
     esac
 }
 
-source $HOME/git/zsh-vcs-prompt/zshrc.sh
-ZSH_VCS_PROMPT_ENABLE_CACHING='false'
+if [ -d $HOME/git/zsh-vcs-prompt ];then
+    source $HOME/git/zsh-vcs-prompt/zshrc.sh
+    ZSH_VCS_PROMPT_ENABLE_CACHING='false'
+fi
 
 RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
 function zle-line-init zle-keymap-select {
