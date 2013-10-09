@@ -55,7 +55,8 @@ man() {
 }
 
 psgrep() {
-    ps -ef | grep $@
+    term=$(echo $1 | perl -pe 's/(.)(.*)/[$1]$2/')
+    ps -ef | grep ${term}
 }
 
 
