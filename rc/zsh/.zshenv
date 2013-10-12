@@ -5,6 +5,10 @@
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
 export MANPATH="$HOME/share/man:$(find /usr/local -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'):$MANPATH"
 
+[ -e /usr/local/mysql ] && export PATH=/usr/local/mysql/bin:$PATH
+[ -e /usr/local/nginx ] && export PATH=/usr/local/nginx/sbin:$PATH
+[ -e /usr/local/monit ] && export PATH=/usr/local/monit/bin:$PATH
+
 ### laguage
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
