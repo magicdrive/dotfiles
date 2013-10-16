@@ -15,4 +15,7 @@ yes | gem i \
     --no-ri --no-rdoc \
 ;
 
+gem i refe2;
+bitclust setup;
+
 exit 0;
