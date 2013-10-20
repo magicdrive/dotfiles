@@ -15,14 +15,29 @@ __parse_git_dirty() {
 __parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ {\1}$(__parse_git_dirty)/"
 }
-export PS1="\[\e[0;36m\][\u@\h \[\e[1;32m\]\W/\[\e[1;35m\]\$(__parse_git_branch)\[\e[0;36m\]] #\[\e[00m\] "
+export PS1="\[\e[0;36m\][\u@\h \[\e[1;32m\]\W/\[\e[1;35m\]\$(__parse_git_branch)\[\e[0;36m\]] $\[\e[00m\] "
 
-alias vi="vim"
-alias ls="ls --color=auto"
+
+if [ $(uname) = 'Linux' ];then
+    eval `dircolors`
+else
+    eval `gdircolors`
+fi
+
+
+if [ $(uname) = 'Darwin' ];then
+    alias ls="ls -G"
+    if [ -f /usr/local/bin/gls ];then
+        alias ls="gls --color=auto"
+    fi
+else
+    alias ls="ls --color=auto"
+fi
 alias la="ls -a"
 alias lal="ls -la"
 alias sl="ls"
 
+alias vi="vim"
 alias poweroff="sudo shutdown -h now"
 alias relogin="manpath='';exec bash -l"
 alias gst="git status"
