@@ -2,7 +2,12 @@ export PATH=/opt/local/bin/:/opt/loval/sbin:$PATH
 
 [ -e ~/.zsh/completions/git-completion.bash ] && source ~/.zsh/completions/git-completion.bash
 [ -e ~/git/z/z.sh ] && source ~/git/z/z.sh
-[ -e ~/.zshenv ] && source ~/.zshenv
+z_home=$HOME/git/z
+if [ -d ${z_home} ];then
+    #_Z_NO_COMPLETE_CD=1
+    _Z_CMD=j
+    source  ${z_home}/z.sh
+fi
 
 __parse_git_dirty() {
    [ "$(git status -s 2>/dev/null | wc -l | perl -pe "s/\s//g")" -eq "0" ] || echo "*"
@@ -10,15 +15,16 @@ __parse_git_dirty() {
 __parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ {\1}$(__parse_git_dirty)/"
 }
-export PS1="\[\e[1;36m\][\u@\h \[\e[1;32m\]\W/\[\e[1;35m\]\$(__parse_git_branch)\[\e[1;36m\]] #\[\e[00m\] "
+export PS1="\[\e[0;36m\][\u@\h \[\e[1;32m\]\W/\[\e[1;35m\]\$(__parse_git_branch)\[\e[0;36m\]] #\[\e[00m\] "
 
 alias vi="vim"
 alias ls="ls --color=auto"
 alias la="ls -a"
 alias lal="ls -la"
+alias sl="ls"
 
 alias poweroff="sudo shutdown -h now"
-alias relogin="manpath='';exec $SHELL -l"
+alias relogin="manpath='';exec bash -l"
 alias gst="git status"
 alias t="__tmux_attach"
 
@@ -38,7 +44,6 @@ psgrep() {
     term=$(echo $1 | sed -E "s/(.)(.*)/[\1]\2/")
     ps -ef | grep ${term}
 }
-
 
 vimsub() {
     if [ $# -lt 3 ] || [ $1 = '-h' ] ; then

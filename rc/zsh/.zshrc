@@ -306,7 +306,7 @@ fi
 # z
 z_home=$HOME/git/z
 if [ -d ${z_home} ];then
-    _Z_NO_COMPLETE_CD=1
+    #_Z_NO_COMPLETE_CD=1
     _Z_CMD=j
     source  ${z_home}/z.sh
 fi
