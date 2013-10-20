@@ -124,7 +124,7 @@ zstyle ':completion:*:default' list-colors ${LS_COLORS}
 # kill の候補にも色付き表示
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31'
 
-autoload -U compinit; compinit
+autoload -U compinit; compinit -u
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
     /usr/local/git/bin $HOME/bin
@@ -317,7 +317,7 @@ if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
 
-autoload -U compinit;compinit
+autoload -U compinit;compinit -u
 ###############################################
 # エイリアス                                  #
 ###############################################
