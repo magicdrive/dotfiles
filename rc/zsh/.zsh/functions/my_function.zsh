@@ -136,7 +136,7 @@ __parse_git_dirty() {
 }
 
 __parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ {\1}$(__parse_git_dirty)/"
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1)$(__parse_git_dirty)/"
 }
 
 mouse-toggle() {
