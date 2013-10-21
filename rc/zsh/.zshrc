@@ -189,7 +189,7 @@ for x in $(ls ${compdir});do source ${compdir}${x}; done;
 # ^[  は「エスケープ」
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
 #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__git_ps1)%f%b%F{green}]%f %B%#%b "
+PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
 PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 # forやwhile/複数行入力時などに表示されるプロンプト

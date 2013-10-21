@@ -10,8 +10,8 @@ mkcd() {
     if [ $# -ne 1 ]; then
         return
     fi
-    mkdir -p $@;
-    cd $@;
+    mkdir -p "$@";
+    cd "$@";
 }
 
 maven() {
@@ -63,9 +63,9 @@ psgrep() {
 vimsub() {
     if [ $# -lt 3 ] || [ $1 = '-h' ] ; then
         cat << 'EOS'
-        interactive character replacement using vim.
-        Usage:
-        vimsub [BEFOR] [AFTER] [FILE]
+interactive character replacement using vim.
+Usage:
+    vimsub [BEFOR] [AFTER] [FILE]
 EOS
     else
         local before=$1
@@ -129,6 +129,15 @@ __git-status-crever() {
     fi
 }
 alias gst=__git-status-crever
+
+
+__parse_git_dirty() {
+   [ "$(git status -s 2>/dev/null | wc -l | perl -pe "s/\s//g")" -eq "0" ] || echo "*"
+}
+
+__parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ {\1}$(__parse_git_dirty)/"
+}
 
 mouse-toggle() {
 
