@@ -2,8 +2,8 @@
 ### env define
 ###
 
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
-export MANPATH="$HOME/share/man:$(find /usr/local -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'):$MANPATH"
+export PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:$PATH:"
+export MANPATH="$HOME/local/share/man:$HOME/share/man:$(find /usr/local -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'):$MANPATH"
 
 [ -e /usr/local/mysql ] && export PATH=/usr/local/mysql/bin:$PATH
 [ -e /usr/local/nginx ] && export PATH=/usr/local/nginx/sbin:$PATH

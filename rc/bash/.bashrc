@@ -9,6 +9,8 @@ if [ -d ${z_home} ];then
     source  ${z_home}/z.sh
 fi
 
+stty stop undef
+
 __parse_git_dirty() {
    [ "$(git status -s 2>/dev/null | wc -l | perl -pe "s/\s//g")" -eq "0" ] || echo "*"
 }
