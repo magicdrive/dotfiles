@@ -327,9 +327,12 @@ autoload -U compinit;compinit -u
 setopt complete_aliases
 
 if [ $(uname) = 'Darwin' ];then
-    alias ls="ls -G"
-    if [ -f /usr/local/bin/gls ];then
+    if [ -f $HOME/local/bin/ls ];then
+        alias ls="ls --color=auto"
+    elif [ -f /usr/local/bin/gls ];then
         alias ls="gls --color=auto"
+    else
+        alias ls="ls -G"
     fi
 else
     alias ls="ls --color=auto"
@@ -420,7 +423,7 @@ alias be="bundle exec"
 
 alias take-over-sudo="sudo PATH=$PATH"
 alias tsudo=take-over-sudo
-alias relogin="manpath=''; exec zsh -l"
+alias relogin="manpath='';exec $SHELL -l"
 
 ### browser-mac
 if [ "$(uname -s)" = 'Darwin' ];then
