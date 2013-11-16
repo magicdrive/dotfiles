@@ -99,14 +99,21 @@ fi
 
 ### ruby
 #rbenv
-export RBENV_ROOT=$HOME/.rbenv
-if [ -d ${RBENV_ROOT} ];then
+if [ -d /usr/local/rbenv ];then
+    export RBENV_ROOT=/usr/local/rbenv
+elif [ -d $HOME/.rbenv ];then
+    export RBENV_ROOT=$HOME/.rbenv
+fi
+if [ -d "${RBENV_ROOT}" ];then
     export PATH="$RBENV_ROOT/shims:$RBENV_ROOT/bin:$PATH"
     eval "$(rbenv init - zsh)"
 fi
 #mruby
-export MRUBY_ROOT=$HOME/git/mruby
-if [ -d ${MRUBY_ROOT} ];then
+if [ -d $HOME/git/mruby ];then
+    export MRUBY_ROOT=$HOME/git/mruby
+    export PATH="$MRUBY_ROOT/bin:$PATH"
+elif [ -d /usr/local/mruby ];then
+    export MRUBY_ROOT=/usr/local/mruby
     export PATH="$MRUBY_ROOT/bin:$PATH"
 fi
 
