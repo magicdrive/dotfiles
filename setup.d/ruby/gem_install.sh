@@ -5,6 +5,8 @@
 yes | gem i \
     bundler \
     rack \
+    puma \
+    god \
     md2man \
     compass \
     rbenv-rehash \
