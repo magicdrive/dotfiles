@@ -1,5 +1,7 @@
 export PATH=/opt/local/bin/:/opt/loval/sbin:$PATH
 
+[ -e $HOME/.zshenv ] && source $HOME/.zshenv
+
 [ -e ~/.zsh/completions/git-completion.bash ] && source ~/.zsh/completions/git-completion.bash
 [ -e ~/git/z/z.sh ] && source ~/git/z/z.sh
 z_home=$HOME/git/z
@@ -25,7 +27,6 @@ if [ $(uname) = 'Linux' ];then
 else
     eval `gdircolors`
 fi
-
 
 if [ $(uname) = 'Darwin' ];then
     alias ls="ls -G"
