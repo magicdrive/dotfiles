@@ -423,7 +423,7 @@ alias be="bundle exec"
 
 alias take-over-sudo="sudo PATH=$PATH"
 alias tsudo=take-over-sudo
-alias relogin="manpath='';exec $SHELL -l"
+alias eshl="manpath='';exec zsh -l"
 
 ### browser-mac
 if [ "$(uname -s)" = 'Darwin' ];then

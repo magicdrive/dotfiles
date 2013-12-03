@@ -42,7 +42,7 @@ alias sl="ls"
 
 alias vi="vim"
 alias poweroff="sudo shutdown -h now"
-alias relogin="manpath='';exec bash -l"
+alias eshl="manpath='';exec bash -l"
 alias gst="git status"
 alias t="__tmux_attach"
 
@@ -59,7 +59,7 @@ man() {
 }
 
 psgrep() {
-    term=$(echo $1 | sed -E "s/(.)(.*)/[\1]\2/")
+    term=(echo $1 | perl -pe "s/(.)(.*)/[\1]\2/")
     ps -ef | grep ${term}
 }
 
