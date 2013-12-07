@@ -421,6 +421,11 @@ compdef tig=git
 ### ruby-bundler
 alias be="bundle exec"
 
+alias b="bundle"
+
+export BUNDLE_PRIVATE_INSTALL_OPT="--path=./vendor/bundle --binstubs=./.bundle/binstubs"
+alias bundle-private="bundle install ${BUNDLE_PRIVATE_INSTALL_OPT}"
+
 alias take-over-sudo="sudo PATH=$PATH"
 alias tsudo=take-over-sudo
 alias eshl="manpath='';exec zsh -l"
