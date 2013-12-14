@@ -98,7 +98,7 @@ EOS
 }
 
 gen-gitkeep() {
-   find . -type dir -name .git -prune -or -type dir -empty -print -exec touch {}/.gitignore \;
+    find $(pwd) -name .git -prune -or -type d -empty -print -exec touch {}/.gitignore \;
 }
 
 __tmux_attach() {
