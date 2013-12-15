@@ -12,6 +12,8 @@ if [ -d ${z_home} ];then
 fi
 
 stty stop undef
+set completion-ignore-case on
+shopt -s autocd
 
 __parse_git_dirty() {
    [ "$(git status -s 2>/dev/null | wc -l | perl -pe "s/\s//g")" -eq "0" ] || echo "*"
@@ -59,8 +61,8 @@ man() {
 }
 
 psgrep() {
-    term=(echo $1 | perl -pe "s/(.)(.*)/[\1]\2/")
-    ps -ef | grep ${term}
+    term=$(echo $1 | perl -pe "s/(.)(.*)/[\1]\2/")
+    ps -ef | grep ${term};
 }
 
 vimsub() {
