@@ -10,7 +10,7 @@ if [ $(uname -s) = 'Darwin' ];then
     fi
     brew install curl-ca-bundle
 fi
-
+mkdir -p /usr/local/etc/openssl/
 certfile=/usr/local/etc/openssl/cert.pem
 [ -e ${certfile} ] || curl http://curl.haxx.se/ca/cacert.pem -o ${certfile}
 
