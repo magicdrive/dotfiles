@@ -7,6 +7,7 @@ yes | gem i \
     rack \
     puma \
     god \
+    zeus \
     md2man \
     compass \
     rbenv-rehash \
