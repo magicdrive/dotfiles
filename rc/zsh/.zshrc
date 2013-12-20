@@ -425,9 +425,12 @@ alias be="bundle exec"
 alias b="bundle"
 export BUNDLE_PRIVATE_INSTALL_OPT="--binstubs=./.bundle/binstubs"
 alias bundle-private="bundle install --path=./vendor/bundle ${BUNDLE_PRIVATE_INSTALL_OPT}"
-webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
+
 ### ruby
-alias railz="zeus"
+alias railsz="zeus"
+compdef railsz=rails
+
+webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
 
 ### shells
 alias take-over-sudo="sudo PATH=$PATH"
