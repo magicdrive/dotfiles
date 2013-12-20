@@ -8,6 +8,7 @@ yes | gem i \
     puma \
     god \
     zeus \
+    sass \
     md2man \
     compass \
     rbenv-rehash \
