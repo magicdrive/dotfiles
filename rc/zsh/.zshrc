@@ -360,7 +360,6 @@ fi
 
 ### Vim ###
 ### macvim ###
-# 日本語設定で起動
 if [ -d /Applications/MacVim.app ];then
     alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 fi
@@ -376,8 +375,11 @@ alias e=$EDITOR
 compdef vi=vim
 compdef e=vim
 
-if [ -f /usr/local/bin/colordiff ];then
-    alias diff=$(which colordiff)
+### diff and patch
+[ -f "$(which colordiff)" ] && alias diff="$(which colordiff)"
+
+if [ "$(uname -s)" = 'Darwin' ];then
+    [ -f "$(which gpatch)" ] && alias patch="gpatch"
 fi
 
 ### gradle
