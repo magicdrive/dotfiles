@@ -423,9 +423,11 @@ compdef tig=git
 ### ruby-bundler
 alias be="bundle exec"
 alias b="bundle"
-export BUNDLE_PRIVATE_INSTALL_OPT="--path=./vendor/bundle --binstubs=./.bundle/binstubs"
-alias bundle-private="bundle install ${BUNDLE_PRIVATE_INSTALL_OPT}"
+export BUNDLE_PRIVATE_INSTALL_OPT="--binstubs=./.bundle/binstubs"
+alias bundle-private="bundle install --path=./vendor/bundle ${BUNDLE_PRIVATE_INSTALL_OPT}"
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
+### ruby
+alias railz="zeus"
 
 ### shells
 alias take-over-sudo="sudo PATH=$PATH"
