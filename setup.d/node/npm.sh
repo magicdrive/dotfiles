@@ -7,11 +7,12 @@ npm -g install \
     grunt \
     mocha \
     forever \
-    less \
     coffee-script \
     coffeelint \
     typescript \
     tsi \
+    tsd \
+    tslint \
     yo \
     generator-webapp \
     generator-angular \
