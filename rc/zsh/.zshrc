@@ -427,8 +427,8 @@ export BUNDLE_PRIVATE_INSTALL_OPT="--binstubs=./.bundle/binstubs"
 alias bundle-private="bundle install --path=./vendor/bundle ${BUNDLE_PRIVATE_INSTALL_OPT}"
 
 ### ruby
-alias railsz="zeus"
-compdef railsz=rails
+alias railsd="zeus"
+compdef railsd=rails
 
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
 
