@@ -10,6 +10,8 @@ yes | gem i \
     zeus \
     sass \
     md2man \
+    middleman \
+    middleman-slim \
     compass \
     rbenv-rehash \
     awesome_print \
