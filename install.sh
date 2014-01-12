@@ -14,6 +14,7 @@ tmux_files=( '.tmux.conf' '.tmux.env' '.tmux-powerline.conf' );
 screen_files=( '.screenrc' );
 bash_files=( '.bashrc' );
 vrapper_files=( '.vrapperrc' );
+jshint_files=( '.jshintrc' );
 
 backup_dir=$HOME/.dotfiles.backup
 [ -d ${backup_dir} ] || mkdir -p ${backup_dir};
@@ -35,6 +36,7 @@ install_files tmux ${tmux_files[@]};
 install_files screen ${screen_files[@]};
 install_files bash ${bash_files[@]};
 install_files vrapper ${vrapper_files[@]};
+install_files jshint ${jshint_files[@]};
 
 exit 0;
 

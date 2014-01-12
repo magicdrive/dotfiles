@@ -1,0 +1,25 @@
+{
+  "strict"    : true,
+  "indent"    : 2,
+  "maxlen"    : 80,
+  "unused"    : false,
+  "camelCase" : true,
+  "asi"       : true,
+
+  "undef"       : true,
+  "browser"     : true,
+  "node"        : true,
+  "dojo"        : true,
+  "devel"       : true,
+  "debug"       : true,
+  "jquery"      : true,
+  "ender"       : true,
+  "prototypejs" : false,
+  "mootools"    : false,
+  "dojo"        : false,
+  "globals": {
+    "_": false,
+    "Backbone": false
+  },
+}
+
