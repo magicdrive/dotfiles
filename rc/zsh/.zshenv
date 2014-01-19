@@ -137,7 +137,14 @@ export ERLANG_HOME=/usr/local/erlang
 if [ -e ${ERLANG_HOME} ];then
     export PATH="${ERLANG_HOME}/bin:$PATH"
     export MANPATH="${ERLANG_HOME}/share/man:$MANPATH"
-
 fi
+
+# haxe
+export HAXE_HOME=/usr/local/haxe/HOME
+if [ -e "${HAXE_HOME}" ];then
+    export PATH="${HAXE_HOME}/build:$PATH"
+    export HAXE_LIBRARY_PATH="${HAXE_HOME}/build/std"
+fi
+
 
 #__END__
