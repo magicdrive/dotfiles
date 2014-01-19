@@ -143,7 +143,7 @@ fi
 export HAXE_HOME=/usr/local/haxe/HOME
 if [ -e "${HAXE_HOME}" ];then
     export PATH="${HAXE_HOME}/build:$PATH"
-    export HAXE_LIBRARY_PATH="${HAXE_HOME}/build/std"
+    export HAXE_STD_PATH="${HAXE_HOME}/build/std:"
 fi
 
 
