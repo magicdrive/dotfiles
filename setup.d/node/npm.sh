@@ -4,6 +4,7 @@ npm -g install \
     hotnode \
     bower \
     jshint \
+    js-beautify \
     grunt \
     mocha \
     forever \
