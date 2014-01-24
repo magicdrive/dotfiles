@@ -4,14 +4,14 @@
 
 yes | gem i \
     bundler \
+    activesupport \
+    parallel \
     rack \
     puma \
     god \
-    zeus \
     sass \
     md2man \
     middleman \
-    middleman-slim \
     compass \
     rbenv-rehash \
     awesome_print \
