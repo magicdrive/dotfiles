@@ -88,15 +88,10 @@ if [ -f ${PERLBREW_HOME}/etc/bashrc ]; then
 fi
 
 ### python
-# pythonz
-export PYTHONZ_HOME=$HOME/.pythonz
-if [ -d ${PYTHONZ_HOME} ]; then
-    source ~/.pythonz/etc/bashrc
-fi
-# virtualenvs
-export WORKON_HOME=$HOME/.virtualenvs
-if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
-    source /usr/local/bin/virtualenvwrapper.sh
+export PYENV_ROOT="${HOME}/.pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+    export PATH=${PYENV_ROOT}/bin:$PATH
+    eval "$(pyenv init -)"
 fi
 
 ### ruby
