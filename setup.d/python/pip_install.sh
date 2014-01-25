@@ -1,6 +1,10 @@
-#! /bin/sh
+#! /bin/bash
 
-pip3 install pyflakes
-pip2 install pyflakes
+pypis=('pyflakes' 'flake8')
+
+for x in "${pypis[@]}";do
+  pip2 install ${x}
+  pip3 install ${x}
+done
 
 exit 0;
