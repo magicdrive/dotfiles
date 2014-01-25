@@ -300,12 +300,6 @@ if [ -d ${PERLBREW_HOME} ];then
     source ${perlbrew_completefile}
 fi
 
-# pythonz completion
-pythonz_completionfile=~/.pythonz/etc/bash_completion.d/pythonz_completion.sh
-if [ -d ${PYTHONZ_HOME} ];then
-    source ${pythonz_completionfile}
-fi
-
 # z
 z_home=$HOME/git/z
 if [ -d ${z_home} ];then
@@ -455,3 +449,4 @@ fi
 
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
