@@ -436,6 +436,9 @@ compdef pip2.7=pip
 compdef pip3=pip
 compdef pip3.3=pip
 
+### lisp
+alias igosh="rlwrap -pGreen gosh"
+
 ### shells
 alias take-over-sudo="sudo PATH=$PATH"
 alias tsudo=take-over-sudo
