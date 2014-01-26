@@ -422,10 +422,20 @@ export BUNDLE_PRIVATE_INSTALL_OPT="--binstubs=./.bundle/binstubs"
 alias bundle-private="bundle install --path=./vendor/bundle ${BUNDLE_PRIVATE_INSTALL_OPT}"
 
 ### ruby
-alias sprails="spring rails"
-compdef sprails=rails
+alias sp="spring"
+alias sp-rails="spring rails"
+alias sp-rails="spring rake"
+compdef sp-rails=rails
+compdef sp-rake=rake
+compdef sp=spring
 
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
+
+### python
+compdef pip2=pip
+compdef pip2.7=pip
+compdef pip3=pip
+compdef pip3.3=pip
 
 ### shells
 alias take-over-sudo="sudo PATH=$PATH"
