@@ -427,7 +427,6 @@ alias sp-rails="spring rails"
 alias sp-rails="spring rake"
 compdef sp-rails=rails
 compdef sp-rake=rake
-compdef sp=spring
 
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
 
