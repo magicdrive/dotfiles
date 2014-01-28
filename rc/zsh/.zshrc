@@ -438,6 +438,7 @@ compdef pip3.3=pip
 
 ### lisp
 alias igosh="rlwrap -pGreen gosh"
+alias iclj="rlwrap -pGreen clj"
 
 ### shells
 alias take-over-sudo="sudo PATH=$PATH"
