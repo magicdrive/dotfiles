@@ -31,20 +31,20 @@ alias :q="exit"
 alias :Q="exit"
 
 function edit-file() {
-    emulate -L zsh
-    local -a words
-    words=("${(z)LBUFFER}")
-    zle -I
-    eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
+emulate -L zsh
+local -a words
+words=("${(z)LBUFFER}")
+zle -I
+eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
 }
 zle -N edit-file
 bindkey -M vicmd '^G^O' edit-file
 bindkey -M viins '^G^O' edit-file
 
 function start_editor() {
-    exec < /dev/tty
-    ${EDITOR}
-    zle reset-prompt
+exec < /dev/tty
+${EDITOR}
+zle reset-prompt
 }
 zle -N start_editor
 bindkey -M vicmd '^G^J' start_editor
@@ -53,19 +53,19 @@ bindkey -M viins '^G^J' start_editor
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
 clear-screen-rehash() {
-    zle clear-screen
-    rehash
-    zle reset-prompt
+  zle clear-screen
+  rehash
+  zle reset-prompt
 }
 zle -N clear-screen-rehash
 bindkey '^L' clear-screen-rehash
 
 blank_to_git_status() {
-    if [ -z "$BUFFER" ];then
-        git rev-parse 2>/dev/null && echo && echo -e "\e[0;33m--- git status ---\e[0m" && git status -sb
-        git rev-parse 2>/dev/null || zle accept-line
-    fi
-    zle reset-prompt
+  if [ -z "$BUFFER" ];then
+    git rev-parse 2>/dev/null && echo && echo -e "\e[0;33m--- git status ---\e[0m" && git status -sb
+    git rev-parse 2>/dev/null || zle accept-line
+  fi
+  zle reset-prompt
 }
 zle -N blank_to_git_status
 bindkey '^J' blank_to_git_status
@@ -75,7 +75,7 @@ bindkey '^J' blank_to_git_status
 ###############################################
 
 for x in `ls $HOME/.zsh/functions`;do
-    source $HOME/.zsh/functions/${x}
+  source $HOME/.zsh/functions/${x}
 done
 
 ###############################################
@@ -115,9 +115,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # lsコマンドの補完候補にも色付き表示
 
 if [ $(uname) = 'Linux' ];then
-    eval `dircolors`
+  eval `dircolors`
 else
-    eval `gdircolors`
+  eval `gdircolors`
 fi
 
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
@@ -126,8 +126,8 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([%0-9]#)*=0=01;31
 
 autoload -U compinit; compinit -u
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-    /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
-    /usr/local/git/bin $HOME/bin
+  /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin \
+  /usr/local/git/bin $HOME/bin
 
 ###############################################
 # 履歴関係                                    #
@@ -186,40 +186,40 @@ autoload -U colors; colors
 compdir=$HOME/.zsh/completions/
 for x in $(ls ${compdir});do source ${compdir}${x}; done;
 
-# ^[  は「エスケープ」
-#PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
-#PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
-PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+  # ^[  は「エスケープ」
+  #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
+  #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
+  PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
+  PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-# forやwhile/複数行入力時などに表示されるプロンプト
-PROMPT2="%B%_>%b "
+  # forやwhile/複数行入力時などに表示されるプロンプト
+  PROMPT2="%B%_>%b "
 
-# 入力ミスを確認する場合に表示されるプロンプト
-SPROMPT="%r is correct? [n,y,a,e]: "
+  # 入力ミスを確認する場合に表示されるプロンプト
+  SPROMPT="%r is correct? [n,y,a,e]: "
 
-# right prompt
-vim_mode_status() {
+  # right prompt
+  vim_mode_status() {
     case $KEYMAP in
-        vicmd)
-            /bin/echo -n "[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
-            ;;
-        ""|main|viins)
-            /bin/echo -n "[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
-            ;;
+      vicmd)
+        /bin/echo -n "[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
+        ;;
+      ""|main|viins)
+        /bin/echo -n "[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
+        ;;
     esac
-}
+  }
 
-###if [ -d $HOME/git/zsh-vcs-prompt ];then
-###    source $HOME/git/zsh-vcs-prompt/zshrc.sh
-###    ZSH_VCS_PROMPT_ENABLE_CACHING='false'
-###fi
-###
-###RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
-RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
-function zle-line-init zle-keymap-select {
-    RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
-    zle reset-prompt
+  ###if [ -d $HOME/git/zsh-vcs-prompt ];then
+  ###    source $HOME/git/zsh-vcs-prompt/zshrc.sh
+  ###    ZSH_VCS_PROMPT_ENABLE_CACHING='false'
+  ###fi
+  ###
+  ###RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
+  RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+  function zle-line-init zle-keymap-select {
+  RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+  zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -229,11 +229,11 @@ setopt transient_rprompt
 
 # ターミナルのタイトル
 case "${TERM}" in
-    kterm*|xterm)
-        precmd() {
-            echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-        }
-        ;;
+  kterm*|xterm)
+    precmd() {
+      echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+    }
+    ;;
 esac
 
 ###############################################
@@ -285,33 +285,33 @@ fpath+=($HOME/.zsh/completions $fpath)
 # zsh syntax
 zsh_syntax=$HOME/git/zsh-syntax-highlighting;
 if [ -d ${zsh_syntax} ];then
-    source ${zsh_syntax}/zsh-syntax-highlighting.zsh
+  source ${zsh_syntax}/zsh-syntax-highlighting.zsh
 fi
 
 # zsh completion
 zsh_completions=$HOME/git/zsh-completions
 if [ -d ${zsh_completions} ];then
-    fpath+=(${zsh_completions}/src $fpath)
+  fpath+=(${zsh_completions}/src $fpath)
 fi
 
 # perlbrew completion
 perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
 if [ -d ${PERLBREW_HOME} ];then
-    source ${perlbrew_completefile}
+  source ${perlbrew_completefile}
 fi
 
 # z
 z_home=$HOME/git/z
 if [ -d ${z_home} ];then
-    #_Z_NO_COMPLETE_CD=1
-    _Z_CMD=j
-    source  ${z_home}/z.sh
+  #_Z_NO_COMPLETE_CD=1
+  _Z_CMD=j
+  source  ${z_home}/z.sh
 fi
 
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
 if [ -f ${nvm_completefile} ];then
-    source ${nvm_completefile}
+  source ${nvm_completefile}
 fi
 
 autoload -U compinit;compinit -u
@@ -322,15 +322,15 @@ autoload -U compinit;compinit -u
 setopt complete_aliases
 
 if [ $(uname) = 'Darwin' ];then
-    if [ -f $HOME/local/bin/ls ];then
-        alias ls="ls --color=auto"
-    elif [ -f /usr/local/bin/gls ];then
-        alias ls="gls --color=auto"
-    else
-        alias ls="ls -G"
-    fi
-else
+  if [ -f $HOME/local/bin/ls ];then
     alias ls="ls --color=auto"
+  elif [ -f /usr/local/bin/gls ];then
+    alias ls="gls --color=auto"
+  else
+    alias ls="ls -G"
+  fi
+else
+  alias ls="ls --color=auto"
 fi
 
 alias h='history -E -32'
@@ -345,18 +345,18 @@ alias zload="source $HOME/.zshrc"
 ### Emacs ###
 ### carbon emacs ###
 if [ -d /Applications/CarbonEmacs.app ];then
-    alias carbon_emacs='/Applications/CarbonEmacs.app/Contents/MacOS/Emacs -nw'
+  alias carbon_emacs='/Applications/CarbonEmacs.app/Contents/MacOS/Emacs -nw'
 fi
 
 ### cocoa emacs ###
 if [ -d /Applications/CocoaEmacs.app ];then
-    alias cocoa_emacs='/Applications/CocoaEmacs.app/Contents/MacOS/Emacs -nw'
+  alias cocoa_emacs='/Applications/CocoaEmacs.app/Contents/MacOS/Emacs -nw'
 fi
 
 ### Vim ###
 ### macvim ###
 if [ -d /Applications/MacVim.app ];then
-    alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+  alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 fi
 
 vim_simple='vim -u ~/git/dotfiles/rc/vi/virc.vim'
@@ -374,7 +374,7 @@ compdef e=vim
 [ -f "$(which colordiff)" ] && alias diff="$(which colordiff)"
 
 if [ "$(uname -s)" = 'Darwin' ];then
-    [ -f "$(which gpatch)" ] && alias patch="gpatch"
+  [ -f "$(which gpatch)" ] && alias patch="gpatch"
 fi
 
 ### gradle
@@ -437,8 +437,9 @@ compdef pip3=pip
 compdef pip3.3=pip
 
 ### lisp
-alias igosh="rlwrap -pGreen gosh"
-alias igh="rlwrap -pGreen gosh"
+if [ -f "$(which gosh)" -a -f "$(which rlwrap)" ];then
+  alias gosh="rlwrap -pCyan gosh"
+fi
 
 ### shells
 alias take-over-sudo="sudo PATH=$PATH"
@@ -447,8 +448,8 @@ alias eshl="manpath='';exec zsh -l"
 
 ### browser-mac
 if [ "$(uname -s)" = 'Darwin' ];then
-    alias chrome="open -a Google\ Chrome"
-    alias firefox="open -a Firefox"
+  alias chrome="open -a Google\ Chrome"
+  alias firefox="open -a Firefox"
 fi
 
 ### mosh
@@ -456,8 +457,8 @@ compdef mosh=ssh
 
 ### if debian-based
 if [ -f /etc/debian_version ];then
-    alias aptitude="sudo aptitude"
-    alias apt-get="sudo apt-get"
+  alias aptitude="sudo aptitude"
+  alias apt-get="sudo apt-get"
 fi
 ### if fedora-based
 if [ -f /etc/redhat-release ];then
