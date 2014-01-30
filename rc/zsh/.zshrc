@@ -459,6 +459,10 @@ if [ -f /etc/debian_version ];then
     alias aptitude="sudo aptitude"
     alias apt-get="sudo apt-get"
 fi
+### if fedora-based
+if [ -f /etc/redhat-release ];then
+    alias yum="sudo yum"
+fi
 
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
