@@ -9,8 +9,9 @@ if [ "$(uname -s)" = 'Darwin' ];then
   mkdir -p dev/WorkSpace dev/sand-box dev/XCode
 fi
 
+mkdir -p local/bin
 for x in $(seq 9);do
-  mkdir -p share/man/man${x}
+  mkdir -p local/share/man/man${x}
 done;
 
 exit 0;
