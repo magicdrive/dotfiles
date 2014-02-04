@@ -452,9 +452,6 @@ if [ "$(uname -s)" = 'Darwin' ];then
   alias firefox="open -a Firefox"
 fi
 
-### mosh
-compdef mosh=ssh
-
 ### if debian-based
 if [ -f /etc/debian_version ];then
   alias aptitude="sudo aptitude"

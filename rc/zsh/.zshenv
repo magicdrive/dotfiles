@@ -55,10 +55,6 @@ export PATH="$JAVA_HOME/bin:$PATH:"
 export MANPATH="${JAVA_HOME}/man:$MANPATH"
 
 ### scala
-export PLAY_VERSION=2.1.0
-if [ -d $HOME/.play-${PLAY_VERSION} ];then
-    export PATH=$PATH:$HOME/.play-${PLAY_VERSION}
-fi
 if [ -d /usr/local/scala ];then
     export SCALA_HOME="/usr/local/scala/Home"
     export PATH="${SCALA_HOME}/bin:${PATH}:"
@@ -106,17 +102,17 @@ if [ -d "${RBENV_ROOT}" ];then
     eval "$(rbenv init - zsh)"
 fi
 #mruby
-if [ -d $HOME/git/mruby ];then
-    export MRUBY_ROOT=$HOME/git/mruby
+if [ -d $HOME/local/mruby ];then
+    export MRUBY_ROOT=$HOME/git/mruby/Home
     export PATH="$MRUBY_ROOT/bin:$PATH"
-elif [ -d /usr/local/mruby ];then
-    export MRUBY_ROOT=/usr/local/mruby
+elif [ -d /usr/local/mruby/HOME ];then
+    export MRUBY_ROOT=/usr/local/mruby/HOME
     export PATH="$MRUBY_ROOT/bin:$PATH"
 fi
 
 # node.js
 # nvm
-if [ -f ~/.nvm/nvm.sh ]; then
+if [ -f ~/.nvm/nvm.sh ];then
     source ~/.nvm/nvm.sh
 fi
 
