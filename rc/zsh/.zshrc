@@ -436,7 +436,7 @@ compdef pip2.7=pip
 compdef pip3=pip
 compdef pip3.3=pip
 
-### lisp
+### clisp -o scheme
 if [ -f "$(which gosh)" -a -f "$(which rlwrap)" ];then
   alias gosh="rlwrap -pCyan gosh"
 fi
@@ -451,6 +451,14 @@ if [ "$(uname -s)" = 'Darwin' ];then
   alias chrome="open -a Google\ Chrome"
   alias firefox="open -a Firefox"
 fi
+
+if [ "$(uname -s)" = 'Darwin' ];then
+  if [ -f "$(which reattach-to-user-namespace)" ];then
+    alias npbcopy="reattach-to-user-namespace pbcopy"
+    alias npbpaste="reattach-to-user-namespace pbpaste"
+  fi
+fi
+
 
 ### if debian-based
 if [ -f /etc/debian_version ];then
