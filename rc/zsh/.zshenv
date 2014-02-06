@@ -124,10 +124,17 @@ if [ -e ${LLVM_HOME} ];then
 fi
 
 # erlang
-export ERLANG_HOME=/usr/local/erlang
+export ERLANG_HOME=/usr/local/beamvm/erlang
 if [ -e ${ERLANG_HOME} ];then
     export PATH="${ERLANG_HOME}/bin:$PATH"
-    export MANPATH="${ERLANG_HOME}/share/man:$MANPATH"
+    export MANPATH="${ERLANG_HOME}/man:$MANPATH"
+fi
+
+# elixir
+export ELIXIR_HOME=/usr/local/beamvm/elixir
+if [ -e ${ELIXIR_HOME} ];then
+    export PATH="${ELIXIR_HOME}/bin:$PATH"
+    alias rebar="${ELIXIR_HOME}rebar"
 fi
 
 # haxe
@@ -136,6 +143,5 @@ if [ -e "${HAXE_HOME}" ];then
     export PATH="${HAXE_HOME}/build:$PATH"
     export HAXE_STD_PATH="${HAXE_HOME}/build/std:"
 fi
-
 
 #__END__
