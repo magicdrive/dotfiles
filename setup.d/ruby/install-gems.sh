@@ -12,6 +12,8 @@ yes | gem i \
     sass \
     md2man \
     middleman \
+    html2haml \
+    html2slim \
     compass \
     rbenv-rehash \
     awesome_print \
