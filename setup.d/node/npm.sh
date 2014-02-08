@@ -14,8 +14,4 @@ npm -g install \
     tsi \
     tsd \
     tslint \
-    yo \
-    generator-webapp \
-    generator-angular \
-    generator-karma \
 ;
