@@ -212,12 +212,13 @@ for x in $(ls ${compdir});do source ${compdir}${x}; done;
 
   if [ -d $HOME/git/zsh-vcs-prompt ];then
       source $HOME/git/zsh-vcs-prompt/zshrc.sh
-      ZSH_VCS_PROMPT_ENABLE_CACHING='false'
+      ZSH_VCS_PROMPT_ENABLE_CACHING='true'
   fi
   RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
-  RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
-  function zle-line-init zle-keymap-select {
-  RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+  #RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+function zle-line-init zle-keymap-select {
+  RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
+  #RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
   zle reset-prompt
 }
 zle -N zle-line-init
