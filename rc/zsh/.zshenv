@@ -55,8 +55,8 @@ export PATH="$JAVA_HOME/bin:$PATH:"
 export MANPATH="${JAVA_HOME}/man:$MANPATH"
 
 ### scala
-if [ -d /usr/local/scala ];then
-    export SCALA_HOME="/usr/local/scala/Home"
+if [ -d /usr/local/jvm/scala ];then
+    export SCALA_HOME="/usr/local/jvm/scala/Home"
     export PATH="${SCALA_HOME}/bin:${PATH}:"
     export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
