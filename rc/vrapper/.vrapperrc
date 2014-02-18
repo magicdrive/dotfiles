@@ -8,14 +8,15 @@ set ignorecase
 set smartcase
 set scrolljump=15
 
-" 英字キーボード用
+" keymap
 " --------------------------------------------------------------------------------
-noremap ; :
-noremap <C-c> <Esc>
+nnoremap <Space><Space> za
+nnoremap <C-c> <Esc>
+vnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 noremap _ ^
 
-" Insert mode 時に Emacs っぽくする
+" Like a 'Emacs' in insert mode.
 " --------------------------------------------------------------------------------
 inoremap <C-a> <Esc>0i
 inoremap <C-e> <Esc>:LineEnd<CR>a
@@ -30,14 +31,10 @@ inoremap <C-h> <BS>
 inoremap <C-d> <Esc><Right>xi
 inoremap <C-k> <Esc><Right>:DeleteLineToEnd<CR>i
 
-" コピー
+" copy
 " --------------------------------------------------------------------------------
 nnoremap Y Vy
 
-" 移動
-
-" 整形
-" --------------------------------------------------------------------------------
 vnoremap = :Format<CR>
 
 "__END__
