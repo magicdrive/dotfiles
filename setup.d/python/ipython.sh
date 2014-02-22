@@ -5,5 +5,8 @@ if [ "$(uname -s)" = "Darwin" ];then
   export CFLAGS="-I/usr/X11/include -I/usr/X11/include/freetype2 -I/usr/X11/include/libpng12"
 fi
 
-pip2 install matplotlib
+#pip2 install matplotlib
 pip3 install matplotlib
+pip3 install ipython
+
+pyenv rehash
