@@ -9,4 +9,6 @@ fi
 pip3 install matplotlib
 pip3 install ipython
 
+pip2 install matplotlib
+pip2 install ipython
 pyenv rehash
