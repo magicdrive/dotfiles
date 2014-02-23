@@ -62,7 +62,6 @@ install lzop
 install maven
 install memcached
 install mercurial
-install mobile-shell
 install neko
 install ninja
 install nkf
