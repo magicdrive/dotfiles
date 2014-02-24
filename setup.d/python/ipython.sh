@@ -1,5 +1,5 @@
 #! /bin/bash
-
+set -e
 if [ "$(uname -s)" = "Darwin" ];then
   export LDFLAGS="-L/usr/X11/lib"
   export CFLAGS="-I/usr/X11/include -I/usr/X11/include/freetype2 -I/usr/X11/include/libpng12"
