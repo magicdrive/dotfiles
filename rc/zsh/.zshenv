@@ -144,4 +144,10 @@ if [ -e "${HAXE_HOME}" ];then
     export HAXE_STD_PATH="${HAXE_HOME}/build/std:"
 fi
 
+# dlang
+export DLANG_HOME=/usr/local/dmd2
+if [ -e "${DLANG_HOME}" ];then
+    export PATH="${DLANG_HOME}/bin:$PATH"
+fi
+
 #__END__
