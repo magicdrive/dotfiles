@@ -39,6 +39,7 @@ install gd
 install gdbm
 install geoip
 install gettext
+install gfortran
 install git
 install giter8
 install glib
