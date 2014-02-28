@@ -431,6 +431,9 @@ compdef sp-rake=rake
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
 
 ### python
+alias ipy="ipython3"
+alias ipy3="ipython3"
+alias ipy2="ipython2"
 compdef pip2=pip
 compdef pip2.7=pip
 compdef pip3=pip
