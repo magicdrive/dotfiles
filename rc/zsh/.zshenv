@@ -7,12 +7,20 @@ export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
 find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
 ):$MANPATH"
 
+# nginx
 [ -e /usr/local/nginx ] && export PATH=/usr/local/nginx/sbin:$PATH
 # mysql
 if [ -e /usr/local/mysql ];then
   export PATH=/usr/local/mysql/bin:$PATH
   if [ "$(uname -s)" = "Darwin" ];then
     export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}
+  fi
+fi
+# opencv
+if [ -e /usr/local/opencv ];then
+  export PATH=/usr/local/opencv/bin:$PATH
+  if [ "$(uname -s)" = "Darwin" ];then
+    export DYLD_LIBRARY_PATH=/usr/local/opencv/lib:${DYLD_LIBRARY_PATH}
   fi
 fi
 
