@@ -19,6 +19,7 @@ install cmake
 install cmigemo
 install colordiff
 install coreutils
+install coq
 install csshx
 install ctags
 install curl
