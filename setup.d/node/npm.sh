@@ -10,7 +10,9 @@ npm -g install \
     forever \
     coffee-script \
     coffeelint \
+    sweet.js \
     typescript \
+    requirejs \
     tsi \
     tsd \
     tslint \
