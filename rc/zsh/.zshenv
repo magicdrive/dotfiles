@@ -88,12 +88,11 @@ if [ -d /usr/local/go ];then
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
 
-### perl
-# perlbrew
-export PERLBREW_HOME=$HOME/perl5/perlbrew
-if [ -f ${PERLBREW_HOME}/etc/bashrc ]; then
-  export PATH="${PERLBREW_HOME}/bin:$PATH"
-  source ${PERLBREW_HOME}/etc/bashrc
+# plenv
+export PLENV_ROOT="$HOME/.plenv"
+if [ -d "${PLENV_ROOT}" ];then
+  export PATH="$PLENV_ROOT/shims:$PLENV_ROOT/bin:$PATH"
+  eval "$(plenv init - zsh)"
 fi
 
 ### python
