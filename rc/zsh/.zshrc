@@ -295,10 +295,10 @@ if [ -d ${zsh_completions} ];then
 fi
 
 # perlbrew completion
-perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
-if [ -d ${PERLBREW_HOME} ];then
-  source ${perlbrew_completefile}
-fi
+#perlbrew_completefile=~/perl5/perlbrew/etc/perlbrew-completion.bash
+#if [ -d ${PERLBREW_HOME} ];then
+#  source ${perlbrew_completefile}
+#fi
 
 # z
 z_home=$HOME/git/z
