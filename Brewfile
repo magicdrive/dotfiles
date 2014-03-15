@@ -26,6 +26,7 @@ install curl
 install curl-ca-bundle
 install dart
 install distcc
+install direnv
 install dmd
 install dnsmasq
 install docbook
@@ -36,6 +37,7 @@ install fontforge
 install freetype
 install gauche
 install gawk
+install go
 install gd
 install gdbm
 install geoip
