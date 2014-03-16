@@ -87,7 +87,13 @@ if [ -d /usr/local/go ];then
   export GOPATH="${HOME}/.gopath"
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
+# direnv
+if [ -f $(which direnv) ];then
+  eval "$(direnv hook zsh)"
+fi
 
+
+### perl
 # plenv
 export PLENV_ROOT="$HOME/.plenv"
 if [ -d "${PLENV_ROOT}" ];then
@@ -96,6 +102,7 @@ if [ -d "${PLENV_ROOT}" ];then
 fi
 
 ### python
+#pyenv
 export PYENV_ROOT="${HOME}/.pyenv"
 if [ -d "${PYENV_ROOT}" ]; then
   export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
