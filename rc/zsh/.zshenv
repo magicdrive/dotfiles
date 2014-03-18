@@ -50,6 +50,13 @@ if [ $(uname -s) = 'Darwin' ];then
   export ANDROID_NDK_HOME=/usr/local/opt/android-ndk
 fi
 
+if [ "$(uname -s)" = 'Darwin' ];then
+  if [ -d "/Applications/VMware\ Fusion.app" ];then
+    export VMWARE_FUSION_ROOT="/Applications/VMware\ Fusion.app"
+    export PATH="${VMWARE_FUSION_ROOT}/Contents/Library/:${PATH}"
+  fi
+fi
+
 # tmux
 if [ $(uname -s) = 'Darwin' ];then
   export TMUXPLATFORM='mac'
@@ -88,7 +95,7 @@ if [ -d /usr/local/go ];then
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
 # direnv
-if [ -f $(which direnv) ];then
+if [ -f "$(which direnv)" ];then
   eval "$(direnv hook zsh)"
 fi
 
