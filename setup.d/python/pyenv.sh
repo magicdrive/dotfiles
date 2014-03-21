@@ -1,7 +1,7 @@
 #! /bin/bash
 
 git clone git://github.com/yyuu/pyenv.git ~/git/pyenv
-ln -sf ~/git/pyenv ~/.pyenv
+ln -sfn ~/git/pyenv ~/.pyenv
 
 
 # install plugins

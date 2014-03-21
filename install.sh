@@ -27,7 +27,7 @@ install_files () {
         if [ -e ${HOME}/${x} ];then
             cp -af  ${HOME}/${x} ${backup_dir}/${x}.${execdatetime}.backup;
         fi
-        ln -sf ${cur_dir}/rc/${dir}/${x} $HOME/${x}
+        ln -sfn ${cur_dir}/rc/${dir}/${x} $HOME/${x}
     done;
 }
 

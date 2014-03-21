@@ -5,7 +5,7 @@ installdir=~/git/rbenv
 ### rbenv
 git clone git://github.com/sstephenson/rbenv.git ${installdir}
 
-ln -s ${installdir} ~/.rbenv
+ln -sfn ${installdir} ~/.rbenv
 
 ### plugins
 mkdir -p ${installdir}/plugins
