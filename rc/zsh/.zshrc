@@ -371,10 +371,10 @@ compdef vi=vim
 compdef e=vim
 
 ### diff and patch
-[ -f "$(which colordiff)" ] && alias diff="$(which colordiff)"
+[ -f "$(which colordiff 2>&1)" ] && alias diff="$(which colordiff)"
 
 if [ "$(uname -s)" = 'Darwin' ];then
-  [ -f "$(which gpatch)" ] && alias patch="gpatch"
+  [ -f "$(which gpatch 2>&1)" ] && alias patch="gpatch"
 fi
 
 ### gradle
@@ -440,7 +440,7 @@ compdef pip3=pip
 compdef pip3.3=pip
 
 ### clisp -o scheme
-if [ -f "$(which gosh)" -a -f "$(which rlwrap)" ];then
+if [ -f "$(which gosh 2>&1)" -a -f "$(which rlwrap 2>&1)" ];then
   alias gosh="rlwrap -pCyan gosh"
 fi
 
@@ -456,7 +456,7 @@ if [ "$(uname -s)" = 'Darwin' ];then
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
-  if [ -f "$(which reattach-to-user-namespace)" ];then
+  if [ -f "$(which reattach-to-user-namespace 2>&1)" ];then
     alias npbcopy="reattach-to-user-namespace pbcopy"
     alias npbpaste="reattach-to-user-namespace pbpaste"
   fi
