@@ -4,7 +4,6 @@
 
 yes | gem i \
     bundler \
-    activesupport \
     parallel \
     rack \
     puma \
