@@ -462,6 +462,9 @@ if [ "$(uname -s)" = 'Darwin' ];then
   fi
 fi
 
+for x in $(echo supervisorctl supervisord);do
+  [ -f "/usr/local/bin/${x}" ] && alias ${x}="sudo /usr/local/bin/${x}"
+done
 
 ### if debian-based
 if [ -f /etc/debian_version ];then
