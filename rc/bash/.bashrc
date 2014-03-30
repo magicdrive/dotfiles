@@ -1,4 +1,5 @@
-export PATH=/opt/local/bin/:/opt/loval/sbin:$PATH
+export PATH=/opt/current/bin/:/opt/current/sbin:$PATH
+export PATH=/usr/local/bin/:/usr/local/sbin:$PATH
 
 [ -e $HOME/.zshenv ] && source $HOME/.zshenv
 
