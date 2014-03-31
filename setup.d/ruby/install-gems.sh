@@ -4,13 +4,11 @@
 
 yes | gem i \
     bundler \
-    parallel \
     rack \
     puma \
     god \
     sass \
     md2man \
-    middleman \
     html2haml \
     html2slim \
     compass \
@@ -21,8 +19,5 @@ yes | gem i \
     pry-debugger \
     --no-ri --no-rdoc \
 ;
-
-gem i refe2;
-bitclust setup;
 
 exit 0;
