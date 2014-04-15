@@ -445,7 +445,7 @@ if [ -f "$(which gosh 2>&1)" -a -f "$(which rlwrap 2>&1)" ];then
 fi
 
 ### shells
-alias take-over-sudo="sudo PATH=$PATH"
+take-over-sudo(){ sudo PATH="$PATH" "$@" }
 alias tsudo=take-over-sudo
 alias eshl="manpath='';exec zsh -l"
 
