@@ -1,6 +1,6 @@
 #! /bin/sh
 
-npm -g uninstall \
+npm -g update \
     hotnode \
     bower \
     jshint \
@@ -17,5 +17,4 @@ npm -g uninstall \
     tsd \
     tslint \
 ;
-./npm.sh
 
