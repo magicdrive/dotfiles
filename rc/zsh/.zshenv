@@ -82,10 +82,9 @@ if [ -d /usr/local/jvm/scala ];then
 fi
 
 ### groovy
-if [ -d /usr/local/groovy ];then
-  export GROOVY_HOME="/usr/local/groovy/Home"
-  export PATH="${GROOVY_HOME}/bin:${PATH}:"
-  export MANPATH="${GROOVY_HOME}/man:$MANPATH"
+# gvm
+if [ -d "$HOME/.gvm" ];then
+  source "$HOME/.gvm/bin/gvm-init.sh"
 fi
 
 ### golang
