@@ -2,7 +2,7 @@
 
 cd ${HOME};
 
-mkdir -p git tmp misc local
+mkdir -p git tmp misc local opt
 mkdir -p dev/git dev/sand-box dev/misc
 mkdir -p ws/git ws/sand-box ws/misc
 mkdir -p project/git ws/sand-box ws/misc
