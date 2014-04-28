@@ -114,10 +114,10 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # lsコマンドの補完候補にも色付き表示
 
-if [ $(uname) = 'Linux' ];then
-  eval `dircolors`
-else
-  eval `gdircolors`
+if [ -x "$(which dircolor)" ];then
+  eval $(dircolors)
+elif [ -x "$(which gdircolors)" ];then
+  eval $(gdircolors)
 fi
 
 zstyle ':completion:*:default' list-colors ${LS_COLORS}
@@ -467,12 +467,12 @@ for x in $(echo supervisorctl supervisord);do
 done
 
 ### if debian-based
-if [ -f /etc/debian_version ];then
+if [ -f /etc/debian_version -a -f "$(which aptitude)" ];then
   alias aptitude="sudo aptitude"
   alias apt-get="sudo apt-get"
 fi
 ### if fedora-based
-if [ -f /etc/redhat-release ];then
+if [ -f /etc/redhat-release -a -f "$(which yum)" ];then
     alias yum="sudo yum"
 fi
 
