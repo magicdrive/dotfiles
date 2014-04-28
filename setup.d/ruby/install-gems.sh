@@ -5,12 +5,8 @@
 yes | gem i \
     bundler \
     rack \
-    puma \
-    god \
     sass \
     md2man \
-    html2haml \
-    html2slim \
     compass \
     rbenv-rehash \
     awesome_print \
