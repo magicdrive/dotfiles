@@ -4,7 +4,7 @@
 
 export PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:$PATH:"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
-find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
+  find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
 ):$MANPATH"
 
 # nginx
@@ -75,21 +75,28 @@ export PATH="$JAVA_HOME/bin:$PATH:"
 export MANPATH="${JAVA_HOME}/man:$MANPATH"
 
 ### scala
-if [ -d /usr/local/jvm/scala ];then
-  export SCALA_HOME="/usr/local/jvm/scala/Home"
+export SCALA_HOME="/opt/jvm/scala"
+if [ -d ${SCALA_HOME} ];then
   export PATH="${SCALA_HOME}/bin:${PATH}:"
   export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
 
 ### groovy
-# gvm
-if [ -d "$HOME/.gvm" ];then
-  source "$HOME/.gvm/bin/gvm-init.sh"
+export GROOVY_HOME="/opt/jvm/groovy"
+if [ -d ${GROOVY_HOME} ];then
+  export PATH="${GROOVY_HOME}/bin:${PATH}:"
+  export MANPATH="${GROOVY_HOME}/man:$MANPATH"
+fi
+### gradle
+export GRADLE_HOME="/opt/jvm/gradle"
+if [ -d ${GRADLE_HOME} ];then
+  export PATH="${GRADLE_HOME}/bin:${PATH}:"
+  export MANPATH="${GRADLE_HOME}/man:$MANPATH"
 fi
 
 ### golang
-if [ -d /usr/local/go ];then
-  export GOROOT="/usr/local/go"
+export GOROOT="/opt/golang"
+if [ -d ${GOROOT} ];then
   export GOPATH="${HOME}/.gopath"
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
@@ -149,28 +156,28 @@ if [ -e ${LLVM_HOME} ];then
 fi
 
 # erlang
-export ERLANG_HOME=/usr/local/beamvm/erlang
+export ERLANG_HOME=/opt/beamvm/erlang
 if [ -e ${ERLANG_HOME} ];then
   export PATH="${ERLANG_HOME}/bin:$PATH"
   export MANPATH="${ERLANG_HOME}/man:$MANPATH"
 fi
 
 # elixir
-export ELIXIR_HOME=/usr/local/beamvm/elixir
+export ELIXIR_HOME=/opt/beamvm/elixir
 if [ -e ${ELIXIR_HOME} ];then
   export PATH="${ELIXIR_HOME}/bin:$PATH"
   alias rebar="${ELIXIR_HOME}rebar"
 fi
 
 # haxe
-export HAXE_HOME=/usr/local/haxe/HOME
+export HAXE_HOME=/opt/haxe
 if [ -e "${HAXE_HOME}" ];then
   export PATH="${HAXE_HOME}/build:$PATH"
   export HAXE_STD_PATH="${HAXE_HOME}/build/std:"
 fi
 
 # dlang
-export DLANG_HOME=/usr/local/dmd2
+export DLANG_HOME=/opt/dmd2
 if [ -e "${DLANG_HOME}" ];then
   export PATH="${DLANG_HOME}/bin:$PATH"
 fi
