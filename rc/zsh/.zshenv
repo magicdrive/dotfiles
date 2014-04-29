@@ -17,10 +17,10 @@ if [ -e /usr/local/mysql ];then
   fi
 fi
 # opencv
-if [ -e /usr/local/opencv ];then
-  export PATH=/usr/local/opencv/bin:$PATH
+if [ -e $HOME/opt/opencv ];then
+  export PATH=$HOME/opt/opencv/bin:$PATH
   if [ "$(uname -s)" = "Darwin" ];then
-    export DYLD_LIBRARY_PATH=/usr/local/opencv/lib:${DYLD_LIBRARY_PATH}
+    export DYLD_LIBRARY_PATH=$HOME/opt/opencv/lib:${DYLD_LIBRARY_PATH}
   fi
 fi
 
@@ -95,7 +95,7 @@ if [ -d ${GRADLE_HOME} ];then
 fi
 
 ### golang
-export GOROOT="/opt/golang"
+export GOROOT="$HOME/opt/golang"
 if [ -d ${GOROOT} ];then
   export GOPATH="${HOME}/.gopath"
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
@@ -104,7 +104,6 @@ fi
 if [ -f "$(which direnv)" ];then
   eval "$(direnv hook zsh)"
 fi
-
 
 ### perl
 # plenv
@@ -149,35 +148,35 @@ if [ -f ~/.nvm/nvm.sh ];then
 fi
 
 ### llvm
-export LLVM_HOME=/usr/local/llvm
+export LLVM_HOME="/usr/local/llvm"
 if [ -e ${LLVM_HOME} ];then
   export PATH="${LLVM_HOME}/bin:$PATH"
   export MANPATH="${LLVM_HOME}/share/man:$MANPATH"
 fi
 
 # erlang
-export ERLANG_HOME=/opt/beamvm/erlang
+export ERLANG_HOME="/opt/beamvm/erlang"
 if [ -e ${ERLANG_HOME} ];then
   export PATH="${ERLANG_HOME}/bin:$PATH"
   export MANPATH="${ERLANG_HOME}/man:$MANPATH"
 fi
 
 # elixir
-export ELIXIR_HOME=/opt/beamvm/elixir
+export ELIXIR_HOME="/opt/beamvm/elixir"
 if [ -e ${ELIXIR_HOME} ];then
   export PATH="${ELIXIR_HOME}/bin:$PATH"
   alias rebar="${ELIXIR_HOME}rebar"
 fi
 
 # haxe
-export HAXE_HOME=/opt/haxe
+export HAXE_HOME="$HOME/opt/haxe"
 if [ -e "${HAXE_HOME}" ];then
   export PATH="${HAXE_HOME}/build:$PATH"
   export HAXE_STD_PATH="${HAXE_HOME}/build/std:"
 fi
 
 # dlang
-export DLANG_HOME=/opt/dmd2
+export DLANG_HOME="$HOME/opt/dmd2"
 if [ -e "${DLANG_HOME}" ];then
   export PATH="${DLANG_HOME}/bin:$PATH"
 fi
