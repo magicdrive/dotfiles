@@ -81,6 +81,12 @@ if [ -d ${SCALA_HOME} ];then
   export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
 
+### clojure
+export CLOJURE_HOME="/opt/jvm/clojure"
+if [ -d ${CLOJURE_HOME} ];then
+  export PATH="${CLOJURE_HOME}/bin:${PATH}:"
+fi
+
 ### groovy
 export GROOVY_HOME="/opt/jvm/groovy"
 if [ -d ${GROOVY_HOME} ];then
