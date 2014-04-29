@@ -75,26 +75,26 @@ export PATH="$JAVA_HOME/bin:$PATH:"
 export MANPATH="${JAVA_HOME}/man:$MANPATH"
 
 ### scala
-export SCALA_HOME="/opt/jvm/scala"
+export SCALA_HOME="/opt/scala"
 if [ -d ${SCALA_HOME} ];then
   export PATH="${SCALA_HOME}/bin:${PATH}:"
   export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
 
 ### clojure
-export CLOJURE_HOME="/opt/jvm/clojure"
+export CLOJURE_HOME="/opt/clojure"
 if [ -d ${CLOJURE_HOME} ];then
   export PATH="${CLOJURE_HOME}/bin:${PATH}:"
 fi
 
 ### groovy
-export GROOVY_HOME="/opt/jvm/groovy"
+export GROOVY_HOME="/opt/groovy"
 if [ -d ${GROOVY_HOME} ];then
   export PATH="${GROOVY_HOME}/bin:${PATH}:"
   export MANPATH="${GROOVY_HOME}/man:$MANPATH"
 fi
 ### gradle
-export GRADLE_HOME="/opt/jvm/gradle"
+export GRADLE_HOME="/opt/gradle"
 if [ -d ${GRADLE_HOME} ];then
   export PATH="${GRADLE_HOME}/bin:${PATH}:"
   export MANPATH="${GRADLE_HOME}/man:$MANPATH"
