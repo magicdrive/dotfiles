@@ -114,9 +114,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # lsコマンドの補完候補にも色付き表示
 
-if [ -x "$(which dircolor)" ];then
+if [ -f "$(which dircolors)" ];then
   eval $(dircolors)
-elif [ -x "$(which gdircolors)" ];then
+elif [ -f "$(which gdircolors)" ];then
   eval $(gdircolors)
 fi
 

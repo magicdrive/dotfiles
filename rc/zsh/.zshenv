@@ -69,7 +69,7 @@ export TMUX_DEFAULTNAME='main'
 if [ $(uname -s) = 'Darwin' ];then
   export JAVA_HOME="/Library/Java/Home"
 else
-  export JAVA_HOME="/usr/local/java/Home"
+  export JAVA_HOME="/opt/java"
 fi
 export PATH="$JAVA_HOME/bin:$PATH:"
 export MANPATH="${JAVA_HOME}/man:$MANPATH"
