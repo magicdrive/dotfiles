@@ -80,6 +80,11 @@ if [ -d ${SCALA_HOME} ];then
   export PATH="${SCALA_HOME}/bin:${PATH}:"
   export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
+# sbt
+export SBT_HOME="/opt/sbt"
+if [ -d ${SBT_HOME} ];then
+  export PATH="${SBT_HOME}/bin:${PATH}:"
+fi
 
 ### clojure
 export CLOJURE_HOME="/opt/clojure"
