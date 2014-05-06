@@ -467,12 +467,12 @@ for x in $(echo supervisorctl supervisord);do
 done
 
 ### if debian-based
-if [ -f /etc/debian_version -a -f "$(which aptitude)" ];then
+if [ -f /etc/debian_version -a -f "$(which aptitude 2>&1)" ];then
   alias aptitude="sudo aptitude"
   alias apt-get="sudo apt-get"
 fi
 ### if fedora-based
-if [ -f /etc/redhat-release -a -f "$(which yum)" ];then
+if [ -f /etc/redhat-release -a -f "$(which yum 2>&1)" ];then
     alias yum="sudo yum"
 fi
 

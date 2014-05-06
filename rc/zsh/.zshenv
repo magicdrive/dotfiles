@@ -112,7 +112,7 @@ if [ -d ${GOROOT} ];then
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
 # direnv
-if [ -f "$(which direnv)" ];then
+if [ -f "$(which direnv 2>&1)" ];then
   eval "$(direnv hook zsh)"
 fi
 
