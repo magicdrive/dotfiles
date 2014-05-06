@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+find $(pwd) -name .git -prune -or -type d -empty -print -exec touch {}/.keep \;
+
+exit 0;
