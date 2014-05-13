@@ -337,6 +337,13 @@ alias h='history -E -32'
 
 pathdump() { echo $PATH | sed -e 's/:/\n/g'; }
 
+if [ "$(uname -s)" = "Darwin" -a -d /Applications/TotalTerminal.app ];then
+    alias kt='killall Terminal'
+    alias qt='osascript -e "tell application \"Terminal\" to quit" && killall -SIGINT TotalTerminalCrashWatcher'
+    alias st='osascript -e "tell application \"Terminal\" to «event BATTinit»"'
+    alias rt='qt ; sleep 1 ; st'
+fi
+
 # ack with pager
 alias acl="ack --pager='less -R'"
 alias zload="source $HOME/.zshrc"
@@ -474,6 +481,15 @@ fi
 if [ -f /etc/redhat-release -a -f "$(which yum 2>&1)" ];then
     alias yum="sudo yum"
 fi
+
+
+
+
+
+
+
+
+
 
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
