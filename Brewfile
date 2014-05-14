@@ -15,10 +15,7 @@ install colordiff
 install coreutils
 install ctags
 install curl
-install curl-ca-bundle
 install distcc
-install direnv
-install dnsmasq
 install figlet
 install fontconfig
 install fontforge
