@@ -387,6 +387,10 @@ fi
 ### gradle
 export GRADLE_OPT="--daemon"
 alias gradle="gradle $GRADLE_OPT"
+alias gradlew="./gradlew $GRADLE_OPT"
+alias gw="gradlew"
+compdef gradlew=gradle
+compdef gw=gradle
 
 ### tmux
 alias tmux='tmux -2'
@@ -481,14 +485,6 @@ fi
 if [ -f /etc/redhat-release -a -f "$(which yum 2>&1)" ];then
     alias yum="sudo yum"
 fi
-
-
-
-
-
-
-
-
 
 
 # read local setting
