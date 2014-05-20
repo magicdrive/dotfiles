@@ -1,9 +1,19 @@
 #! /bin/bash
 
-pypis=('pyflakes' 'flake8')
+set -ue
+
+pypis=('pyflakes' 'flake8' )
+pypis2=('paver')
+pypis3=()
 
 for x in "${pypis[@]}";do
   pip2 install ${x}
+  pip3 install ${x}
+done
+for x in "${pypis2[@]}";do
+  pip2 install ${x}
+done
+for x in "${pypis3[@]}";do
   pip3 install ${x}
 done
 
