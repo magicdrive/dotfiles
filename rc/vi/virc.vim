@@ -10,6 +10,47 @@ nnoremap ZQ <Nop>
 nnoremap <Space>. :e ~/.vimrc<CR>
 nnoremap <Space>e :e .<CR>
 
+" highlight 全角space
+function! ZenkakuSpace()
+  highlight ZenkakuSpace
+        \ cterm=underline
+        \ ctermfg=darkgrey
+        \ gui=underline
+        \ guifg=darkgrey
+endfunction
+
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd ColorScheme * call ZenkakuSpace()
+    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+  augroup END
+  call ZenkakuSpace()
+endif
+
+let g:matsubi_space_state = 1
+function! MatsubiSpace()
+  if g:matsubi_space_state
+    highlight MatsubiSpace ctermbg=199 guibg=Cyan
+  else
+    highlight MatsubiSpace ctermbg=NONE guibg=NONE
+  endif
+endfunction
+
+function! s:ToggleMatsubiSpaceHighLight()
+  let g:matsubi_space_state=g:matsubi_space_state ? 0 : 1
+  call MatsubiSpace()
+endfunction
+nnoremap <Plug>(mykeylite)c :call <SID>ToggleMatsubiSpaceHighLight()<CR>
+
+if has('syntax')
+  augroup MatsubiSpace
+    autocmd!
+    autocmd ColorScheme * call MatsubiSpace()
+    autocmd VimEnter,WinEnter * match MatsubiSpace /\s\+$/
+  augroup END
+  call ZenkakuSpace()
+endif
 colorscheme default
 
 nnoremap j gj
@@ -33,9 +74,9 @@ noremap  <C-@> <ESC>
 noremap! <C-@> <ESC>
 cnoremap <C-@> <C-c>
 
-set statusline=%F%m%r%h%w\ 
-            \[FORMAT=%{'['.(&fenc!=''?&fenc:'?').'::'.&ff.']'}]\ 
-            \[TYPE=%Y]\ 
+set statusline=%F%m%r%h%w\
+            \[FORMAT=%{'['.(&fenc!=''?&fenc:'?').'::'.&ff.']'}]\
+            \[TYPE=%Y]\
             \[ASCII=\%03.3b]\
             \[HEX=\%02.2B]\
             \[POS=%04l,%04v][%p%%]\
@@ -106,16 +147,18 @@ set smartindent
 set smarttab
 set cindent
 
-set tabstop=4
+
+let g:tab_size=2
 set expandtab
-set softtabstop=4
-set shiftwidth=4
+execute 'set tabstop='     . g:tab_size
+execute 'set softtabstop=' . g:tab_size
+execute 'set shiftwidth='  . g:tab_size
 
 inoremap {<CR> {<CR>}<LEFT><CR><UP><TAB>
 
-set encoding=utf-8 
-set fileencoding=utf-8 
-set fileencodings=utf-8 
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
 
 nnoremap <Space>w :<ESC>:new<CR>
 nnoremap <Space>v :<ESC>:vnew<CR>
@@ -132,6 +175,8 @@ nnoremap <C-w><C-j> <C-w>j
 nnoremap <C-w><C-k> <C-w>k
 nnoremap <C-w><C-h> <C-w>h
 nnoremap <C-w><C-l> <C-w>l
+
+
 
 "__END__
 
