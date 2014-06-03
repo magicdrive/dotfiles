@@ -4,6 +4,12 @@
 
 set nocompatible
 
+" insert mode cursor
+imap OA <Up>
+imap OB <Down>
+imap OC <Right>
+imap OD <Left>
+
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
