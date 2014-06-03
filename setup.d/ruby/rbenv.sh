@@ -2,6 +2,8 @@
 
 installdir=~/git/rbenv
 
+
+mkdir -p ${installdir}
 ### rbenv
 git clone git://github.com/sstephenson/rbenv.git ${installdir}
 
