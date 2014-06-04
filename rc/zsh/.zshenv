@@ -10,7 +10,7 @@ export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
 # nginx
 [ -e /usr/local/nginx ] && export PATH=/usr/local/nginx/sbin:$PATH
 # mysql
-if [ -e /usr/local/mysql ];then
+if [ -d /usr/local/mysql ];then
   export PATH=/usr/local/mysql/bin:$PATH
   if [ "$(uname -s)" = "Darwin" ];then
     export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}

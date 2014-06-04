@@ -50,7 +50,7 @@ bind v split-window -v
 bind h split-window -h
 
 # vでマーク開始
-bind -t vi-copy v begin-selection                                                                                                                                                   
+bind -t vi-copy v begin-selection
 # yでヤンク
 bind -t vi-copy y copy-selection
 
@@ -59,7 +59,7 @@ bind J select-pane -D
 bind K select-pane -U
 bind L select-pane -R
 
-bind -r C-h resize-pane -L 6 
+bind -r C-h resize-pane -L 6
 bind -r C-l resize-pane -R 6
 bind -r C-j resize-pane -D 6
 bind -r C-k resize-pane -U 6
@@ -70,3 +70,4 @@ bind x kill-window
 bind i display-panes
 bind y copy-mode
 bind p paste-buffer
+
