@@ -1,0 +1,123 @@
+# Prefix
+unbind-key C-b
+set-option -g prefix C-z
+bind-key C-z send-prefix
+
+set -sg escape-time 1
+
+# View
+set -g status-interval 2
+set -g status-left-length 50
+set -g status-right-length 50
+
+set-option -g default-terminal "xterm-256color"
+
+set -g status-bg colour017
+set -g status-fg cyan
+#set -g status-bg black
+#set -g status-fg white
+set -g status-left '#[fg=cyan,bold][#14H:#S]#[default]'
+set -g status-right '|#[fg=magenta,bold]#(load.sh)#[default]| #[fg=blue,bold][%a %m/%d %H:%M]#[default]'
+set -g message-attr bold
+set -g message-fg white
+set -g message-bg red
+
+set-environment -gu RBENV_VERSION
+
+set -g message-attr bold
+set -g message-fg white
+set -g message-bg red
+
+set  -g pane-active-border-fg cyan
+set  -g pane-active-border-bg black
+set  -g window-status-current-fg blue
+
+set-window-option -g mode-bg white
+set-window-option -g mode-fg black
+
+set-window-option -g window-status-fg white
+set-window-option -g window-status-bg colour017
+
+set-window-option -g window-status-current-fg yellow
+set-window-option -g window-status-current-bg colour017
+
+# Option
+set-window-option -g utf8 on
+set -g status-utf8 on
+set-window-option -g mode-keys vi
+set-window-option -g automatic-rename on
+set-window-option -g monitor-activity on
+
+set-option -g base-index 1
+
+# mouse
+set-option -g mouse-select-pane off
+set-option -g mode-mouse off
+set-option -g mouse-resize-pane off
+set-option -g mouse-select-pane off
+
+# KeyBindings
+unbind l
+unbind ^C
+
+bind C-r source-file ~/.tmux.conf
+bind C-n next-window
+bind C-c new-window -c '#{pane_current_path}'
+bind c new-window
+bind C-p previous-window
+bind 1 break-pane
+bind w split-window -vc '#{pane_current_path}'
+bind h split-window -hc '#{pane_current_path}'
+
+# vでマーク開始
+bind -t vi-copy v begin-selection
+# yでヤンク
+bind -t vi-copy y copy-selection
+
+bind o command-prompt "rename-window %%"
+bind v choose-window
+
+set-window-option -g aggressive-resize off
+
+
+#---------------------------------
+# move pane
+#---------------------------------
+
+unbind C-h
+unbind C-j
+unbind C-k
+unbind C-l
+unbind H
+unbind J
+unbind K
+unbind L
+
+bind C-h select-pane -L
+bind C-j select-pane -D
+bind C-k select-pane -U
+bind C-l select-pane -R
+
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+bind -r s swap-pane -U
+
+#---------------------------------
+# manage pane & window
+#---------------------------------
+
+bind x kill-pane
+bind q kill-window
+bind i display-panes
+bind y copy-mode
+bind p paste-buffer
+
+
+
+#---------------------------------
+# tmux-reattach-to-user-namespace
+#---------------------------------
+if 'test -f "$(which reattach-to-user-namespace)" -a "$(uname -s)" = "Darwin"' 'set-option -g default-command "reattach-to-user-namespace -l $SHELL"'
+
