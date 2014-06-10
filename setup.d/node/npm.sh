@@ -3,6 +3,8 @@
 npm -g install \
     hotnode \
     bower \
+    gulp \
+    gulp-util \
     jshint \
     js-beautify \
     grunt \
