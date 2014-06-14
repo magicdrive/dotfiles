@@ -9,6 +9,7 @@ git config --global alias.fork  'clone --bare'
 git config --global alias.st  '-p status'
 git config --global alias.ss  '-p status -sb'
 git config --global alias.co   checkout
+git config --global alias.cl   'clone --recursive'
 git config --global alias.ci  'commit -v'
 git config --global alias.ca  'commit -av'
 git config --global alias.cam 'commit --amend -v'
