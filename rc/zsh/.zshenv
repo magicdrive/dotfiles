@@ -14,6 +14,7 @@ if [ -d /usr/local/mysql ];then
   export PATH=/usr/local/mysql/bin:$PATH
   if [ "$(uname -s)" = "Darwin" ];then
     export DYLD_LIBRARY_PATH=/usr/local/mysql/lib:${DYLD_LIBRARY_PATH}
+    alias mysql.server="sudo mysql.server"
   fi
 fi
 # opencv
