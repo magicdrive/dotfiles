@@ -12,7 +12,6 @@ yes | gem i \
     awesome_print \
     pry \
     pry-doc \
-    pry-debugger \
     --no-ri --no-rdoc \
 ;
 
