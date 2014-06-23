@@ -5,7 +5,7 @@ cd ${HOME};
 mkdir -p git tmp misc local opt/dist
 mkdir -p dev/git dev/sand-box dev/misc
 mkdir -p ws/git ws/sand-box ws/misc
-mkdir -p project/git ws/sand-box ws/misc
+mkdir -p projects/git ws/sand-box ws/misc
 
 if [ "$(uname -s)" = 'Darwin' ];then
   mkdir -p dev/WorkSpace dev/sand-box dev/XCode
@@ -16,7 +16,7 @@ if [ "$(uname -s)" = 'Darwin' ];then
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
-  mkdir -p project/WorkSpace project/sand-box project/XCode
+  mkdir -p projects/WorkSpace projects/sand-box projects/XCode
 fi
 
 mkdir -p local/bin
