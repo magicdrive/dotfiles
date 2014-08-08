@@ -10,6 +10,7 @@ yes | gem i \
     compass \
     rbenv-rehash \
     awesome_print \
+    cocoapods \
     pry \
     pry-doc \
     --no-ri --no-rdoc \
