@@ -18,4 +18,5 @@ npm -g install \
     tsi \
     tsd \
     tslint \
+    webpack \
 ;
