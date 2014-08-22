@@ -7,6 +7,7 @@ npm -g install \
     gulp-util \
     jshint \
     js-beautify \
+    urchin \
     grunt \
     mocha \
     forever \
