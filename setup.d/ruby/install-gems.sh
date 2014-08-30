@@ -13,6 +13,7 @@ yes | gem i \
     cocoapods \
     pry \
     pry-doc \
+    git-gems \
     --no-ri --no-rdoc \
 ;
 

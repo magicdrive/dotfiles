@@ -1,4 +1,0 @@
-#! /bin/bash
-
-exec bundle install "$@" --path="$(pwd)/vendor/bundle" --binstubs="$(pwd)/.bundle/binstubs"
-
