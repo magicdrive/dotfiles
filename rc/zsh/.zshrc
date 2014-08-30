@@ -442,6 +442,10 @@ alias sp-rails="spring rake"
 compdef sp-rails=rails
 compdef sp-rake=rake
 
+if [ -f "$(which brew)" ];then
+    brew-package-upgrade() {for x in $(echo update upgrade cleanup);do echo "-----${x}-----" && brew $x ;done;}
+fi
+
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
 
 ### python
