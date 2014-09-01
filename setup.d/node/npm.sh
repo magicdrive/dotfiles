@@ -20,4 +20,7 @@ npm -g install \
     tsd \
     tslint \
     webpack \
+    webpack-dev-server \
+    jade \
+    jamjs \
 ;
