@@ -1,0 +1,11 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "node-module",
+  "main": ".",
+  "scripts": {
+    "preinstall": "rake"
+  },
+  "author": "magicdrive",
+  "license": "NONE"
+}
