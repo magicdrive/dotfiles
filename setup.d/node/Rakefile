@@ -1,0 +1,30 @@
+# coding: utf-8
+
+require 'yaml'
+require 'pry'
+
+task :default => [:install]
+
+def exec(command)
+  pid = spawn(command, $stderr => $stdout)
+  Process::wait(pid)
+end
+
+task :install do
+  npm_install = "npm install -g "
+  yaml_file = YAML.load_file(File.expand_path("./npm.yml", File.dirname(__FILE__)))
+  npm_install += yaml_file["npm"].join(%{ })
+  exec npm_install
+end
+
+task :update do
+  npm_install = "npm update -g "
+  yaml_file = YAML.load_file(File.expand_path("./npm.yml", File.dirname(__FILE__)))
+  npm_install += yaml_file["npm"].join(%{ })
+  exec npm_install
+end
+
+task :nvm do
+  exec File.expand_path("./box/nvm.sh", File.dirname(__FILE__))
+
+end
