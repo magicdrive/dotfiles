@@ -1,0 +1,17 @@
+source 'https://rubygems.org'
+#source 'http://production.cf.rubygems.org'
+
+# install gems
+
+gem "bundler"
+gem "rack"
+gem "sass"
+gem "md2man"
+gem "compass"
+gem "rbenv-rehash"
+gem "awesome_print"
+gem "cocoapods"
+gem "pry"
+gem "pry-doc"
+gem "git-gems"
+
