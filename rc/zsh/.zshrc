@@ -325,6 +325,8 @@ autoload -U compinit;compinit -u
 # 補完される前にオリジナルのコマンドまで展開してチェックする
 setopt complete_aliases
 
+alias d="cd"
+
 if [ $(uname) = 'Darwin' ];then
     if [ -f $HOME/local/bin/ls ];then
         alias ls="ls --color=auto"
@@ -432,8 +434,7 @@ compdef g=git
 compdef tig=git
 
 ### ruby-bundler
-export BUNDLE_PRIVATE_INSTALL_OPT="--path=./vendor/bundle --binstubs=./.bundle/binstubs"
-alias bundle-private="bundle install ${BUNDLE_PRIVATE_INSTALL_OPT}"
+alias bundle-private="bundle install --path=./vendor/bundle --binstubs=./.bundle/binstubs"
 
 ### ruby
 alias sp="spring"
