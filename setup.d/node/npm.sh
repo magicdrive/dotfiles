@@ -23,4 +23,5 @@ npm -g install \
     webpack-dev-server \
     jade \
     jamjs \
+    pm2 \
 ;

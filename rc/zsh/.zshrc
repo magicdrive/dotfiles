@@ -294,6 +294,11 @@ if [ -d ${zsh_completions} ];then
     fpath+=(${zsh_completions}/src $fpath)
 fi
 
+github_flow_completions=$HOME/.zsh/completions/git-hubflow-completion.zsh
+if [ -d ${github_flow_completions} ];then
+    fpath+=(${github_flow_completions}/src $fpath)
+fi
+
 # z
 z_home=$HOME/git/z
 if [ -d ${z_home} ];then
