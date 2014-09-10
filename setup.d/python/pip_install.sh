@@ -2,8 +2,8 @@
 
 set -ue
 
-pypis=('flake8' )
-pypis2=('paver')
+pypis=('flake8')
+pypis2=('paver' 'sphinx')
 pypis3=()
 
 for x in "${pypis[@]}";do
