@@ -2,7 +2,7 @@
 
 set -ue
 
-pypis=('pyflakes' 'flake8' )
+pypis=('flake8' )
 pypis2=('paver')
 pypis3=()
 
