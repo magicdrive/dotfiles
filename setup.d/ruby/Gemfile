@@ -14,4 +14,4 @@ gem "cocoapods"
 gem "pry"
 gem "pry-doc"
 gem "git-gems"
-
+gem "power_assert"
