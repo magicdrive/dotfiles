@@ -432,6 +432,7 @@ alias cpam="cpanm"
 alias perlfunc="perldoc -f"
 
 ### Git
+alias glone="git clone"
 alias g='git'
 alias gin='git info'
 alias lsg='git status'
