@@ -3,7 +3,7 @@
 main() {
 
 
-    install_dir="$HOME/opt/leiningen/bin/"
+    install_dir="$HOME/opt/leiningen/"
 
     mkdir -p ${install_dir}/bin
     wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein -O ${install_dir}/bin/lein
