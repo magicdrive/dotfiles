@@ -449,7 +449,7 @@ alias sp-rails="spring rake"
 compdef sp-rails=rails
 compdef sp-rake=rake
 
-if [ -f "$(which brew)" ];then
+if [ -f "$(which brew 2>&1)" ];then
     brew-package-upgrade() {for x in $(echo update upgrade cleanup);do echo "-----${x}-----" && brew $x ;done;}
 fi
 
