@@ -180,6 +180,12 @@ if [ -e ${ELIXIR_HOME} ];then
   alias rebar="${ELIXIR_HOME}rebar"
 fi
 
+# leiningen
+export LEININGEN_HOME="$HOME/opt/leiningen"
+if [ -e ${LEININGEN_HOME} ];then
+  export PATH="${LEININGEN_HOME}/bin:$PATH"
+fi
+
 # haxe
 export HAXE_HOME="$HOME/opt/haxe"
 if [ -e "${HAXE_HOME}" ];then
