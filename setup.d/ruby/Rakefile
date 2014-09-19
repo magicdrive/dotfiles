@@ -2,20 +2,30 @@
 
 task :default => [:setup]
 
+desc 'show this task list.'
+task :tasks do
+   Process::wait(spawn 'rake -T')
+end
+
+desc 'install bundler and execute `bundle install` for global.'
 task :setup => [:bundler, :install]
 
+desc 'install bundler.'
 task :bundler do
   sh 'gem install bundler'
 end
 
+desc 'execute `bundle install` for global'
 task :install do
   sh 'bundle install'
 end
 
+desc 'execute `bundle update`.'
 task :update do
   sh 'bundle update'
 end
 
+desc 'uninstall non default gems.'
 task :reset do
   `gem list -d`.split(/\n\n^(?=\w)/).each do |data|
     match = data.match(/(?<name>([^\s]+)) \((?<versions>.*)\)/)
