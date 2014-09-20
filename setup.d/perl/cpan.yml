@@ -1,0 +1,7 @@
+cpan:
+    - Class::Inspector
+    - Carton
+    - Perl::Tidy
+    - Plack
+    - File::Next
+    - App::Ack

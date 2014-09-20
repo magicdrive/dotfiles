@@ -1,0 +1,29 @@
+# coding: utf-8
+
+require 'yaml'
+require 'pry'
+
+task :default => [:tasks]
+
+def exec(command)
+  pid = spawn(command, $stderr => $stdout)
+  Process::wait(pid)
+end
+
+desc 'show this task list.'
+task :tasks do
+  exec 'rake -T'
+end
+
+desc 'install cpanmudules for global.'
+task :install do
+  install_cmd = "cpanm "
+  yaml_file = YAML.load_file(File.expand_path("./cpan.yml", File.dirname(__FILE__)))
+  install_cmd += yaml_file["cpan"].join(%{ })
+  exec install_cmd
+end
+
+desc 'install plenv'
+task :plenv do
+  exec File.expand_path("./box/plenv.sh", File.dirname(__FILE__))
+end
