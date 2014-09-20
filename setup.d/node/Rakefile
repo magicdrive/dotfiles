@@ -3,13 +3,19 @@
 require 'yaml'
 require 'pry'
 
-task :default => [:install]
+task :default => [:tasks]
 
 def exec(command)
   pid = spawn(command, $stderr => $stdout)
   Process::wait(pid)
 end
 
+desc 'show this task list.'
+task :tasks do
+  exec 'rake -T'
+end
+
+desc 'install npm for global.'
 task :install do
   npm_install = "npm install -g "
   yaml_file = YAML.load_file(File.expand_path("./npm.yml", File.dirname(__FILE__)))
@@ -17,6 +23,7 @@ task :install do
   exec npm_install
 end
 
+desc 'update npm for global.'
 task :update do
   npm_install = "npm update -g "
   yaml_file = YAML.load_file(File.expand_path("./npm.yml", File.dirname(__FILE__)))
@@ -24,7 +31,7 @@ task :update do
   exec npm_install
 end
 
+desc 'install nvm'
 task :nvm do
   exec File.expand_path("./box/nvm.sh", File.dirname(__FILE__))
-
 end
