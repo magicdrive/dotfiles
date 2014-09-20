@@ -1,6 +1,6 @@
 # coding: utf-8
 
-task :default => [:setup]
+task :default => [:tasks]
 
 desc 'show this task list.'
 task :tasks do

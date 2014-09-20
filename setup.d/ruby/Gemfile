@@ -10,9 +10,10 @@ gem "md2man"
 gem "compass"
 gem "rbenv-rehash"
 gem "awesome_print"
-gem "cocoapods"
+gem "cocoapods" if RUBY_PLATFORM =~ /darwin/
 gem "pry"
 gem "pry-doc"
 gem "git-gems"
 gem "power_assert"
-gem "travis"
+
+__END__
