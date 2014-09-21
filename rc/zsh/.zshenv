@@ -186,6 +186,12 @@ if [ -e ${LEININGEN_HOME} ];then
   export PATH="${LEININGEN_HOME}/bin:$PATH"
 fi
 
+# clojure
+export CLOJURE_HOME="/opt/clojure"
+if [ -e ${CLOJURE_HOME} ];then
+  export PATH="${CLOJURE_HOME}/bin:$PATH"
+fi
+
 # haxe
 export HAXE_HOME="$HOME/opt/haxe"
 if [ -e "${HAXE_HOME}" ];then
