@@ -16,5 +16,6 @@ gem "pry-doc"
 gem "git-gems"
 gem "git-multiple"
 gem "power_assert"
+gem "hub"
 
 __END__
