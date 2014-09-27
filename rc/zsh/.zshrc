@@ -459,10 +459,6 @@ webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(
 alias ipy="ipython3"
 alias ipy3="ipython3"
 alias ipy2="ipython2"
-compdef pip2=pip
-compdef pip2.7=pip
-compdef pip3=pip
-compdef pip3.3=pip
 
 ### clisp -o scheme
 if [ -f "$(which gosh 2>&1)" -a -f "$(which rlwrap 2>&1)" ];then
