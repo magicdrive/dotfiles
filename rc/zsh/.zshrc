@@ -183,8 +183,8 @@ setopt prompt_subst
 autoload -U colors; colors
 
 # compfunctions
-compdir=$HOME/.zsh/completions/
-for x in $(ls ${compdir});do source ${compdir}${x}; done;
+#compdir=$HOME/.zsh/completions/
+#for x in $(ls ${compdir});do source ${compdir}${x}; done;
 
     # ^[  は「エスケープ」
     #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
@@ -323,7 +323,8 @@ if [ -f "$(which npm 2>&1)" ];then
     source ${npm_completefile}
 fi
 
-autoload -U compinit;compinit -u
+autoload -U compinit
+compinit -u
 ###############################################
 # エイリアス                                  #
 ###############################################
