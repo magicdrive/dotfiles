@@ -20,6 +20,11 @@ task :install do
   sh 'bundle install'
 end
 
+desc 'unlock by delete this `./Gemfile.lock`'
+task :'unlock' do
+  sh 'rm -f Gemfile.lock'
+end
+
 desc 'execute `bundle update`.'
 task :update do
   sh 'bundle update'
