@@ -345,6 +345,10 @@ else
     alias ls="ls --color=auto"
 fi
 
+# grep
+alias grep="grep --color=auto"
+alias egrep="egrep --color=auto"
+
 alias h='history -E -32'
 
 pathdump() { echo $PATH | sed -e 's/:/\n/g'; }
@@ -382,10 +386,11 @@ vim_simple='vim -u ~/git/dotfiles/rc/vi/virc.vim'
 alias vim-simple="${vim_simple}"
 alias sudovi="sudo ${vim_simple}"
 alias sudo-vim="sudo ${vim_simple}"
+alias svi="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 alias vim_origin='/bin/vim'
-alias vi=vim-simple
-alias e=$EDITOR
+alias vi="${vim-simple}"
+alias e=${EDITOR}
 compdef vi=vim
 compdef e=vim
 
