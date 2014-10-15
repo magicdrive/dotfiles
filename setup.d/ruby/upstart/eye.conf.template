@@ -1,0 +1,18 @@
+# vim: ft=upstart :
+description 'Eye'
+
+start on (local-filesystems and runlevel [2345])
+stop on runlevel [016]
+
+setuid deploy
+
+expect fork
+
+script
+  # Eye runs from $HOME, upstart with setuid wont set $HOME
+  export HOME=/home/deploy
+
+  exec eye load /path/to/config.eye
+end script
+
+respawn
