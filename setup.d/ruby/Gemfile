@@ -17,5 +17,6 @@ gem "git-gems"
 gem "git-multiple"
 gem "power_assert"
 gem "hub"
+gem 'eye'
 
 __END__
