@@ -8,7 +8,7 @@ task :tasks do
 end
 
 desc 'install bundler and execute `bundle install` for global.'
-task :setup => [:bundler, :install]
+task :setup => [:unlock, :bundler, :install]
 
 desc 'install bundler.'
 task :bundler do
