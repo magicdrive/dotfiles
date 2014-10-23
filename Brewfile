@@ -1,66 +1,63 @@
+#! /bin/bash
 
-update
-
-install ant
-install autoconf
-install autogen
-install automake
-install bash
-install ccache
-install clisp
-install closure-compiler
-install cmake
-install cmigemo
-install colordiff
-install coreutils
-install ctags
-install curl
-install distcc
-install figlet
-install fontconfig
-install fontforge
-install freetype
-install gauche
-install gawk
-install gfortran
-install git
-install giter8
-install gnu-sed
-install gnu-smalltalk
-install graphviz
-install htop-osx
-install hub
-install jq
-install lua
-install luajit
-install lv
-install lzlib
-install lzo
-install lzop
-install maven
-install memcached
-install objective-caml
-install openssl
-install osxutils
-install parallel
-install pcre
-install pkg-config
-install proctools
-install plt-racket
-install python
-install reattach-to-user-namespace
-install redis
-install rlwrap
-install ruby
-install sbt
-install source-highlight
-install spidermonkey
-install sqlite
-install tig
-install tmux
-install tree
-install v8
-install w3m
-install wget
-install xz
-install zsh
+brew install ant
+brew install autoconf
+brew install autogen
+brew install automake
+brew install bash
+brew install ccache
+brew install clisp
+brew install closure-compiler
+brew install cmake
+brew install colordiff
+brew install coreutils
+brew install ctags
+brew install curl
+brew install distcc
+brew install figlet
+brew install fontconfig
+brew install fontforge
+brew install freetype
+brew install gauche
+brew install gawk
+brew install gfortran
+brew install git
+brew install giter8
+brew install gnu-sed
+brew install gnu-smalltalk
+brew install graphviz
+brew install htop-osx
+brew install hub
+brew install jq
+brew install lua
+brew install luajit
+brew install lv
+brew install lzlib
+brew install lzo
+brew install lzop
+brew install maven
+brew install memcached
+brew install objective-caml
+brew install openssl
+brew install osxutils
+brew install parallel
+brew install pcre
+brew install pkg-config
+brew install proctools
+brew install plt-racket
+brew install python
+brew install reattach-to-user-namespace
+brew install redis
+brew install rlwrap
+brew install ruby
+brew install sbt
+brew install source-highlight
+brew install spidermonkey
+brew install sqlite
+brew install tig
+brew install tmux
+brew install tree
+brew install w3m
+brew install wget
+brew install xz
+brew install zsh
