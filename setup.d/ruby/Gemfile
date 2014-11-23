@@ -17,6 +17,7 @@ gem "git-gems"
 gem "git-multiple"
 gem "power_assert"
 gem "hub"
+gem "gondler"
 gem 'eye' if RUBY_PLATFORM =~ /linux/
 
 __END__
