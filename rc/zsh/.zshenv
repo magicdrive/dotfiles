@@ -107,7 +107,7 @@ if [ -d ${GRADLE_HOME} ];then
 fi
 
 ### golang
-export GOROOT="$HOME/opt/golang"
+export GOROOT="/opt/go"
 if [ -d ${GOROOT} ];then
   export GOPATH="${HOME}/.gopath"
   export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
