@@ -120,6 +120,9 @@ if [[ -r "$(which goenvwrapper.sh)" ]]; then
     export GOENVHOME="$HOME/.goenvs"
     source "$(which goenvwrapper.sh)"
 fi
+if [[ -r "$(which direnv)" ]];then
+    eval "$(direnv hook zsh)"
+fi
 
 ### perl
 # plenv
