@@ -117,6 +117,7 @@ if [ -d ${GOROOT} ];then
     export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
 if [[ -r "$(which goenvwrapper.sh)" ]]; then
+    export GOENVHOME="$HOME/.goenvs"
     source "$(which goenvwrapper.sh)"
 fi
 
