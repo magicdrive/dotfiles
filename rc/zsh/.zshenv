@@ -116,9 +116,8 @@ if [ -d ${GOROOT} ];then
     export GOPATH="${HOME}/projects/gopath"
     export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
-# direnv
-if [ -f "$(which direnv 2>&1)" ];then
-    eval "$(direnv hook zsh)"
+if [[ -r "$(which goenvwrapper.sh)" ]]; then
+    source "$(which goenvwrapper.sh)"
 fi
 
 ### perl
