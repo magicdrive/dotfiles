@@ -5,7 +5,8 @@ cd ${HOME};
 mkdir -p git tmp misc local opt/dist
 mkdir -p dev/git dev/sand-box dev/misc
 mkdir -p ws/git ws/sand-box ws/misc
-mkdir -p projects/git ws/sand-box ws/misc
+mkdir -p projects/git projects/sand-box projects/misc
+mkdir -p  projects/go projects/go/src projects/go/bin projects/go/pkg
 
 if [ "$(uname -s)" = 'Darwin' ];then
   mkdir -p dev/WorkSpace dev/sand-box dev/XCode

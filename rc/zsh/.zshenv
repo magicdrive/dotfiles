@@ -113,7 +113,7 @@ elif [ -e "/opt/go" ];then
     export GOROOT="/opt/go"
 fi
 if [ -d ${GOROOT} ];then
-    export GOPATH="${HOME}/.gopath"
+    export GOPATH="${HOME}/projects/go"
     export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
 fi
 # direnv
