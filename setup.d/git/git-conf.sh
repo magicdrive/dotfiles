@@ -1,5 +1,7 @@
 git config --global color.ui    true
 
+git config --global ghq.root ~/.ghq
+
 git config --global push.default tracking
 
 git config --global core.pager 'less -FRX'
@@ -89,3 +91,4 @@ git config --global alias.xp  'stash show -p'
 git config --global alias.xup '!git xi && git up && git xo'
 
 git config --global alias.www  browse-remote
+
