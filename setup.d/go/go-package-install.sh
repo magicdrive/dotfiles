@@ -9,19 +9,25 @@ go get -u github.com/tools/godep
 go get -u github.com/golang/lint
 go get -u github.com/zimbatm/direnv
 go get -u bitbucket.org/ymotongpoo/goenv
+go get -u github.com/mitchellh/gox
 
+echo gox -build-toolchain
+sudo GOROOT=$GOROOT GOPATH=$GOPATH PATH=$PATH $(which gox) -build-toolchain
 
 # goenv
+echo cp ${GOPATH}/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ${GOPATH}/bin/
 cp ${GOPATH}/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ${GOPATH}/bin/
 
-cat << 'STRING'
-Packeges install complete.
-Run the following command to activate the goof/goenv is!
+echo complete!
 
-    source $(which goenvwrapper.sh)
-
-enjoy!
-
-STRING
+##cat << 'STRING'
+##Packeges install complete.
+##Run the following command to activate the goof/goenv is!
+##
+##    source $(which goenvwrapper.sh)
+##
+##enjoy!
+##
+##STRING
 
 exit 0
