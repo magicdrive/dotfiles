@@ -61,3 +61,5 @@ brew install w3m
 brew install wget
 brew install xz
 brew install zsh
+
+exit 0;
