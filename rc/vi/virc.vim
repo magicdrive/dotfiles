@@ -10,6 +10,9 @@ imap OB <Down>
 imap OC <Right>
 imap OD <Left>
 
+inoremap <C-f> <Right>
+inoremap <C-b> <Left>
+
 nnoremap ZZ <Nop>
 nnoremap ZQ <Nop>
 
@@ -98,6 +101,23 @@ if has('unix') && !has('gui_running')
 endif
 
 nnoremap <C-h> :help<Space>
+
+"### complation
+set complete+=k
+set completeopt=menuone
+set infercase
+
+"# keybind
+inoremap <C-j> <C-x><C-n>
+inoremap <C-k> <C-x><C-o>
+inoremap <C-l> <C-x><C-k>
+inoremap <C-_> <C-x><C-f>
+
+for key in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-$@",'\zs')
+  exec printf("inoremap %s %s<C-x><C-n><C-p>", key, key)
+endfor
+inoremap ./ ./<C-x><C-f><C-p>
+
 
 set showmode
 set title
