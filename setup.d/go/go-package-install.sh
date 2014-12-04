@@ -2,6 +2,9 @@
 
 set -e
 
+mkdir -p projects/gocode/src
+mkdir -p .gopath .gopath/src
+
 go get -u code.google.com/p/go.tools/cmd/goimports
 go get -u github.com/nsf/gocode
 go get -u github.com/motemen/ghq
@@ -15,8 +18,8 @@ echo gox -build-toolchain
 sudo GOROOT=$GOROOT GOPATH=$GOPATH PATH=$PATH $(which gox) -build-toolchain
 
 # goenv
-echo cp ${GOPATH}/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ${GOPATH}/bin/
-cp ${GOPATH}/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ${GOPATH}/bin/
+echo cp ~/.gopath/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ~/.gopath/src/bin/
+cp cp ~/.gopath/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ~/.gopath/src/bin/
 
 echo complete!
 

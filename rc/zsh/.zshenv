@@ -113,8 +113,8 @@ elif [ -e "/opt/go" ];then
     export GOROOT="/opt/go"
 fi
 if [ -d ${GOROOT} ];then
-    export GOPATH="${HOME}/.gopath"
-    export PATH="${GOROOT}/bin:${GOPATH}/bin:${PATH}"
+    export GOPATH="${HOME}/.gopath:${HOME}/projects/gocode"
+    export PATH="${GOROOT}/bin:${HOME}/.gopath/bin:${HOME}/projects/gocode/bin:${PATH}"
 fi
 if [[ -r "$(which goenvwrapper.sh)" ]]; then
     export GOENVHOME="$HOME/.goenvs"

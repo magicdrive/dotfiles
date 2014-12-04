@@ -6,7 +6,6 @@ mkdir -p git tmp misc local opt/dist
 mkdir -p dev/git dev/sand-box dev/misc
 mkdir -p ws/git ws/sand-box ws/misc
 mkdir -p projects/git projects/sand-box projects/misc
-mkdir -p  projects/gopath projects/gopath/src projects/gopath/bin projects/gopath/pkg
 
 if [ "$(uname -s)" = 'Darwin' ];then
   mkdir -p dev/WorkSpace dev/sand-box dev/XCode
