@@ -58,7 +58,7 @@ if has('syntax')
     autocmd ColorScheme * call EndSpace()
     autocmd VimEnter,WinEnter * match EndSpace /\s\+$/
   augroup END
-  call ZenkakuSpace()
+  call FullWidthSpace()
 endif
 colorscheme default
 
