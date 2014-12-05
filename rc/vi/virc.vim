@@ -19,9 +19,9 @@ nnoremap ZQ <Nop>
 nnoremap <Space>. :e ~/.vimrc<CR>
 nnoremap <Space>e :e .<CR>
 
-" highlight 全角space
-function! ZenkakuSpace()
-  highlight ZenkakuSpace
+" highlight Full width space
+function! FullWidthSpace()
+  highlight FullWidthSpace
         \ cterm=underline
         \ ctermfg=darkgrey
         \ gui=underline
@@ -29,34 +29,34 @@ function! ZenkakuSpace()
 endfunction
 
 if has('syntax')
-  augroup ZenkakuSpace
+  augroup FullWidthSpace
     autocmd!
-    autocmd ColorScheme * call ZenkakuSpace()
-    autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    autocmd ColorScheme * call FullWidthSpace()
+    autocmd VimEnter,WinEnter * match FullWidthSpace /　/
   augroup END
-  call ZenkakuSpace()
+  call FullWidthSpace()
 endif
 
 let g:matsubi_space_state = 1
-function! MatsubiSpace()
+function! EndSpace()
   if g:matsubi_space_state
-    highlight MatsubiSpace ctermbg=199 guibg=Cyan
+    highlight EndSpace ctermbg=199 guibg=Cyan
   else
-    highlight MatsubiSpace ctermbg=NONE guibg=NONE
+    highlight EndSpace ctermbg=NONE guibg=NONE
   endif
 endfunction
 
-function! s:ToggleMatsubiSpaceHighLight()
+function! s:ToggleEndSpaceHighLight()
   let g:matsubi_space_state=g:matsubi_space_state ? 0 : 1
-  call MatsubiSpace()
+  call EndSpace()
 endfunction
-nnoremap <Plug>(mykeylite)c :call <SID>ToggleMatsubiSpaceHighLight()<CR>
+nnoremap <Plug>(mykeylite)c :call <SID>ToggleEndSpaceHighLight()<CR>
 
 if has('syntax')
-  augroup MatsubiSpace
+  augroup EndSpace
     autocmd!
-    autocmd ColorScheme * call MatsubiSpace()
-    autocmd VimEnter,WinEnter * match MatsubiSpace /\s\+$/
+    autocmd ColorScheme * call EndSpace()
+    autocmd VimEnter,WinEnter * match EndSpace /\s\+$/
   augroup END
   call ZenkakuSpace()
 endif
@@ -129,7 +129,7 @@ set number
 set showmatch
 set showcmd
 
-"# ルーラーを表示
+"# show ruler
 set ruler
 
 set virtualedit=block
@@ -173,6 +173,8 @@ set smartindent
 set smarttab
 set cindent
 
+"netrw
+let g:netrw_liststyle=3
 
 let g:tab_size=2
 set expandtab
@@ -201,8 +203,6 @@ nnoremap <C-w><C-j> <C-w>j
 nnoremap <C-w><C-k> <C-w>k
 nnoremap <C-w><C-h> <C-w>h
 nnoremap <C-w><C-l> <C-w>l
-
-
 
 "__END__
 
