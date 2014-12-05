@@ -21,44 +21,44 @@ nnoremap <Space>e :e .<CR>
 
 " highlight Full width space
 function! FullWidthSpace()
-  highlight FullWidthSpace
-        \ cterm=underline
-        \ ctermfg=darkgrey
-        \ gui=underline
-        \ guifg=darkgrey
+    highlight FullWidthSpace
+                \ cterm=underline
+                \ ctermfg=darkgrey
+                \ gui=underline
+                \ guifg=darkgrey
 endfunction
 
 if has('syntax')
-  augroup FullWidthSpace
-    autocmd!
-    autocmd ColorScheme * call FullWidthSpace()
-    autocmd VimEnter,WinEnter * match FullWidthSpace /　/
-  augroup END
-  call FullWidthSpace()
+    augroup FullWidthSpace
+        autocmd!
+        autocmd ColorScheme * call FullWidthSpace()
+        autocmd VimEnter,WinEnter * match FullWidthSpace /　/
+    augroup END
+    call FullWidthSpace()
 endif
 
 let g:matsubi_space_state = 1
 function! EndSpace()
-  if g:matsubi_space_state
-    highlight EndSpace ctermbg=199 guibg=Cyan
-  else
-    highlight EndSpace ctermbg=NONE guibg=NONE
-  endif
+    if g:matsubi_space_state
+        highlight EndSpace ctermbg=199 guibg=Cyan
+    else
+        highlight EndSpace ctermbg=NONE guibg=NONE
+    endif
 endfunction
 
 function! s:ToggleEndSpaceHighLight()
-  let g:matsubi_space_state=g:matsubi_space_state ? 0 : 1
-  call EndSpace()
+    let g:matsubi_space_state=g:matsubi_space_state ? 0 : 1
+    call EndSpace()
 endfunction
 nnoremap <Plug>(mykeylite)c :call <SID>ToggleEndSpaceHighLight()<CR>
 
 if has('syntax')
-  augroup EndSpace
-    autocmd!
-    autocmd ColorScheme * call EndSpace()
-    autocmd VimEnter,WinEnter * match EndSpace /\s\+$/
-  augroup END
-  call FullWidthSpace()
+    augroup EndSpace
+        autocmd!
+        autocmd ColorScheme * call EndSpace()
+        autocmd VimEnter,WinEnter * match EndSpace /\s\+$/
+    augroup END
+    call FullWidthSpace()
 endif
 colorscheme default
 
@@ -114,7 +114,7 @@ inoremap <C-l> <C-x><C-k>
 inoremap <C-_> <C-x><C-f>
 
 for key in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-$@",'\zs')
-  exec printf("inoremap %s %s<C-x><C-n><C-p>", key, key)
+    exec printf("inoremap %s %s<C-x><C-n><C-p>", key, key)
 endfor
 inoremap ./ ./<C-x><C-f><C-p>
 
@@ -143,7 +143,7 @@ set wildmode=list,full
 
 set history=256
 
-command! NumberToggle :<SID>call ToggleNumber()
+command! NumberToggle call <SID>ToggleNumber()
 
 function! s:ToggleNumber()
     if &number == '1'
@@ -175,6 +175,13 @@ set cindent
 
 "netrw
 let g:netrw_liststyle=3
+let g:show_netrw_size=(&columns / 5)
+
+function! s:ShowNetrw()
+    execute printf("vsplit | vertical resize %d | e .", g:show_netrw_size)
+endfunction
+
+nnoremap <silent> <Space>n :<C-u>call <SID>ShowNetrw()<CR>
 
 let g:tab_size=2
 set expandtab
