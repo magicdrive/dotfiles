@@ -175,13 +175,6 @@ set cindent
 
 "netrw
 let g:netrw_liststyle=3
-let g:show_netrw_size=(&columns / 5)
-
-function! s:ShowNetrw()
-    execute printf("vsplit | vertical resize %d | e .", g:show_netrw_size)
-endfunction
-
-nnoremap <silent> <Space>n :<C-u>call <SID>ShowNetrw()<CR>
 
 let g:tab_size=2
 set expandtab
