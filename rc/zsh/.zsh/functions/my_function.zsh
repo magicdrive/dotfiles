@@ -101,6 +101,11 @@ gen-gitkeep() {
     find $(pwd) -name .git -prune -or -type d -empty -print -exec touch {}/.keep \;
 }
 
+git-root() {
+    cd "$(git rev-parse --show-toplevel)"
+}
+alias gtop="git-root"
+
 __tmux_attach() {
     if [ ${TMUX} ];then
         echo 'sessions should be nested with care, unset $TMUX to force';
