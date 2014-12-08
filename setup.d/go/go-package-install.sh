@@ -13,9 +13,10 @@ go get -u github.com/golang/lint
 go get -u github.com/zimbatm/direnv
 go get -u bitbucket.org/ymotongpoo/goenv
 go get -u github.com/mitchellh/gox
+go get -u github.com/pilu/fresh
 
 echo gox -build-toolchain
-sudo GOROOT=$GOROOT GOPATH=$GOPATH PATH=$PATH $(which gox) -build-toolchain
+sudo GOROOT="$GOROOT" GOPATH="$GOPATH" PATH="$PATH" "$(which gox)" -build-toolchain
 
 # goenv
 echo cp ~/.gopath/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ~/.gopath/bin/
