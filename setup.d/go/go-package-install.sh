@@ -15,6 +15,7 @@ go get -u bitbucket.org/ymotongpoo/goenv
 go get -u github.com/mitchellh/gox
 go get -u github.com/pilu/fresh
 go get -u github.com/mattn/goreman
+go get -u github.com/peco/peco/cmd/peco
 
 echo gox -build-toolchain
 sudo GOROOT="$GOROOT" GOPATH="$GOPATH" PATH="$PATH" "$(which gox)" -build-toolchain
