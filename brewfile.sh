@@ -14,6 +14,7 @@ brew install coreutils
 brew install ctags
 brew install curl
 brew install distcc
+brew install fig
 brew install figlet
 brew install fontconfig
 brew install fontforge
