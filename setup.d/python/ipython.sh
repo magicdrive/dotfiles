@@ -8,6 +8,9 @@ elif [ "$(uname -s)" = "Linux" -a -f /etc/debian_version ];then
     sudo aptitude build-dep ipython -y
     sudo aptitude build-dep python-numpy -y
     sudo aptitude build-dep python-scipy -y
+    if [ -d /etc/mysql/ ];then
+        sudo mv /etc/mysql /etc/mysql.orig
+    fi
 fi
 
 #pip2 install matplotlib
