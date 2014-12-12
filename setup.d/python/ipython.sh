@@ -3,6 +3,10 @@ set -e
 if [ "$(uname -s)" = "Darwin" ];then
   export LDFLAGS="-L/usr/X11/lib"
   export CFLAGS="-I/usr/X11/include -I/usr/X11/include/freetype2 -I/usr/X11/include/libpng12"
+
+elif [ "$(uname -s)" = "Linux" -a -f /etc/debian_version ];then
+    sudo aptitude build-dep ipython -y
+    sudo aptitude build-dep python-scipy -y
 fi
 
 #pip2 install matplotlib
