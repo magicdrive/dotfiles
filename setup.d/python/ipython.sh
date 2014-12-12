@@ -6,6 +6,7 @@ if [ "$(uname -s)" = "Darwin" ];then
 
 elif [ "$(uname -s)" = "Linux" -a -f /etc/debian_version ];then
     sudo aptitude build-dep ipython -y
+    sudo aptitude build-dep python-numpy -y
     sudo aptitude build-dep python-scipy -y
 fi
 
