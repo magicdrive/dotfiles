@@ -468,7 +468,7 @@ fi
 webrickup() { ruby -r webrick -e "WEBrick::HTTPServer.new({ :DocumentRoot => '$(pwd)/', :Port => 8000}).start" }
 
 ### python
-alias ipy="ipython3"
+alias ipy="ipython2"
 alias ipy3="ipython3"
 alias ipy2="ipython2"
 
