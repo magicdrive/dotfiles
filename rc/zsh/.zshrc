@@ -446,7 +446,7 @@ alias perlfunc="perldoc -f"
 ### Git
 alias glone="git clone"
 alias g='git'
-alias gin='git info'
+alias ginfo='git info'
 alias lsg='git status'
 compdef g=git
 compdef tig=git

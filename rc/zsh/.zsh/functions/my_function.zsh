@@ -105,6 +105,9 @@ git-root() {
     cd "$(git rev-parse --show-toplevel)"
 }
 alias gtop="git-root"
+alias gitroot="git-root"
+alias gitr="git-root"
+alias gir="git-root"
 
 __tmux_attach() {
     if [ ${TMUX} ];then
