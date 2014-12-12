@@ -186,40 +186,40 @@ autoload -U colors; colors
 #compdir=$HOME/.zsh/completions/
 #for x in $(ls ${compdir});do source ${compdir}${x}; done;
 
-    # ^[  は「エスケープ」
-    #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
-    #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-    PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
-    PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
+# ^[  は「エスケープ」
+#PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
+#PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
+PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}%m%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
+PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
-    # forやwhile/複数行入力時などに表示されるプロンプト
-    PROMPT2="%B%_>%b "
+# forやwhile/複数行入力時などに表示されるプロンプト
+PROMPT2="%B%_>%b "
 
-    # 入力ミスを確認する場合に表示されるプロンプト
-    SPROMPT="%r is correct? [n,y,a,e]: "
+# 入力ミスを確認する場合に表示されるプロンプト
+SPROMPT="%r is correct? [n,y,a,e]: "
 
-    # right prompt
-    vim_mode_status() {
-        case $KEYMAP in
-            vicmd)
-                /bin/echo -n "[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
-                ;;
-            ""|main|viins)
-                /bin/echo -n "[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
-                ;;
-        esac
-    }
+# right prompt
+vim_mode_status() {
+    case $KEYMAP in
+        vicmd)
+            /bin/echo -n "[%{$fg_bold[red]%}NOR%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
+            ;;
+        ""|main|viins)
+            /bin/echo -n "[%{$fg_bold[cyan]%}INS%{$reset_color%}] %{$fg_bold[white]%}%{$reset_color%}"
+            ;;
+    esac
+}
 
-    #if [ -d $HOME/git/zsh-vcs-prompt ];then
-    #    source $HOME/git/zsh-vcs-prompt/zshrc.sh
-    #    ZSH_VCS_PROMPT_ENABLE_CACHING='true'
-    #fi
-    #RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
-    RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
-    function zle-line-init zle-keymap-select {
-    #RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
-    RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
-    zle reset-prompt
+#if [ -d $HOME/git/zsh-vcs-prompt ];then
+#    source $HOME/git/zsh-vcs-prompt/zshrc.sh
+#    ZSH_VCS_PROMPT_ENABLE_CACHING='true'
+#fi
+#RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
+RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+function zle-line-init zle-keymap-select {
+#RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
+RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+zle reset-prompt
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
@@ -313,7 +313,6 @@ if [ -f ${nvm_completefile} ];then
     source ${nvm_completefile}
 fi
 
-
 npm_completefile=~/opt/etc/npm/bash_completion
 if [ -f "$(which npm 2>&1)" ];then
     if [ ! -f "$(which ${npm_completefile} 2>&1)" ];then
@@ -322,6 +321,13 @@ if [ -f "$(which npm 2>&1)" ];then
     fi
     source ${npm_completefile}
 fi
+
+if [ -f "$(which direnv)" ];then
+    if [ -f ".envrc" ];then
+        direnv allow
+    fi
+fi
+
 
 autoload -U compinit
 compinit -u
