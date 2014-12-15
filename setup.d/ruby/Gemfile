@@ -10,13 +10,14 @@ gem "md2man"
 gem "compass"
 gem "rbenv-rehash"
 gem "awesome_print"
-gem "cocoapods" if RUBY_PLATFORM =~ /darwin/
 gem "pry"
 gem "pry-doc"
 gem "git-gems"
 gem "git-multiple"
 gem "power_assert"
 gem "hub"
+gem "foreman"
 gem 'eye' if RUBY_PLATFORM =~ /linux/
+gem "cocoapods" if RUBY_PLATFORM =~ /darwin/
 
 __END__
