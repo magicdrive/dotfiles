@@ -5,6 +5,7 @@ brew install autoconf
 brew install autogen
 brew install automake
 brew install bash
+brew install boot2docker
 brew install ccache
 brew install clisp
 brew install closure-compiler
