@@ -188,6 +188,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
+command! SudoWrite :w !sudo tee > /dev/null %
+
 nnoremap <Space>w :<ESC>:new<CR>
 nnoremap <Space>v :<ESC>:vnew<CR>
 
