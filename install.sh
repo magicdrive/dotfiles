@@ -38,7 +38,7 @@ install_files bash ${bash_files[@]};
 install_files vrapper ${vrapper_files[@]};
 install_files jshint ${jshint_files[@]};
 
-./mklocaldir.sh
+./box/mklocaldir.sh
 
 exit 0;
 
