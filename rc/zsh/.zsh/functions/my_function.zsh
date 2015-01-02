@@ -2,7 +2,7 @@ backup() {
     local OPTION=''
     if [ $# -ne 0 ]; then
         local FILE=$1
-        cp -a ${FILE} ${FILE}.`date +%Y-%m-%d_%H:%M:%S`.bak
+        cp -a "${FILE}" "${FILE}.$(date +%Y-%m-%d_%H:%M:%S).bak"
     fi
 }
 
@@ -14,26 +14,6 @@ mkcd() {
     cd "$@";
 }
 
-maven() {
-    if [ $# -gt 1  ]; then
-        mvn archetype:create -DgroupId=$1 -DartifactId=$2
-    fi
-}
-
-sbt-gen() {
-   mkdir -p src/{main,test}/{java,scala,resources}
-   mkdir project
-   touch project/Build.scala
-   local projectname=$1
-   cat << EOS  > build.sbt
-name := "${projectname}"
-
-version := "1.0"
-
-scalaVersion := "2.9.2"
-EOS
-
-}
 
 if [ $(uname) = 'Darwin' ];then
     function purge_swap() {
