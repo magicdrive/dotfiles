@@ -55,27 +55,6 @@ EOS
     fi
 }
 
-rebind() {
-local ___key=$1
-    if [ "$___key" = 't' ];then
-        tmux set-option -g prefix C-t && tmux bind-key C-t send-prefix
-        tmux unbind-key C-q && tmux unbind-key C-z
-    elif [ "$___key" = 'z' ];then
-        tmux set-option -g prefix C-z && tmux bind-key C-z send-prefix
-        tmux unbind-key C-q && tmux unbind-key C-t
-    elif [ "$___key" = 'q' ];then
-        tmux set-option -g prefix C-q && tmux bind-key C-q send-prefix
-        tmux unbind-key C-z && tmux unbind-key C-t
-    else
-        cat << 'EOS'
-rebind tmux prefix key
-Usage:
-rebind [z|t|q]
-EOS
-        return;
-    fi
-    tmux unbind-key C-b
-}
 
 gen-gitkeep() {
     find $(pwd) -name .git -prune -or -type d -empty -print -exec touch {}/.keep \;
@@ -89,21 +68,6 @@ alias gitroot="git-root"
 alias gitr="git-root"
 alias gir="git-root"
 
-__tmux_attach() {
-    if [ ${TMUX} ];then
-        echo 'sessions should be nested with care, unset $TMUX to force';
-        return 1;
-    fi
-
-    local tmux_name=${TMUX_DEFAULTNAME};
-    [ $# -ne '0' ] && tmux_name=$1;
-    session_exists=$(tmux ls 2>&1 | cut -d ':' -f 1 | grep -e "^${tmux_name}$" | wc -l | perl -pe "s/\s//g")
-    if [ "${session_exists}" = 0 ]; then
-        tmux new-session -s ${tmux_name};
-    else
-        tmux attach -t ${tmux_name}
-    fi
-}
 
 alias gnu-smalltalk=$(which gst 2>/dev/null)
 igst() { gnu-smalltalk; }
@@ -127,23 +91,6 @@ __parse_git_branch() {
     git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1)$(__parse_git_dirty)/"
 }
 
-mouse-toggle() {
-
-    if [ "${TMUX_MOUSE}" = '' ] && export TMUX_MOUSE=off;
-
-    if [ "${TMUX_MOUSE}" == 'on' ];then
-        local switch=off
-    else
-        local switch=on
-    fi
-
-    tmux set-option -g mouse-select-pane ${switch}
-    tmux set-option -g mode-mouse ${switch}
-    tmux set-option -g mouse-resize-pane ${switch}
-    tmux set-option -g mouse-select-pane ${switch}
-    export TMUX_MOUSE=${switch}
-}
-alias mtoggle=mouse-toggle
 
 function history-all { history -E 1 }
 

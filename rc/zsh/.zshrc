@@ -423,9 +423,7 @@ alias t-win='tmux list-window'
 alias tl='tmux list-sessions'
 alias tmkill='tmux kill-server'
 alias tmkillsession='tmux kill-session -t'
-alias t='__tmux_attach'
 alias th='t head'
-export TMUX_MOUSE=off
 
 ### screen
 alias sc="screen"
