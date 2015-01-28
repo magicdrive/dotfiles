@@ -114,9 +114,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # lsコマンドの補完候補にも色付き表示
 
-if [ -f "$(which dircolors)" ];then
+if [[ -x "$(which dircolors)" ]];then
     eval $(dircolors)
-elif [ -f "$(which gdircolors)" ];then
+elif [[ -x "$(which gdircolors)" ]];then
     eval $(gdircolors)
 fi
 
@@ -314,16 +314,16 @@ if [ -f ${nvm_completefile} ];then
 fi
 
 npm_completefile=~/opt/etc/npm/bash_completion
-if [ -f "$(which npm 2>&1)" ];then
-    if [ ! -f "$(which ${npm_completefile} 2>&1)" ];then
+if [[ -x "$(which npm)" ]];then
+    if [[ ! -r "$(which ${npm_completefile})" ]];then
         mkdir -p $(dirname ${npm_completefile})
         npm completion > ${npm_completefile}
     fi
     source ${npm_completefile}
 fi
 
-if [ -f "$(which direnv)" ];then
-    if [ -f ".envrc" ];then
+if [[ -x "$(which direnv)" ]];then
+    if [ -r ".envrc" ];then
         direnv allow
     fi
 fi
@@ -401,10 +401,10 @@ compdef vi=vim
 compdef e=vim
 
 ### diff and patch
-[ -f "$(which colordiff 2>&1)" ] && alias diff="$(which colordiff)"
+[[ -x "$(which colordiff )" ]] && alias diff="$(which colordiff)"
 
 if [ "$(uname -s)" = 'Darwin' ];then
-    [ -f "$(which gpatch 2>&1)" ] && alias patch="gpatch"
+    [[ -x "$(which gpatch )" ]] && alias patch="gpatch"
 fi
 
 ### gradle
@@ -459,7 +459,7 @@ alias sp-rails="spring rake"
 compdef sp-rails=rails
 compdef sp-rake=rake
 
-if [ -f "$(which brew 2>&1)" ];then
+if [[ -x "$(which brew)" ]];then
     brew-package-upgrade() {for x in $(echo update upgrade cleanup);do echo "-----${x}-----" && brew $x ;done;}
 fi
 
@@ -471,7 +471,7 @@ alias ipy3="ipython3"
 alias ipy2="ipython2"
 
 ### clisp -o scheme
-if [ -f "$(which gosh 2>&1)" -a -f "$(which rlwrap 2>&1)" ];then
+if [[ -x "$(which gosh)" ]] && [[ -x "$(which rlwrap)" ]];then
     alias gosh="rlwrap -pCyan gosh"
 fi
 
@@ -487,7 +487,7 @@ if [ "$(uname -s)" = 'Darwin' ];then
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
-    if [ -f "$(which reattach-to-user-namespace 2>&1)" ];then
+    if [[ -x "$(which reattach-to-user-namespace)" ]];then
         alias npbcopy="reattach-to-user-namespace pbcopy"
         alias npbpaste="reattach-to-user-namespace pbpaste"
     fi
@@ -498,12 +498,12 @@ for x in $(echo supervisorctl supervisord);do
 done
 
 ### if debian-based
-if [ -f /etc/debian_version -a -f "$(which aptitude 2>&1)" ];then
+if [[ -f /etc/debian_version ]] && [[ -x "$(which aptitude)" ]];then
     alias aptitude="sudo aptitude"
     alias apt-get="sudo apt-get"
 fi
 ### if fedora-based
-if [ -f /etc/redhat-release -a -f "$(which yum 2>&1)" ];then
+if [[ -f /etc/redhat-release ]] && [[ -x "$(which yum)" ]];then
     alias yum="sudo yum"
 fi
 
