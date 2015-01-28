@@ -116,11 +116,11 @@ if [ -e "${GOROOT}" ];then
     export GOPATH="${HOME}/.gopath:${HOME}/projects/gocode"
     export PATH="${GOROOT}/bin:${HOME}/.gopath/bin:${HOME}/projects/gocode/bin:${PATH}"
 fi
-if [[ -r "$(which goenvwrapper.sh)" ]]; then
+if [[ -x "$(which goenvwrapper.sh)" ]]; then
     export GOENVHOME="$HOME/.goenvs"
     source "$(which goenvwrapper.sh)"
 fi
-if [[ -r "$(which direnv)" ]];then
+if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
 fi
 
