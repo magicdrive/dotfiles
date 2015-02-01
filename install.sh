@@ -14,6 +14,7 @@ tmux_files=( '.tmux.conf' '.tmux.env' '.tmux-powerline.conf' );
 screen_files=( '.screenrc' );
 bash_files=( '.bashrc' );
 vrapper_files=( '.vrapperrc' );
+ideavim_files=( '.ideavimrc' );
 jshint_files=( '.jshintrc' );
 
 backup_dir=$HOME/.dotfiles.backup
@@ -36,6 +37,7 @@ install_files tmux ${tmux_files[@]};
 install_files screen ${screen_files[@]};
 install_files bash ${bash_files[@]};
 install_files vrapper ${vrapper_files[@]};
+install_files ideavim ${ideavim_files[@]};
 install_files jshint ${jshint_files[@]};
 
 ./box/mklocaldir.sh
