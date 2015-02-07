@@ -51,7 +51,7 @@ EOS
         local before=$1
         local after=$2
         shift 2
-        vim -c "argdo %s/${before}/${after}/gce | update" $@
+        vim -c "argdo %s/${before}/${after}/gce | update" "$@"
     fi
 }
 
