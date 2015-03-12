@@ -52,7 +52,7 @@ fi
 if [ "$(uname -s)" = 'Darwin' ];then
     if [ -d "/Applications/VMware Fusion.app" ];then
         export VMWARE_FUSION_ROOT="/Applications/VMware Fusion.app"
-        export PATH="${VMWARE_FUSION_ROOT}/Contents/Library/:${PATH}"
+        export PATH="${VMWARE_FUSION_ROOT}/Contents/Library:${PATH}"
     fi
 fi
 
