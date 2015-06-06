@@ -17,8 +17,7 @@ npm:
   - tsi
   - tsd
   - tslint
-  - webpack
-  - webpack-dev-server
+  - browserify
   - jade
   - jamjs
   - pm2
