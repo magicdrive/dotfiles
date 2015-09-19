@@ -2,19 +2,10 @@
 
 set -ue
 
-pypis=('flake8' 'httpie')
-pypis2=('paver' 'sphinx' 'mercurial')
-pypis3=()
+pypis=('flake8' 'httpie' 'mercurial' 'ansible')
 
 for x in "${pypis[@]}";do
-  pip2 install ${x}
-  pip3 install ${x}
-done
-for x in "${pypis2[@]}";do
-  pip2 install ${x}
-done
-for x in "${pypis3[@]}";do
-  pip3 install ${x}
+  pip install ${x}
 done
 
 exit 0;
