@@ -12,6 +12,6 @@ for x in ${libs[@]}; do git clone git://github.com/zsh-users/$x $HOME/git/$x; do
 git clone git://github.com/knu/z.git $HOME/git/z
 sudo ln -sf $HOME/git/z/z.1 /usr/local/share/man/man1/
 
-git clone git@github.com:magicdrive/zsh-vcs-prompt $HOME/git/zsh-vcs-prompt
+#git clone git@github.com:magicdrive/zsh-vcs-prompt $HOME/git/zsh-vcs-prompt
 
 exit 0;
