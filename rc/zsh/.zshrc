@@ -357,7 +357,7 @@ alias egrep="egrep --color=auto"
 
 alias h='history -E -32'
 
-pathdump() { echo $PATH | sed -e 's/:/\n/g'; }
+pathdump() { echo $PATH | perl -pe 's/:/\n/g'; }
 
 if [ "$(uname -s)" = "Darwin" -a -d /Applications/TotalTerminal.app ];then
     alias kt='killall Terminal'
