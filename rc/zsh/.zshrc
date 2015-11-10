@@ -386,7 +386,9 @@ fi
 ### macvim ###
 if [ -d /Applications/MacVim.app ];then
     alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+    alias mvim="env LANG=ja_JP.UTF-8 open -a MacVim"
 fi
+
 
 vim_simple='vim -u ~/git/dotfiles/rc/vi/virc.vim'
 alias vim-simple="${vim_simple}"
