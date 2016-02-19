@@ -5,13 +5,11 @@ set -e
 mkdir -p ~/projects/gocode/src
 mkdir -p ~/.gopath ~/.gopath/src ~/.gopath/bin ~/.gopath/pkg
 
-go get -u code.google.com/p/go.tools/cmd/goimports
 go get -u github.com/nsf/gocode
 go get -u github.com/motemen/ghq
 go get -u github.com/tools/godep
 go get -u github.com/golang/lint
 go get -u github.com/zimbatm/direnv
-go get -u bitbucket.org/ymotongpoo/goenv
 go get -u github.com/mitchellh/gox
 go get -u github.com/pilu/fresh
 go get -u github.com/mattn/goreman
