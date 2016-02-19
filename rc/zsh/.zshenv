@@ -107,19 +107,28 @@ if [ -e "${GRADLE_HOME}" ];then
 fi
 
 ### golang
-if [ -e "$HOME/opt/go" ];then
-    export GOROOT="$HOME/opt/go"
-elif [ -e "/opt/go" ];then
-    export GOROOT="/opt/go"
+#
+
+
+
+if [ "$(uname -s)" = "Darwin" ];then
+    export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+    export GOROOT="/usr/local/opt/go"
 fi
+
+if [ "$(uname -s)" = "Linux" ];then
+    if [ -e "$HOME/opt/go" ];then
+        export GOROOT="$HOME/opt/go"
+    elif [ -e "/opt/go" ];then
+        export GOROOT="/opt/go"
+    fi
+fi
+
 if [ -e "${GOROOT}" ];then
     export GOPATH="${HOME}/.gopath:${HOME}/projects/gocode"
     export PATH="${GOROOT}/bin:${HOME}/.gopath/bin:${HOME}/projects/gocode/bin:${PATH}"
 fi
-if [[ -x "$(which goenvwrapper.sh)" ]]; then
-    export GOENVHOME="$HOME/.goenvs"
-    source "$(which goenvwrapper.sh)"
-fi
+
 if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
 fi
