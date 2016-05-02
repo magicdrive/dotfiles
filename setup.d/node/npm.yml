@@ -21,4 +21,6 @@ npm:
   - jade
   - jamjs
   - pm2
+  - yo
+  - generator-hubot
 
