@@ -63,6 +63,7 @@ gen-gitkeep() {
 git-root() {
     cd "$(git rev-parse --show-toplevel)"
 }
+alias gcd="git-root"
 
 
 alias gnu-smalltalk=$(which gst 2>/dev/null)
