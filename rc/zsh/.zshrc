@@ -311,12 +311,12 @@ fi
 
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
-if [ -f ${nvm_completefile} ];then
+if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
     source ${nvm_completefile}
 fi
 
 npm_completefile=~/opt/etc/npm/bash_completion
-if [[ -x "$(which npm)" ]];then
+if [[ -x "$(which npm)" && -x "$(which node)" ]];then
     if [[ ! -r "$(which ${npm_completefile})" ]];then
         mkdir -p $(dirname ${npm_completefile})
         npm completion > ${npm_completefile}
