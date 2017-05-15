@@ -1,7 +1,7 @@
 #! /bin/bash
 
-git clone git://github.com/creationix/nvm.git ~/git/nvm
-ln -sfn ~/git/nvm ~/.nvm
+git clone git://github.com/creationix/nvm.git ~/.nvm
+ln -sfn ~/.nvm ~/git/nvm
 
 source ~/.nvm/nvm.sh
 

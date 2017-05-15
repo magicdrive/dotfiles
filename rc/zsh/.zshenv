@@ -175,8 +175,9 @@ fi
 
 # node.js
 # nvm
-if [ -f ~/.nvm/nvm.sh ];then
-    source ~/.nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+if [ -e "$NVM_DIR/nvm.sh" ];then
+    source "$NVM_DIR/nvm.sh"
 fi
 
 ### llvm

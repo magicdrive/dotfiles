@@ -1,7 +1,7 @@
 ### .zshrc ###
 echo "Loading $HOME/.zshrc"
 
-source ~/.zshenv
+#source ~/.zshenv
 
 ###############################################
 # キーバインド                                #
