@@ -2,7 +2,7 @@
 
 set -ue
 
-pypis=('flake8' 'httpie' 'mercurial' 'ansible')
+pypis=('flake8' 'httpie' 'virtualenv' 'ansible')
 
 for x in "${pypis[@]}";do
   pip install ${x}

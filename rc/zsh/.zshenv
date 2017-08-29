@@ -107,21 +107,10 @@ if [ -e "${GRADLE_HOME}" ];then
 fi
 
 ### golang
-#
-
-
-
-if [ "$(uname -s)" = "Darwin" ];then
-    export PATH="$PATH:/usr/local/opt/go/libexec/bin"
-    export GOROOT="/usr/local/opt/go"
-fi
-
-if [ "$(uname -s)" = "Linux" ];then
-    if [ -e "$HOME/opt/go" ];then
-        export GOROOT="$HOME/opt/go"
-    elif [ -e "/opt/go" ];then
-        export GOROOT="/opt/go"
-    fi
+if [ -e "$HOME/opt/go" ];then
+    export GOROOT="$HOME/opt/go"
+elif [ -e "/opt/go" ];then
+    export GOROOT="/opt/go"
 fi
 
 if [ -e "${GOROOT}" ];then
