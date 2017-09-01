@@ -25,10 +25,10 @@ if [ -e "$HOME/opt/opencv" ];then
     fi
 fi
 
-# xcode includepath
-if [ "$(uname -s)" = "Darwin" ];then
-    export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
-fi
+## xcode includepath
+#if [ "$(uname -s)" = "Darwin" ];then
+#    export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
+#fi
 
 ### laguage
 export LANG='en_US.UTF-8'
