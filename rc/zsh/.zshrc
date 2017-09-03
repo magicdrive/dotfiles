@@ -2,6 +2,7 @@
 echo "Loading $HOME/.zshrc"
 
 #source ~/.zshenv
+export PATH="$MY_CONFIG_PATH:$PATH"
 
 ###############################################
 # キーバインド                                #

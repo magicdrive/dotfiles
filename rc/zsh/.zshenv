@@ -215,4 +215,6 @@ if [ -e "${DLANG_HOME}" ];then
     export PATH="${DLANG_HOME}/bin:$PATH"
 fi
 
+export MY_CONFIG_PATH="$PATH"
+
 #__END__
