@@ -2,6 +2,8 @@
 ### env define
 ###
 
+setopt no_global_rcs
+
 export PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:$PATH:"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
 find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
@@ -214,7 +216,5 @@ export DLANG_HOME="$HOME/opt/dmd2"
 if [ -e "${DLANG_HOME}" ];then
     export PATH="${DLANG_HOME}/bin:$PATH"
 fi
-
-export MY_CONFIG_PATH="$PATH"
 
 #__END__
