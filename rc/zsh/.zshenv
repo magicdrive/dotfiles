@@ -2,7 +2,9 @@
 ### env define
 ###
 
-setopt no_global_rcs
+if [ "$(uname -s)" != 'Darwin' ];then
+    setopt no_global_rcs
+fi
 
 export PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:$PATH:"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
