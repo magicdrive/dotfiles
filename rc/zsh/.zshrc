@@ -456,13 +456,6 @@ compdef tig=git
 ### ruby-bundler
 alias bundle-private="bundle install --path=./vendor/bundle --binstubs=./.bundle/binstubs"
 
-### ruby
-alias sp="spring"
-alias sp-rails="spring rails"
-alias sp-rails="spring rake"
-compdef sp-rails=rails
-compdef sp-rake=rake
-
 if [[ -x "$(which brew)" ]];then
     brew-package-upgrade() {for x in $(echo update upgrade cleanup);do echo "-----${x}-----" && brew $x ;done;}
 fi
