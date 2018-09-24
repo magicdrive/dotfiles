@@ -219,4 +219,11 @@ if [ -e "${DLANG_HOME}" ];then
     export PATH="${DLANG_HOME}/bin:$PATH"
 fi
 
+# rust
+export CARGO_HOME="$HOME/.cargo"
+if [ -e "${CARGO_HOME}" ];then
+    source $HOME/.cargo/env
+    export PATH="${CARGO_HOME}/bin:$PATH"
+fi
+
 #__END__
