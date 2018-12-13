@@ -14,24 +14,12 @@ go get -u github.com/zimbatm/direnv
 go get -u github.com/pilu/fresh
 go get -u github.com/mattn/goreman
 go get -u github.com/peco/peco/cmd/peco
+go get -u github.com/cespare/reflex
 
 #echo gox -build-toolchain
 #sudo GOROOT="$GOROOT" GOPATH="$GOPATH" PATH="$PATH" "$(which gox)" -build-toolchain
 
-# goenv
-#echo cp ~/.gopath/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ~/.gopath/bin/
-#cp -a ~/.gopath/src/bitbucket.org/ymotongpoo/goenv/shellscripts/goenvwrapper.sh ~/.gopath/bin/
-
 echo complete!
 
-##cat << 'STRING'
-##Packeges install complete.
-##Run the following command to activate the goof/goenv is!
-##
-##    source $(which goenvwrapper.sh)
-##
-##enjoy!
-##
-##STRING
 
 exit 0
