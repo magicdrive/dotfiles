@@ -86,7 +86,7 @@ if [ -e "${SCALA_HOME}" ];then
     export MANPATH="${SCALA_HOME}/man:$MANPATH"
 fi
 # sbt
-export SBT_HOME="/opt/sbt"
+export SBT_HOME="/opt/sbt/default"
 if [ -e "${SBT_HOME}" ];then
     export PATH="${SBT_HOME}/bin:${PATH}:"
 fi
