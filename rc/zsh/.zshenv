@@ -80,7 +80,7 @@ if [ -e "${JAVA_HOME}" ];then
 fi
 
 ### scala
-export SCALA_HOME="/opt/scala"
+export SCALA_HOME="/opt/scala/default"
 if [ -e "${SCALA_HOME}" ];then
     export PATH="${SCALA_HOME}/bin:${PATH}:"
     export MANPATH="${SCALA_HOME}/man:$MANPATH"
