@@ -29,10 +29,6 @@ if [ -e "$HOME/opt/opencv" ];then
     fi
 fi
 
-## xcode includepath
-#if [ "$(uname -s)" = "Darwin" ];then
-#    export CFLAGS="-I$(xcrun --show-sdk-path)/usr/include"
-#fi
 
 ### laguage
 export LANG='en_US.UTF-8'
@@ -46,12 +42,6 @@ export EDITOR=vim
 export PAGER='less'
 export LESS='-R'
 
-# Android
-if [ "$(uname -s)" = 'Darwin' ];then
-    export ANDROID_SDK_ROOT=/Applications/android-sdk-macosx
-    export ANDROID_HOME=/Applications/android-sdk-macosx
-    export ANDROID_NDK_HOME=/usr/local/opt/android-ndk
-fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
     if [ -d "/Applications/VMware Fusion.app" ];then
@@ -157,13 +147,9 @@ if [ -e "${RBENV_ROOT}" ];then
         eval "$(rbenv init - )"
     fi
 fi
-#mruby
-if [ -e $HOME/local/mruby ];then
-    export MRUBY_ROOT=$HOME/git/mruby/Home
-    export PATH="$MRUBY_ROOT/bin:$PATH"
-elif [ -e /usr/local/mruby/HOME ];then
-    export MRUBY_ROOT=/usr/local/mruby/HOME
-    export PATH="$MRUBY_ROOT/bin:$PATH"
+
+if [ -e "/usr/local/ssl" ];then
+    alias rbenv="RUBY_CONFIGURE_OPTS=--with-openssl-dir=/usr/local/ssl rbenv"
 fi
 
 # node.js
