@@ -41,8 +41,8 @@ zle -I
 eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
 }
 zle -N edit-file
-bindkey -M vicmd '^G^O' edit-file
-bindkey -M viins '^G^O' edit-file
+bindkey -M vicmd '^I^O' edit-file
+bindkey -M viins '^I^O' edit-file
 
 function start_editor() {
 exec < /dev/tty
@@ -50,8 +50,8 @@ ${EDITOR}
 zle reset-prompt
 }
 zle -N start_editor
-bindkey -M vicmd '^G^J' start_editor
-bindkey -M viins '^G^J' start_editor
+bindkey -M vicmd '^I^J' start_editor
+bindkey -M viins '^I^J' start_editor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
@@ -71,7 +71,7 @@ blank_to_git_status() {
     zle reset-prompt
 }
 zle -N blank_to_git_status
-bindkey '^J' blank_to_git_status
+bindkey '^G' blank_to_git_status
 
 ###############################################
 # 関数                                        #
