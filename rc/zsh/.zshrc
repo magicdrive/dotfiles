@@ -331,6 +331,16 @@ if [[ -x "$(which direnv)" ]];then
 fi
 
 
+### fzf
+if [[ -x "$(which rg)" ]];then
+    export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+fi
+if [[ -x "$(which bat)" ]];then
+    export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
+fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
 autoload -U compinit
 compinit -u
 ###############################################
@@ -504,9 +514,6 @@ if [[ -f /etc/redhat-release ]] && [[ -x "$(which yum)" ]];then
     alias yum="sudo yum"
 fi
 
-
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

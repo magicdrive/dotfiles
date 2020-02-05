@@ -1,0 +1,9 @@
+#! /bin/bash
+
+cd "$(git rev-parse --show-toplevel)" &&
+modified_files=$(git status --short | awk '{print $2}') &&
+selected_files=$(echo "$modified_files" | fzf -m --preview 'git -c color.ui=always diff {}') &&
+git add $selected_files
+git status
+
+exit 0
