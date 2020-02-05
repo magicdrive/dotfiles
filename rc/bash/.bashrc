@@ -97,3 +97,5 @@ __tmux_attach() {
     fi
 }
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

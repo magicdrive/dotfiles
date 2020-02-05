@@ -508,3 +508,5 @@ fi
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
