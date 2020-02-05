@@ -302,13 +302,6 @@ if [ -d ${github_flow_completions} ];then
     fpath+=(${github_flow_completions}/src $fpath)
 fi
 
-# z
-z_home=$HOME/git/z
-if [ -d ${z_home} ];then
-    _Z_CMD=j
-    source  ${z_home}/z.sh
-fi
-
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
 if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
@@ -330,16 +323,67 @@ if [[ -x "$(which direnv)" ]];then
     fi
 fi
 
-
 ### fzf
-if [[ -x "$(which rg)" ]];then
-    export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-fi
-if [[ -x "$(which bat)" ]];then
-    export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
-fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+fzf_path=$HOME/.fzf.zsh
+if [ -f ${fzf_path} ];then
+    if [[ -x "$(which rg)" ]];then
+        export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+    fi
+    if [[ -x "$(which bat)" ]];then
+        export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
+    fi
 
+    export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+    source ${fzf_path}
+fi
+
+# z
+z_home="$HOME/git/z"
+if [ -d ${z_home} ];then
+    _Z_CMD=j
+    source ${z_home}/z.sh
+fi
+
+if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
+    z_list() {
+     _z -l 2>&1 | perl -pe 's/^[\.0-9]*\s*//g'
+    }
+
+    fzf-jump-widget() {
+      setopt localoptions pipefail no_aliases 2> /dev/null
+      local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+      if [[ -z "$dir" ]]; then
+        zle redisplay
+        return 0
+      fi
+      cd "$dir"
+      unset dir # ensure this doesn't end up appearing in prompt expansion
+      local ret=$?
+      zle fzf-redraw-prompt
+      return $ret
+    }
+    zle     -N    fzf-jump-widget
+    bindkey '^J' fzf-jump-widget
+
+    fzf-nestcd-widget() {
+      local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+        -o -type d -print 2> /dev/null | cut -b3-"
+      setopt localoptions pipefail no_aliases 2> /dev/null
+      local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+      if [[ -z "$dir" ]]; then
+        zle redisplay
+        return 0
+      fi
+      cd "$dir"
+      unset dir # ensure this doesn't end up appearing in prompt expansion
+      local ret=$?
+      zle fzf-redraw-prompt
+      return $ret
+    }
+    zle     -N    fzf-nestcd-widget
+    bindkey '^N' fzf-nestcd-widget
+
+fi 
 
 autoload -U compinit
 compinit -u
@@ -508,6 +552,7 @@ done
 if [[ -f /etc/debian_version ]] && [[ -x "$(which aptitude)" ]];then
     alias aptitude="sudo aptitude"
     alias apt-get="sudo apt-get"
+    alias apt-get="sudo apt"
 fi
 ### if fedora-based
 if [[ -f /etc/redhat-release ]] && [[ -x "$(which yum)" ]];then
