@@ -369,7 +369,7 @@ fi
 
 if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
     z_list() {
-     _z -l 2>&1 | perl -pe 's/^[\.0-9]*\s*//g'
+        _z -l 2>&1 | perl -pe 's/^(?:common:|[\.0-9]*)\s*//g'
     }
 
     fzf-jump-widget() {
