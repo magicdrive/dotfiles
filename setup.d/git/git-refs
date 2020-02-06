@@ -1,0 +1,5 @@
+#! /bin/bash
+
+git checkout $(git branch -a | perl -pe "s/remotes\/origin\///" | sort | uniq | grep refs |fzf)
+
+exit 0;
