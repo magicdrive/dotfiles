@@ -333,11 +333,31 @@ if [ -f ${fzf_path} ];then
         export FZF_CTRL_T_OPTS='--preview "bat --color=always --style=header,grid --line-range :100 {}"'
     fi
 
+    if [ $(uname) = 'Darwin' ];then
+        if [ -f $HOME/local/bin/ls ];then
+            export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
+            alias fzpd="fzf --preview 'ls --color=always -lha {}'"
+        elif [ -f /usr/local/bin/gls ];then
+            export FZF_CTRL_O_OPTS="--preview 'gls --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'gls --color=always -lha {}'"
+            alias fzpd="fzf --preview 'gls --color=always -lha {}'"
+        else
+            export FZF_CTRL_O_OPTS="--preview 'ls -G -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'ls -G -lha {}'"
+            alias fzpd="fzf --preview 'ls -G -lha {}'"
+        fi
+    else
+        export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
+        export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
+        alias fzpd="fzf --preview 'ls --color=always -lha {}'"
+    fi
+
+
     export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
     source ${fzf_path}
 
     alias fzp="fzf --preview 'bat --color=always --style=header,grid --line-range :100 {}'"
-    alias fzpd="fzf --preview 'ls -lha {}'"
 fi
 
 # z
@@ -354,7 +374,7 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
 
     fzf-jump-widget() {
       setopt localoptions pipefail no_aliases 2> /dev/null
-      local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+      local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS" $(__fzfcmd) +m)"
       if [[ -z "$dir" ]]; then
         zle redisplay
         return 0
@@ -372,7 +392,7 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
       local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
         -o -type d -print 2> /dev/null | cut -b3-"
       setopt localoptions pipefail no_aliases 2> /dev/null
-      local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) +m)"
+      local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_O_OPTS" $(__fzfcmd) +m)"
       if [[ -z "$dir" ]]; then
         zle redisplay
         return 0
