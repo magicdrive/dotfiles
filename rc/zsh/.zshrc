@@ -335,6 +335,9 @@ if [ -f ${fzf_path} ];then
 
     export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
     source ${fzf_path}
+
+    alias fzp="fzf --preview 'bat --color=always --style=header,grid --line-range :100 {}'"
+    alias fzpd="fzf --preview 'ls -lha {}'"
 fi
 
 # z
@@ -381,7 +384,7 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
       return $ret
     }
     zle     -N    fzf-nestcd-widget
-    bindkey '^Y' fzf-nestcd-widget
+    bindkey '^O' fzf-nestcd-widget
 
 fi
 
