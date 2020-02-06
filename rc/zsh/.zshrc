@@ -381,7 +381,7 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
       return $ret
     }
     zle     -N    fzf-nestcd-widget
-    bindkey '^I' fzf-nestcd-widget
+    bindkey '^Y' fzf-nestcd-widget
 
 fi
 
