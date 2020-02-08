@@ -354,7 +354,8 @@ if [ -f ${fzf_path} ];then
     fi
 
 
-    export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+    export FZF_DEFAULT_OPTS='--height 80% --reverse --border'
+    export FORGIT_LOG_FZF_OPTS="${FZF_DEFAULT_OPTS}"
     source ${fzf_path}
 
     alias fzp="fzf --preview 'bat --color=always --style=header,grid --line-range :100 {}'"

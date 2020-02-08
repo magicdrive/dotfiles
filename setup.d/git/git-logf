@@ -1,0 +1,6 @@
+#! /bin/bash
+
+source ~/.zsh/functions/forgit.plugin.zsh
+
+forgit::log
+exit 0
