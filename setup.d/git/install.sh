@@ -4,6 +4,8 @@
 set -e
 current=$(cd $( dirname $0 ) && pwd)
 
+git config --global core.quotepath false
+
 ${current}/git-conf.sh
 cp -af ${current}/git-author-def $HOME/local/bin
 cp -af ${current}/git-keepfile $HOME/local/bin

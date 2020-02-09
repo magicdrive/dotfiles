@@ -431,6 +431,11 @@ else
     alias ls="ls --color=auto"
 fi
 
+if [ -f $HOME/local/bin/bat ];then
+    alias cat=bat
+    alias _cat=/bin/cat
+fi
+
 # grep
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
