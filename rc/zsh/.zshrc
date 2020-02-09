@@ -567,6 +567,11 @@ if [ "$(uname -s)" = 'Darwin' ];then
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
+    alias vcd='cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | fzf)'
+    alias vin='vcd; vagrant up; vagrant ssh'
+fi
+
+if [ "$(uname -s)" = 'Darwin' ];then
     if [[ -x "$(which reattach-to-user-namespace)" ]];then
         alias npbcopy="reattach-to-user-namespace pbcopy"
         alias npbpaste="reattach-to-user-namespace pbpaste"
