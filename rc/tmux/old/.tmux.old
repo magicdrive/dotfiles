@@ -1,0 +1,73 @@
+# Prefix
+####set-option -g prefix C-t
+set-option -g prefix C-z
+unbind-key C-b
+bind-key C-z send-prefix
+
+# View
+set -g status-interval 5
+set -g status-left-length 16
+set -g status-right-length 50
+
+set -g status-bg black
+set -g status-fg white
+set -g status-left '#[fg=cyan,bold][#14H:#S]#[default]]'
+set -g status-right '|#[fg=magenta,bold]#(load.sh)#[default]| #[fg=blue,bold][%a %m/%d %H:%M]#[default]'
+set -g message-attr bold
+set -g message-fg white
+set -g message-bg red
+
+set  -g pane-active-border-fg cyan
+set  -g pane-active-border-bg black
+setw -g window-status-current-fg blue
+
+set-window-option -g mode-bg white
+set-window-option -g mode-fg black
+set-window-option -g window-status-fg white
+set-window-option -g window-status-bg black
+#set-window-option -g window-status-current-attr underline
+set-window-option -g window-status-current-bg black
+set-window-option -g window-status-current-fg yellow
+
+# Option
+set-window-option -g utf8 on
+set-window-option -g mode-keys vi
+set-window-option -g automatic-rename off
+set-option -g mouse-select-pane on
+set-option -g base-index 1
+
+# KeyBindings
+unbind l
+unbind ^C
+
+bind C-r source-file ~/.tmux.conf
+bind C-n next-window
+bind C-c new-window
+bind C-p previous-window
+bind p previous-window
+bind 1 break-pane
+bind v split-window -v
+bind h split-window -h
+
+# vでマーク開始
+bind -t vi-copy v begin-selection
+# yでヤンク
+bind -t vi-copy y copy-selection
+
+bind H select-pane -L
+bind J select-pane -D
+bind K select-pane -U
+bind L select-pane -R
+
+bind -r C-h resize-pane -L 6
+bind -r C-l resize-pane -R 6
+bind -r C-j resize-pane -D 6
+bind -r C-k resize-pane -U 6
+bind -r s swap-pane -U
+
+bind k kill-pane
+bind x kill-window
+bind i display-panes
+bind y copy-mode
+bind p paste-buffer
+

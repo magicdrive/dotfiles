@@ -12,39 +12,49 @@ set -g status-right-length 50
 
 set-option -g default-terminal "xterm-256color"
 
-set -g status-style bg=colour017,fg=cyan
+set -g status-bg colour017
+set -g status-fg cyan
 #set -g status-bg black
 #set -g status-fg white
 set -g status-left '#[fg=cyan,bold][#14H:#S]#[default]'
 set -g status-right '|#[fg=magenta,bold]#(load.sh)#[default]| #[fg=blue,bold][%a %m/%d %H:%M]#[default]'
+set -g message-attr bold
+set -g message-fg white
+set -g message-bg red
 
 set-environment -gu RBENV_VERSION
 
-set -g message-style bold,bold,fg=white
+set -g message-attr bold
+set -g message-fg white
+set -g message-bg red
 
-set  -g pane-active-border-style bg=black
+set  -g pane-active-border-fg cyan
+set  -g pane-active-border-bg black
+set  -g window-status-current-fg blue
 
-set-window-option -g mode-style bg=white,fg=black
+set-window-option -g mode-bg white
+set-window-option -g mode-fg black
 
-set-window-option -g window-status-style fg=white,bg=colour017
+set-window-option -g window-status-fg white
+set-window-option -g window-status-bg colour017
 
-set-window-option -g window-status-current-style fg=blue,fg=yellow,bg=colour017
+set-window-option -g window-status-current-fg yellow
+set-window-option -g window-status-current-bg colour017
 
 # Option
+set-window-option -g utf8 on
+set -g status-utf8 on
 set-window-option -g mode-keys vi
 set-window-option -g automatic-rename on
 set-window-option -g monitor-activity on
 
 set-option -g base-index 1
 
-## mouse
-#set-option -g mouse-select-pane off
-#set-option -g mode-mouse off
-#set-option -g mouse-resize-pane off
-#set-option -g mouse-select-pane off
-
-
-
+# mouse
+set-option -g mouse-select-pane off
+set-option -g mode-mouse off
+set-option -g mouse-resize-pane off
+set-option -g mouse-select-pane off
 
 # KeyBindings
 unbind l
@@ -58,6 +68,11 @@ bind C-p previous-window
 bind 1 break-pane
 bind w split-window -vc '#{pane_current_path}'
 bind h split-window -hc '#{pane_current_path}'
+
+# vでマーク開始
+bind -t vi-copy v begin-selection
+# yでヤンク
+bind -t vi-copy y copy-selection
 
 bind o command-prompt "rename-window %%"
 bind v choose-window
@@ -99,15 +114,7 @@ bind i display-panes
 bind y copy-mode
 bind p paste-buffer
 
-#---------------------------------
-# pop-win
-#---------------------------------
-bind-key r command-prompt "split-window -v -p 70  'exec echo \". ~/.zsh/functions/my_function.zsh && man %% \" | zsh'"
 
-#---------------------------------
-# tmux-powerline
-#---------------------------------
-if "test -f ~/.tmux-powerline.conf && test -d ~/git/tmux-powerline" "source-file ~/.tmux-powerline.conf"
 
 #---------------------------------
 # tmux-reattach-to-user-namespace
