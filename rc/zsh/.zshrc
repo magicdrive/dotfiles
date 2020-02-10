@@ -282,6 +282,8 @@ stty stop undef
 # completions                                 #
 ###############################################
 
+### plugins
+
 # my completions
 fpath+=($HOME/.zsh/completions $fpath)
 
@@ -295,6 +297,13 @@ fi
 zsh_completions=$HOME/git/zsh-completions
 if [ -d ${zsh_completions} ];then
     fpath+=(${zsh_completions}/src $fpath)
+fi
+
+# zsh autosuggestions
+zsh_autosuggestions=$HOME/git/zsh-autosuggestions
+if [ -d ${zsh_autosuggestions} ];then
+    #ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#ff00ff,bg=cyan,bold,underline"
+    source "$zsh_autosuggestions/zsh-autosuggestions.zsh"
 fi
 
 github_flow_completions=$HOME/.zsh/completions/git-hubflow-completion.zsh
