@@ -10,7 +10,8 @@ for x in ${libs[@]}; do git clone git://github.com/zsh-users/$x $HOME/git/$x; do
 
 # z
 git clone git@github.com:rupa/z.git $HOME/git/z
-sudo ln -sf $HOME/git/z/z.1 /usr/local/share/man/man1/
+mkdir -p $HOME/local/share/man/man1/
+sudo ln -sf $HOME/git/z/z.1 $HOME/local/share/man/man1/
 
 #git clone git@github.com:magicdrive/zsh-vcs-prompt $HOME/git/zsh-vcs-prompt
 

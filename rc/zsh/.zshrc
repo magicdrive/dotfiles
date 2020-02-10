@@ -218,10 +218,10 @@ vim_mode_status() {
 #    ZSH_VCS_PROMPT_ENABLE_CACHING='true'
 #fi
 #RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
-RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+RPROMPT="$(vim_mode_status) $(TZ="Asia/Tokyo" date "+%Y/%m/%d %H:%M:%S" )"
 function zle-line-init zle-keymap-select {
 #RPROMPT="$(vcs_super_info 2>/dev/null) $(vim_mode_status) $(date +%Y/%m/%d) %T "
-RPROMPT="$(vim_mode_status) $(date +%Y/%m/%d) %T "
+RPROMPT="$(vim_mode_status) $(TZ="Asia/Tokyo" date "+%Y/%m/%d %H:%M:%S" )"
 zle reset-prompt
 }
 zle -N zle-line-init
@@ -583,10 +583,10 @@ for x in $(echo supervisorctl supervisord);do
 done
 
 ### if debian-based
-if [[ -f /etc/debian_version ]] && [[ -x "$(which aptitude)" ]];then
+if [[ -f /etc/debian_version ]];then
     alias aptitude="sudo aptitude"
     alias apt-get="sudo apt-get"
-    alias apt-get="sudo apt"
+    alias apt="sudo apt"
 fi
 ### if fedora-based
 if [[ -f /etc/redhat-release ]] && [[ -x "$(which yum)" ]];then
