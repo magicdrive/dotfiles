@@ -116,6 +116,15 @@ if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
 fi
 
+### goenv
+export GOENV_ROOT="${HOME}/.goenv"
+if [ -e "${GOENV_ROOT}" ]; then
+    export PATH="$GOENV_ROOT/shims:$GOENV_ROOT/bin:$PATH"
+    export PATH="$GOENV_ROOT/bin:$PATH"
+    eval "$(goenv init -)"
+fi
+
+
 ### perl
 # plenv
 export PLENV_ROOT="$HOME/.plenv"
