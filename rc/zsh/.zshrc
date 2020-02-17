@@ -576,8 +576,8 @@ if [ "$(uname -s)" = 'Darwin' ];then
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
-    alias vcd='cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | fzf)'
-    alias vin='vcd; vagrant up; vagrant ssh'
+    alias dcdw='cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | fzf);'
+    alias dcd='cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | fzf);vagrant up; vagrant ssh'
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
