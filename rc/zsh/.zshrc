@@ -383,35 +383,40 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
     }
 
     fzf-jump-widget() {
-      setopt localoptions pipefail no_aliases 2> /dev/null
-      local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS" $(__fzfcmd) +m)"
-      if [[ -z "$dir" ]]; then
-        zle redisplay
-        return 0
+
+      if [ -z "$BUFFER" ];then
+        setopt localoptions pipefail no_aliases 2> /dev/null
+        local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS" $(__fzfcmd) +m)"
+        if [[ -z "$dir" ]]; then
+          zle redisplay
+          return 0
+        fi
+        cd "$dir"
+        unset dir # ensure this doesn't end up appearing in prompt expansion
+        local ret=$?
+        zle fzf-redraw-prompt
+        return $ret
       fi
-      cd "$dir"
-      unset dir # ensure this doesn't end up appearing in prompt expansion
-      local ret=$?
-      zle fzf-redraw-prompt
-      return $ret
     }
     zle     -N    fzf-jump-widget
     bindkey '^J' fzf-jump-widget
 
     fzf-nestcd-widget() {
-      local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-        -o -type d -print 2> /dev/null | cut -b3-"
-      setopt localoptions pipefail no_aliases 2> /dev/null
-      local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_O_OPTS" $(__fzfcmd) +m)"
-      if [[ -z "$dir" ]]; then
-        zle redisplay
-        return 0
+      if [ -z "$BUFFER" ];then
+        local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+          -o -type d -print 2> /dev/null | cut -b3-"
+        setopt localoptions pipefail no_aliases 2> /dev/null
+        local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_O_OPTS" $(__fzfcmd) +m)"
+        if [[ -z "$dir" ]]; then
+          zle redisplay
+          return 0
+        fi
+        cd "$dir"
+        unset dir # ensure this doesn't end up appearing in prompt expansion
+        local ret=$?
+        zle fzf-redraw-prompt
+        return $ret
       fi
-      cd "$dir"
-      unset dir # ensure this doesn't end up appearing in prompt expansion
-      local ret=$?
-      zle fzf-redraw-prompt
-      return $ret
     }
     zle     -N    fzf-nestcd-widget
     bindkey '^O' fzf-nestcd-widget
