@@ -119,6 +119,8 @@ fi
 ### goenv
 export GOENV_ROOT="${HOME}/.goenv"
 if [ -e "${GOENV_ROOT}" ]; then
+    export GOENV_DISABLE_GOROOT=1
+    export GOENV_DISABLE_GOPATH=1
     export PATH="$GOENV_ROOT/shims:$GOENV_ROOT/bin:$PATH"
     export PATH="$GOENV_ROOT/bin:$PATH"
     eval "$(goenv init -)"

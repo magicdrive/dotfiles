@@ -343,10 +343,14 @@ if [ -f ${fzf_path} ];then
     fi
 
     if [ $(uname) = 'Darwin' ];then
-        if [ -f $HOME/local/bin/ls ];then
+        if [ -f "$HOME/local/bin/ls" ];then
             export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
             export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
             alias fzpd="fzf --preview 'ls --color=always -lha {}'"
+        elif [ -f "$HOME/local/bin/exa" ];then
+            export FZF_CTRL_O_OPTS="--preview 'exa --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'exa --color=always -lha {}'"
+            alias fzpd="fzf --preview 'exa --color=always -lha {}'"
         elif [ -f /usr/local/bin/gls ];then
             export FZF_CTRL_O_OPTS="--preview 'gls --color=always -lha {}'"
             export FZF_CTRL_J_OPTS="--preview 'gls --color=always -lha {}'"
@@ -357,9 +361,15 @@ if [ -f ${fzf_path} ];then
             alias fzpd="fzf --preview 'ls -G -lha {}'"
         fi
     else
-        export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
-        export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
-        alias fzpd="fzf --preview 'ls --color=always -lha {}'"
+        if [ -f "$HOME/local/bin/exa" ];then
+            export FZF_CTRL_O_OPTS="--preview 'exa --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'exa --color=always -lha {}'"
+            alias fzpd="fzf --preview 'exa --color=always -lha {}'"
+        else
+            export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
+            alias fzpd="fzf --preview 'ls --color=always -lha {}'"
+        fi
     fi
 
 
@@ -434,15 +444,21 @@ setopt complete_aliases
 alias d="cd"
 
 if [ $(uname) = 'Darwin' ];then
-    if [ -f $HOME/local/bin/ls ];then
+    if [ -f "$HOME/local/bin/ls" ];then
         alias ls="ls --color=auto"
+    elif [ -f "$HOME/local/bin/exa" ];then
+        alias ls="exa --color=auto"
     elif [ -f /usr/local/bin/gls ];then
         alias ls="gls --color=auto"
     else
         alias ls="ls -G"
     fi
 else
-    alias ls="ls --color=auto"
+    if [ -f "$HOME/local/bin/exa" ];then
+        alias ls="exa --color=auto"
+    else
+        alias ls="ls --color=auto"
+    fi
 fi
 
 if [ -f $HOME/local/bin/bat ];then
@@ -533,7 +549,7 @@ alias sc="screen"
 alias cd..='cd ..'
 alias sl='ls'
 alias la='ls -a'
-alias l='ls -FN --time-style=long-iso --color=auto'
+alias l='ls -F --time-style=long-iso --color=auto'
 alias ll='ls -lh'
 alias lal='ls -lha'
 alias clr='clear'
