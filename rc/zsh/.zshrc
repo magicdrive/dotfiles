@@ -457,11 +457,11 @@ fi
 
 modernize() {
     if [ -f "$HOME/local/bin/bat" ];then
-        alias _cat="cat";
+        alias __cat="cat";
         alias cat="bat";
     fi
     if [ -f "$HOME/local/bin/exa" ];then
-	    alias _ls="ls --color=auto"
+	    alias __ls="ls --color=auto"
         alias ls="exa --color=auto"
     fi
 }
@@ -470,12 +470,12 @@ modernize;
 
 ancientize() {
     if [ -f "$HOME/local/bin/bat" ];then
-        unalias _cat
+        unalias __cat
         unalias cat
     fi
 
     if [ -f "$HOME/local/bin/exa" ];then
-	    unalias _ls
+	    unalias __ls
 	    alias ls="ls --color=auto"
     fi
 }
