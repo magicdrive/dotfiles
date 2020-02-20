@@ -446,20 +446,40 @@ alias d="cd"
 if [ $(uname) = 'Darwin' ];then
     if [ -f "$HOME/local/bin/ls" ];then
         alias ls="ls --color=auto"
-    elif [ -f "$HOME/local/bin/exa" ];then
-        alias ls="exa --color=auto"
     elif [ -f /usr/local/bin/gls ];then
         alias ls="gls --color=auto"
     else
         alias ls="ls -G"
     fi
 else
-    if [ -f "$HOME/local/bin/exa" ];then
-        alias ls="exa --color=auto"
-    else
-        alias ls="ls --color=auto"
-    fi
+    alias ls="ls --color=auto"
 fi
+
+modernize() {
+    if [ -f "$HOME/local/bin/bat" ];then
+        alias _cat="cat";
+        alias cat="bat";
+    fi
+    if [ -f "$HOME/local/bin/exa" ];then
+	    alias _ls="ls --color=auto"
+        alias ls="exa --color=auto"
+    fi
+}
+
+modernize;
+
+ancientize() {
+    if [ -f "$HOME/local/bin/bat" ];then
+        unalias _cat
+        unalias cat
+    fi
+
+    if [ -f "$HOME/local/bin/exa" ];then
+	    unalias _ls
+	    alias ls="ls --color=auto"
+    fi
+}
+
 
 if [ -f $HOME/local/bin/bat ];then
     alias cat=bat
