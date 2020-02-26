@@ -1,6 +1,6 @@
 #! /bin/bash
 
-git checkout $(git branch -a | perl -pe "s/remotes\/origin\///" | perl -pe "s/\*//" | perl -pe "s/^\s*//g" | sort --reverse | uniq | grep refs |fzf --preview \
+git checkout $(git branch -a | perl -pe "s/remotes\/origin\///" | perl -pe "s/\*//" | perl -pe "s/^\s*//g" | sort --key 2 --field-separator "-" --numeric --reverse | uniq | grep refs |fzf --preview \
     'git log --graph --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit --date=relative origin/{}'
 )
 
