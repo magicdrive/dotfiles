@@ -81,12 +81,6 @@ if [ -e "${SBT_HOME}" ];then
     export PATH="${SBT_HOME}/bin:${PATH}:"
 fi
 
-### clojure
-export CLOJURE_HOME="/opt/clojure"
-if [ -e "${CLOJURE_HOME}" ];then
-    export PATH="${CLOJURE_HOME}/bin:${PATH}:"
-fi
-
 ### groovy
 export GROOVY_HOME="/opt/groovy"
 if [ -e "${GROOVY_HOME}" ];then
@@ -188,7 +182,7 @@ fi
 export ELIXIR_HOME="/opt/beamvm/elixir"
 if [ -e ${ELIXIR_HOME} ];then
     export PATH="${ELIXIR_HOME}/bin:$PATH"
-    alias rebar="${ELIXIR_HOME}rebar"
+    alias rebar="${ELIXIR_HOME}/rebar"
 fi
 
 # leiningen
