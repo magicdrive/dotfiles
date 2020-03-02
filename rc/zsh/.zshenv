@@ -182,7 +182,6 @@ fi
 export ELIXIR_HOME="/opt/beamvm/elixir"
 if [ -e ${ELIXIR_HOME} ];then
     export PATH="${ELIXIR_HOME}/bin:$PATH"
-    alias rebar="${ELIXIR_HOME}/rebar"
 fi
 
 # leiningen
