@@ -238,7 +238,7 @@ fi
 
 # path
 NEPATH="" ;
-for x in $(echo $PATH | perl -pe 's/:/\n/g' | grep "$HOME/\..*" | sort | uniq); do
+for x in $(echo $PATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | grep "$HOME/\..*" | sort | uniq); do
     export NEPATH="$x:$NEPATH";
 done
 export PATH="$CORE_PATH:$NEPATH"
@@ -246,7 +246,7 @@ export PATH="$CORE_PATH:$NEPATH"
 # manpath
 NEMANPATH="$MANPATH" ;
 unset MANPATH
-for x in $(echo $NEMANPATH | perl -pe 's/:/\n/g' | sort | uniq); do
+for x in $(echo $PATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | sort | uniq); do
     export MANPATH="$x:$MANPATH";
 done
 
