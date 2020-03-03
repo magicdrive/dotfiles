@@ -8,6 +8,7 @@ if [ "$(uname -s)" != 'Darwin' ];then
 fi
 
 export CORE_PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:/usr/bin:/sbin:/bin:/sbin"
+export PATH="$CORE_PATH"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
     find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
 ):$MANPATH"
@@ -126,7 +127,7 @@ fi
 export GOENV_ROOT="${HOME}/.goenv"
 if [ -e "${GOENV_ROOT}" ]; then
     export GOENV_DISABLE_GOROOT=1
-    export GOENV_DISABLE_GOCORE_PATH=1
+    export GOENV_DISABLE_GO_PATH=1
     export PATH="$GOENV_ROOT/shims:$GOENV_ROOT/bin:$PATH"
     export PATH="$GOENV_ROOT/bin:$CORE_PATH"
     eval "$("$GOENV_ROOT/bin/goenv" init -)"
