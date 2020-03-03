@@ -87,6 +87,7 @@ if [ -e "${GROOVY_HOME}" ];then
     export PATH="${GROOVY_HOME}/bin:${PATH}:"
     export MANPATH="${GROOVY_HOME}/man:$MANPATH"
 fi
+
 ### gradle
 export GRADLE_HOME="/opt/gradle"
 if [ -e "${GRADLE_HOME}" ];then
@@ -101,7 +102,7 @@ elif [ -e "/opt/nim" ];then
     export NIMHOME="/opt/nim"
 fi
 if [ -e "${NIMHOME}" ];then
-    export PATH="${NIMHOME}/bin:${PATH}"
+    export PATH="${NIMHOME}/bin:$HOME/.nimble/bin:${PATH}"
 fi
 
 ### golang
