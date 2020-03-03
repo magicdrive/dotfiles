@@ -228,10 +228,9 @@ if [ -e "${CARGO_HOME}" ];then
 fi
 
 # asdf
-export ASDF="$HOME/.asdf"
+export ASDF_HOME="$HOME/.asdf"
 if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/asdf.sh"
-    source "${ASDF_HOME}/completions/asdf.bash"
 fi
 
 #__END__

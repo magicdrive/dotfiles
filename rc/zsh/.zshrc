@@ -332,6 +332,10 @@ if [[ -x "$(which direnv)" ]];then
     fi
 fi
 
+if [ -e "${ASDF_HOME}" ];then
+    source "${ASDF_HOME}/completions/asdf.bash"
+fi
+
 ### fzf
 fzf_path=$HOME/.fzf.zsh
 if [ -f ${fzf_path} ];then
