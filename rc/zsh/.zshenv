@@ -94,6 +94,16 @@ if [ -e "${GRADLE_HOME}" ];then
     export MANPATH="${GRADLE_HOME}/man:$MANPATH"
 fi
 
+### nim
+if [ -e "$HOME/opt/nim" ];then
+    export NIMHOME="$HOME/opt/nim"
+elif [ -e "/opt/nim" ];then
+    export NIMHOME="/opt/nim"
+fi
+if [ -e "${NIMHOME}" ];then
+    export PATH="${NIMHOME}/bin:${PATH}"
+fi
+
 ### golang
 if [ -e "$HOME/opt/go" ];then
     export GOROOT="$HOME/opt/go"
