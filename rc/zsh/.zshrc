@@ -630,8 +630,16 @@ if [ "$(uname -s)" = 'Darwin' ];then
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
-    alias dcdw='cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | fzf);'
-    alias dcd='cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | fzf);vagrant up; vagrant ssh'
+    dcdw() {
+      cd $(find ~/vagrant/ -name Vagrantfile | perl -pe "s/Vagrantfile$//" | sort| fzf);
+    }
+    dcd() {
+      dcdw
+      if [ -f "./Vagrantfile" ];then
+          vagrant up
+          vagrant ssh
+      fi
+    }
 fi
 
 if [ "$(uname -s)" = 'Darwin' ];then
