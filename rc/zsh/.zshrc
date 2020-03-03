@@ -1,6 +1,15 @@
 ### .zshrc ###
 echo "Loading $HOME/.zshrc"
 
+() {
+    local src
+    for src in $@; do
+        if [ -e "${src}" ];then
+            ([[ ! -e "${src}.zwc" ]] || [ "${src:A}" -nt "${src}" ]) && zcompile "${src}"
+        fi
+    done
+} ~/.zshrc ~/.zprofile ~/.zlogin ~/.zlogout
+
 #source ~/.zshenv
 #export PATH="$MY_CONFIG_PATH:$PATH"
 
