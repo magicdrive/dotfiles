@@ -9,7 +9,7 @@ fi
 
 export CORE_PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:/usr/bin:/sbin:/bin:/sbin"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
-find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
+    find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
 ):$MANPATH"
 
 # nginx
@@ -235,11 +235,19 @@ if [ -e "${ASDF_HOME}" ];then
 fi
 
 
+# path
 NEPATH="" ;
 for x in $(echo $PATH | perl -pe 's/:/\n/g' | grep "$HOME/\..*" | sort | uniq); do
     export NEPATH="$x:$NEPATH";
 done
 export PATH="$CORE_PATH:$NEPATH"
+
+# manpath
+NEMANPATH="$MANPATH" ;
+unset MANPATH
+for x in $(echo $NEMANPATH | perl -pe 's/:/\n/g' | sort | uniq); do
+    export MANPATH="$x:$MANPATH";
+done
 
 
 #__END__
