@@ -246,7 +246,7 @@ NEPATH="" ;
 for x in $(echo $PATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | grep "$HOME/\..*" | sort | uniq); do
     export NEPATH="$x:$NEPATH";
 done
-export PATH="$CORE_PATH:$NEPATH"
+export PATH="$NEPATH:$CORE_PATH"
 
 # manpath
 NEMANPATH="$MANPATH" ;
