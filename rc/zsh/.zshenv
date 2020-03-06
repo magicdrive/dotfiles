@@ -108,29 +108,20 @@ if [ -e "${NIMHOME}" ];then
 fi
 
 ### golang
-if [ -e "$HOME/opt/go" ];then
-    export GOROOT="$HOME/opt/go"
-elif [ -e "/opt/go" ];then
-    export GOROOT="/opt/go"
+# goenv
+export GOENV_ROOT="${HOME}/.goenv"
+if [ -e "${GOENV_ROOT}" ]; then
+    export GOENV_DISABLE_GOPATH=1
+    export GOENV_GOPATH_PREFIX="$HOME/.gopath"
+    export PATH="${GOENV_ROOT}/shims:${GOENV_ROOT}/bin:$PATH"
+    export GOPATH="${HOME}/.gopath:${HOME}/projects/gocode"
+    export CORE_PATH="${HOME}/.gopath/bin:${HOME}/projects/gocode/bin:${CORE_PATH}"
+    eval "$("$GOENV_ROOT/bin/goenv" init -)"
 fi
 
-if [ -e "${GOROOT}" ];then
-    export GOCORE_PATH="${HOME}/.gopath:${HOME}/projects/gocode"
-    export CORE_PATH="${GOROOT}/bin:${HOME}/.gopath/bin:${HOME}/projects/gocode/bin:${CORE_PATH}"
-fi
 
 if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
-fi
-
-### goenv
-export GOENV_ROOT="${HOME}/.goenv"
-if [ -e "${GOENV_ROOT}" ]; then
-    export GOENV_DISABLE_GOROOT=1
-    export GOENV_DISABLE_GO_PATH=1
-    export PATH="$GOENV_ROOT/shims:$GOENV_ROOT/bin:$PATH"
-    export PATH="$GOENV_ROOT/bin:$CORE_PATH"
-    eval "$("$GOENV_ROOT/bin/goenv" init -)"
 fi
 
 
@@ -237,7 +228,11 @@ fi
 
 # fzf
 if [ -f ~/.fzf.zsh ];then
-    source ~/.fzf.zsh
+    if [ "$(basename $SHELL)" = 'zsh' ];then
+        source ~/.fzf.zsh
+    else
+        source ~/.fzf.bash
+    fi
 fi
 
 
@@ -251,7 +246,7 @@ export PATH="$NEPATH:$CORE_PATH"
 # manpath
 NEMANPATH="$MANPATH" ;
 unset MANPATH
-for x in $(echo $PATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | sort | uniq); do
+for x in $(echo $MANPATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | sort | uniq); do
     export MANPATH="$x:$MANPATH";
 done
 
