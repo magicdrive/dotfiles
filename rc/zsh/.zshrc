@@ -315,11 +315,6 @@ if [ -d ${zsh_autosuggestions} ];then
     source "$zsh_autosuggestions/zsh-autosuggestions.zsh"
 fi
 
-github_flow_completions=$HOME/.zsh/completions/git-hubflow-completion.zsh
-if [ -d ${github_flow_completions} ];then
-    fpath+=(${github_flow_completions}/src $fpath)
-fi
-
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
 if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
