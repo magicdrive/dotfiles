@@ -1,17 +1,16 @@
 ### .zshrc ###
 echo "Loading $HOME/.zshrc"
 
-() {
+zc() {
     local src
     for src in $@; do
         if [ -e "${src}" ];then
             ([[ ! -e "${src}.zwc" ]] || [ "${src:A}" -nt "${src}" ]) && zcompile "${src}"
         fi
     done
-} ~/.zshrc ~/.zprofile ~/.zlogin ~/.zlogout
+}
+zc ~/.zshrc ~/.zprofile ~/.zlogin ~/.zlogout
 
-#source ~/.zshenv
-#export PATH="$MY_CONFIG_PATH:$PATH"
 
 ###############################################
 # キーバインド                                #
@@ -20,47 +19,28 @@ echo "Loading $HOME/.zshrc"
 # Vim like key binding
 set -o vi
 
-# instert mode
-bindkey -M viins "^D" delete-char
-bindkey -M viins "^P" up-line-or-history
-bindkey -M viins "^N" down-line-or-history
-bindkey -M viins "^F" forward-char
-bindkey -M viins "^B" backward-char
-bindkey -M viins "^[" vi-cmd-mode
-bindkey -M viins "^A" beginning-of-line
-bindkey -M viins "^E" end-of-line
-bindkey -M viins "^H" backward-delete-char
-bindkey -M viins "^?" backward-delete-char
-bindkey -M viins "^W" backward-kill-word
-bindkey -M viins "^K" kill-line
-bindkey -M viins "^Y" yank
-# cmd mode
-bindkey -M vicmd "^W" backward-kill-line
-bindkey -M vicmd "^F" forward-char
-bindkey -M vicmd "^B" backward-char
-
+if [[ $- == *i* ]]; then
+    # instert mode
+    bindkey -M viins "^D" delete-char
+    bindkey -M viins "^P" up-line-or-history
+    bindkey -M viins "^N" down-line-or-history
+    bindkey -M viins "^F" forward-char
+    bindkey -M viins "^B" backward-char
+    bindkey -M viins "^[" vi-cmd-mode
+    bindkey -M viins "^A" beginning-of-line
+    bindkey -M viins "^E" end-of-line
+    bindkey -M viins "^H" backward-delete-char
+    bindkey -M viins "^?" backward-delete-char
+    bindkey -M viins "^W" backward-kill-word
+    bindkey -M viins "^K" kill-line
+    bindkey -M viins "^Y" yank
+    # cmd mode
+    bindkey -M vicmd "^W" backward-kill-line
+    bindkey -M vicmd "^F" forward-char
+    bindkey -M vicmd "^B" backward-char
+fi
 alias :q="exit"
 alias :Q="exit"
-
-function edit-file() {
-emulate -L zsh
-local -a words
-words=("${(z)LBUFFER}")
-zle -I
-eval "${(q)EDITOR} ${words[$#words]} < ${(q)TTY}"
-}
-zle -N edit-file
-bindkey -M vicmd '^I^O' edit-file
-bindkey -M viins '^I^O' edit-file
-
-function start_editor() {
-exec < /dev/tty
-${EDITOR}
-zle reset-prompt
-}
-zle -N start_editor
-bindkey -M vicmd '^I^J' start_editor
-bindkey -M viins '^I^J' start_editor
 
 source $HOME/.zsh/zsh_vim_visualmode.zsh
 
@@ -79,8 +59,8 @@ blank_to_git_status() {
     fi
     zle reset-prompt
 }
-zle -N blank_to_git_status
-bindkey '^G' blank_to_git_status
+#zle -N blank_to_git_status
+#bindkey '^G' blank_to_git_status
 
 ###############################################
 # 関数                                        #
@@ -202,7 +182,6 @@ autoload -U colors; colors
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
 #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
 PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}${HOST}%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
-PROMPT="$PROMPT"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
 
 # forやwhile/複数行入力時などに表示されるプロンプト
 PROMPT2="%B%_>%b "
@@ -340,8 +319,27 @@ if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/completions/asdf.bash"
 fi
 
-### fzf
-fzf_path=$HOME/.fzf.zsh
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if [ -f ${fzf_path} ];then
     if [[ -x "$(which rg)" ]];then
         export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -383,15 +381,62 @@ if [ -f ${fzf_path} ];then
 
     export FZF_DEFAULT_OPTS='--height 80% --reverse --border'
     export FORGIT_LOG_FZF_OPTS="${FZF_DEFAULT_OPTS}"
-    source ${fzf_path}
+    #source ${fzf_path}
 
     alias fzp="fzf --preview 'bat --color=always --style=header,grid --line-range :100 {}'"
+
+
+    # Key bindings
+    # ------------
+    if [[ $- == *i* ]]; then
+        __fzf_use_tmux__() {
+          [ -n "$TMUX_PANE" ] && [ "${FZF_TMUX:-0}" != 0 ] && [ ${LINES:-40} -gt 15 ]
+        }
+
+        __fzfcmd() {
+          __fzf_use_tmux__ &&
+            echo "fzf-tmux -d${FZF_TMUX_HEIGHT:-40%}" || echo "fzf"
+        }
+
+        # Ensure precmds are run after cd
+        fzf-redraw-prompt() {
+          local precmd
+          for precmd in $precmd_functions; do
+            $precmd
+          done
+          zle reset-prompt
+        }
+        zle -N fzf-redraw-prompt
+
+
+        # CTRL-R - Paste the selected command from history into the command line
+        fzf-history-widget() {
+          local selected num
+          setopt localoptions noglobsubst noposixbuiltins pipefail no_aliases 2> /dev/null
+          selected=( $(fc -rl 1 |
+            FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} $FZF_DEFAULT_OPTS -n2..,.. --tiebreak=index --bind=ctrl-r:toggle-sort $FZF_CTRL_R_OPTS --query=${(qqq)LBUFFER} +m" $(__fzfcmd)) )
+          local ret=$?
+          if [ -n "$selected" ]; then
+            num=$selected[1]
+            if [ -n "$num" ]; then
+              zle vi-fetch-history -n $num
+            fi
+          fi
+          zle reset-prompt
+          return $ret
+        }
+        zle     -N   fzf-history-widget
+        bindkey '^R' fzf-history-widget
+
+    fi
+
+
 fi
 
 # z
 z_home="$HOME/git/z"
 if [ -d ${z_home} ];then
-    _Z_CMD=j
+    #_Z_CMD=j
     source ${z_home}/z.sh
 fi
 
@@ -400,45 +445,14 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
         _z -l 2>&1 | perl -pe 's/^(?:common:|[\.0-9]*)\s*//g'
     }
 
-    fzf-jump-widget() {
-
-      if [ -z "$BUFFER" ];then
+    j() {
         setopt localoptions pipefail no_aliases 2> /dev/null
-        local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS" $(__fzfcmd) +m)"
-        if [[ -z "$dir" ]]; then
-          zle redisplay
-          return 0
+        local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS"  $(__fzfcmd) --query="$1")"
+        if [ -d "$dir" ]; then
+            cd "$dir"
         fi
-        cd "$dir"
         unset dir # ensure this doesn't end up appearing in prompt expansion
-        local ret=$?
-        zle fzf-redraw-prompt
-        return $ret
-      fi
     }
-    zle     -N    fzf-jump-widget
-    bindkey '^J' fzf-jump-widget
-
-    fzf-nestcd-widget() {
-      if [ -z "$BUFFER" ];then
-        local cmd="command find -L . -mindepth 1 \\( -path '*/\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
-          -o -type d -print 2> /dev/null | cut -b3-"
-        setopt localoptions pipefail no_aliases 2> /dev/null
-        local dir="$(eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_O_OPTS" $(__fzfcmd) +m)"
-        if [[ -z "$dir" ]]; then
-          zle redisplay
-          return 0
-        fi
-        cd "$dir"
-        unset dir # ensure this doesn't end up appearing in prompt expansion
-        local ret=$?
-        zle fzf-redraw-prompt
-        return $ret
-      fi
-    }
-    zle     -N    fzf-nestcd-widget
-    bindkey '^O' fzf-nestcd-widget
-
 fi
 
 autoload -U compinit
