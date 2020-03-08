@@ -1,6 +1,10 @@
+#! /bin/bash
+
 git config --global color.ui    true
 
-git config --global ghq.root ~/.ghq
+git config --global core.preloadindex true
+git config --global core.fscache true
+git config --global gc.auto 256
 
 git config --global push.default tracking
 

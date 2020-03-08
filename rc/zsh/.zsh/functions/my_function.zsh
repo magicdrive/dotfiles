@@ -81,11 +81,11 @@ alias gst=__git-status-crever
 
 
 __parse_git_dirty() {
-   git rev-parse 2> /dev/null && [ "$(git status -s 2>/dev/null | wc -l | perl -pe "s/\s//g")" -eq "0" ] || echo "*"
+    git rev-parse 2> /dev/null && [ "$(git status --short 2>/dev/null)" = "" ] || echo "*"
 }
 
 __parse_git_branch() {
-   git rev-parse 2> /dev/null && git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ (\1)$(__parse_git_dirty)/"
+    git rev-parse 2> /dev/null && echo " ($(git name-rev --name-only HEAD 2> /dev/null)$(__parse_git_dirty))"
 }
 
 
