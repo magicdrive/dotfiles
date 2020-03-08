@@ -319,27 +319,7 @@ if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/completions/asdf.bash"
 fi
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### fzf
 if [ -f ${fzf_path} ];then
     if [[ -x "$(which rg)" ]];then
         export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
@@ -430,13 +410,12 @@ if [ -f ${fzf_path} ];then
 
     fi
 
-
 fi
 
 # z
 z_home="$HOME/git/z"
 if [ -d ${z_home} ];then
-    #_Z_CMD=j
+    _Z_CMD=j
     source ${z_home}/z.sh
 fi
 
@@ -445,14 +424,38 @@ if [ -d ${z_home} -a -f $HOME/.fzf.zsh ];then
         _z -l 2>&1 | perl -pe 's/^(?:common:|[\.0-9]*)\s*//g'
     }
 
-    j() {
+    z_list_fzf() {
+        z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS" $(__fzfcmd) --query="$1"
+    }
+
+    fj() {
         setopt localoptions pipefail no_aliases 2> /dev/null
-        local dir="$(z_list | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_J_OPTS"  $(__fzfcmd) --query="$1")"
+        local dir="$(z_list_fzf "$1")"
         if [ -d "$dir" ]; then
             cd "$dir"
         fi
         unset dir # ensure this doesn't end up appearing in prompt expansion
     }
+
+
+    fzf-jump-widget() {
+        setopt localoptions pipefail no_aliases 2> /dev/null
+        local dir="$(z_list_fzf "$LBUFFER")"
+        if [[ -z "$dir" ]]; then
+          zle redisplay
+          return 0
+        fi
+        cd "$dir"
+        unset dir # ensure this doesn't end up appearing in prompt expansion
+        unset LBUFFER
+        local ret=$?
+        zle fzf-redraw-prompt
+        zle reset-prompt
+        return $ret
+    }
+    zle     -N   fzf-jump-widget
+    bindkey '^O' fzf-jump-widget
+
 fi
 
 autoload -U compinit
