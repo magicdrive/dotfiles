@@ -39,6 +39,12 @@ psgrep() {
     ps -ef | grep ${term}
 }
 
+restore_zhistory() {
+    mv "$HOME/.zsh_history" "$HOME/.zhistory_bad"
+    strings "$HOME/.zhistory_bad" > "$HOME/.zhistory"
+    fc -R "$HOME/.zhistory"
+}
+
 
 vimsub() {
     if [ $# -lt 3 ] || [ $1 = '-h' ] ; then
