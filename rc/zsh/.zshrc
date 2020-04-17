@@ -319,8 +319,10 @@ if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/completions/asdf.bash"
 fi
 
+
 ### fzf
-if [ -f ${fzf_path} ];then
+fzf_path="$HOME/.fzf"
+if [ -e "${fzf_path}" ];then
     if [[ -x "$(which rg)" ]];then
         export FZF_CTRL_T_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
     fi
