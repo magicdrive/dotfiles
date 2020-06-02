@@ -94,6 +94,10 @@ __parse_git_branch() {
     git rev-parse 2> /dev/null && echo " ($(git rev-parse --abbrev-ref HEAD 2> /dev/null)$(__parse_git_dirty))"
 }
 
+git-branch-name() {
+    git rev-parse 2> /dev/null && echo "$(git rev-parse --abbrev-ref HEAD 2> /dev/null)$(__parse_git_dirty)"
+}
+
 
 function history-all { history -E 1 }
 
