@@ -101,3 +101,13 @@ git-branch-name() {
 
 function history-all { history -E 1 }
 
+frostnova!!(){
+    if [ -d "$HOME/vagrant" ]; then
+        for x in $(vagrant global-status | grep running | cut --delimiter " " --fields 7); do
+            pushd $x;
+            vagrant suspend;
+            popd
+        done
+    fi
+}
+
