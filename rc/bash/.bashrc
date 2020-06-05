@@ -1,7 +1,7 @@
 export PATH=/opt/current/bin/:/opt/current/sbin:$PATH
 export PATH=/usr/local/bin/:/usr/local/sbin:$PATH
 
-[ -e $HOME/.zshenv ] && source $HOME/.zshenv
+#[ -e $HOME/.zshenv ] && source $HOME/.zshenv
 
 [ -e ~/.zsh/completions/git-completion.bash ] && source ~/.zsh/completions/git-completion.bash
 [ -e ~/git/z/z.sh ] && source ~/git/z/z.sh
@@ -22,7 +22,7 @@ __parse_git_dirty() {
 __parse_git_branch() {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ {\1}$(__parse_git_dirty)/"
 }
-export PS1="\[\e[0;36m\][\u@\h \[\e[1;32m\]\W/\[\e[1;35m\]\$(__parse_git_branch)\[\e[0;36m\]] $\[\e[00m\] "
+export PS1="\[\e[0;36m\][\u@\H \[\e[1;32m\]\W/\[\e[1;35m\]\$(__parse_git_branch)\[\e[0;36m\]] $\[\e[00m\] "
 
 
 if [ $(uname) = 'Linux' ];then
