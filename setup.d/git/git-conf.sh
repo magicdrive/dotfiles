@@ -1,5 +1,6 @@
 #! /bin/bash
 
+git config --global pull.rebase true
 git config --global color.ui    true
 
 git config --global core.preloadindex true
