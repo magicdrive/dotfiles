@@ -632,6 +632,14 @@ if [[ -x "$(which gosh)" ]] && [[ -x "$(which rlwrap)" ]];then
     alias gosh="rlwrap -pCyan gosh"
 fi
 
+### docker
+if [[ -x "$(which docker)" ]];then
+    alias docker="sudo docker"
+    docker-service-list() {
+        sudo docker inspect -f '{{.Name}} {{.HostConfig.RestartPolicy.Name}}' $(docker ps -aq) | grep always
+    }
+fi
+
 ### shells
 take-over-sudo(){ sudo PATH="$PATH" "$@" }
 alias tsudo=take-over-sudo
