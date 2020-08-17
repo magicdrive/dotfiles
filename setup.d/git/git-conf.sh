@@ -9,7 +9,8 @@ git config --global gc.auto 256
 
 git config --global push.default tracking
 
-git config --global core.pager 'less -FRX'
+#git config --global core.pager 'less -FRX'
+git config --global core.pager 'bat'
 
 git config --global alias.fork  'clone --bare'
 
