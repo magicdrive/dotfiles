@@ -480,6 +480,7 @@ if [ $(uname) = 'Darwin' ];then
     fi
 else
     lscmd="ls --color=auto"
+	alias ls="$lscmd"
 fi
 
 modernize() {
@@ -488,6 +489,7 @@ modernize() {
         alias cat="bat";
     fi
     if [ -f "$HOME/local/bin/exa" ];then
+	    unalias ls 2>&1 > /dev/null
 	    alias __ls="${lscmd}"
         alias ls="exa --color=auto"
     fi
