@@ -480,8 +480,9 @@ if [ $(uname) = 'Darwin' ];then
     fi
 else
     lscmd="ls --color=auto"
-	alias ls="$lscmd"
 fi
+
+alias ls="$lscmd"
 
 modernize() {
     if [ -f "$HOME/local/bin/bat" ];then
