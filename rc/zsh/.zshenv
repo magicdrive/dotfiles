@@ -72,13 +72,18 @@ if [ -e "${JAVA_HOME}" ];then
 fi
 
 ### scala
-export SCALA_HOME="/opt/scala/default"
-if [ -e "${SCALA_HOME}" ];then
-    export CORE_PATH="${SCALA_HOME}/bin:${CORE_PATH}:"
-    export MANPATH="${SCALA_HOME}/man:$MANPATH"
+#scalaenv
+if [ -e /usr/local/scalaenv ];then
+    export SCALAENV_ROOT=/usr/local/scalaenv
+elif [ -e $HOME/.scalaenv ];then
+    export SCALAENV_ROOT=$HOME/.scalaenv
+fi
+if [ -e "${SCALAENV_ROOT}" ];then
+    export PATH="$SCALAENV_ROOT/shims:$SCALAENV_ROOT/bin:$PATH"
+    eval "$("$SCALAENV_ROOT/bin/scalaenv" init - )"
 fi
 # sbt
-export SBT_HOME="/opt/sbt/default"
+export SBT_HOME="$HOME/local/opt/sbt/default"
 if [ -e "${SBT_HOME}" ];then
     export CORE_PATH="${SBT_HOME}/bin:${CORE_PATH}:"
 fi
