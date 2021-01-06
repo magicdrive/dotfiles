@@ -71,6 +71,14 @@ if [ -e "${JAVA_HOME}" ];then
     export MANPATH="${JAVA_HOME}/man:$MANPATH"
 fi
 
+
+### sdkman
+export SDKMAN_ROOT="$HOME/.sdkman"
+if [ -e "${SDKMAN_ROOT}" ];then
+    source "${SDKMAN_ROOT}/bin/sdkman-init.sh"
+fi
+
+
 ### scala
 #scalaenv
 if [ -e /usr/local/scalaenv ];then
@@ -81,11 +89,6 @@ fi
 if [ -e "${SCALAENV_ROOT}" ];then
     export PATH="$SCALAENV_ROOT/shims:$SCALAENV_ROOT/bin:$PATH"
     eval "$("$SCALAENV_ROOT/bin/scalaenv" init - )"
-fi
-# sbt
-export SBT_HOME="$HOME/local/opt/sbt/default"
-if [ -e "${SBT_HOME}" ];then
-    export CORE_PATH="${SBT_HOME}/bin:${CORE_PATH}:"
 fi
 
 ### groovy
