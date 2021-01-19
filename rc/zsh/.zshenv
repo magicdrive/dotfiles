@@ -177,7 +177,7 @@ if [ -e "$NVM_DIR/nvm.sh" ];then
 fi
 
 ### llvm
-export LLVM_HOME="/usr/local/llvm"
+export LLVM_HOME="/usr/local/llvm/current"
 if [ -e ${LLVM_HOME} ];then
     export CORE_PATH="${LLVM_HOME}/bin:$CORE_PATH"
     export MAN_PATH="${LLVM_HOME}/share/man:$MANCORE_PATH"
