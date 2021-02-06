@@ -42,5 +42,9 @@ install_files jshint ${jshint_files[@]};
 
 ./box/mklocaldir.sh
 
+if [ "$(uname -s)" = "Darwin" ];then
+    sudo cp -a ${cur_dir}/exe/adjust-date /usr/local/bin/
+fi
+
 exit 0;
 

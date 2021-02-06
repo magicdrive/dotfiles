@@ -1,0 +1,5 @@
+#! /bin/bash
+set -eu
+sudo touch /var/db/ntp-kod
+sudo chmod 666 /var/db/ntp-kod
+sudo sntp -sS time.asia.apple.com
