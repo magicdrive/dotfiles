@@ -115,6 +115,11 @@ if [ -e "${NIMHOME}" ];then
     export PATH="${NIMHOME}/bin:$HOME/.nimble/bin:${PATH}"
 fi
 
+export CHOOSENIM_HOME="${HOME}/.nimble"
+if [ -e "$CHOOSENIM_HOME" ];then
+    export PATH="${CHOOSENIM_HOME}/bin:$PATH"
+fi
+
 ### golang
 # goenv
 export GOENV_ROOT="${HOME}/.goenv"
