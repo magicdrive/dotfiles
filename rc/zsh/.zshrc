@@ -563,7 +563,7 @@ alias svi="sudo ${vim_simple}"
 alias vimpager="$HOME/.vim/bundle/vimpager/vimpager"
 alias vim_origin='/bin/vim'
 alias vi="${vim_simple}"
-alias e=${EDITOR}
+alias e="${EDITOR}"
 compdef vi=vim
 compdef e=vim
 
