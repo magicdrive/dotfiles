@@ -175,13 +175,12 @@ if [ -e "/usr/local/ssl" ];then
 fi
 
 # node.js
-# nvm
-export NVM_DIR="$HOME/.nvm"
-if [ -e "$NVM_DIR/nvm.sh" ];then
-    source "$NVM_DIR/nvm.sh"
+# volta
+export VOLTA_HOME="$HOME/.volta"
+if [ -e "$VOLTA_HOME" ];then
+export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
-### llvm
 export LLVM_HOME="/usr/local/llvm/current"
 if [ -e ${LLVM_HOME} ];then
     export CORE_PATH="${LLVM_HOME}/bin:$CORE_PATH"
