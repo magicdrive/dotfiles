@@ -637,10 +637,15 @@ fi
 
 ### docker
 if [[ -x "$(which docker)" ]];then
-    alias docker="sudo docker"
     docker-service-list() {
         sudo docker inspect -f '{{.Name}} {{.HostConfig.RestartPolicy.Name}}' $(docker ps -aq) | grep always
     }
+
+    alias docker="sudo docker"
+    alias dk="docker"
+fi
+if [[ -x "$(which docker-repl)" ]];then
+    alias dkl="docker-repl"
 fi
 
 ### shells

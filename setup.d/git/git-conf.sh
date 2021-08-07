@@ -1,4 +1,5 @@
 #! /bin/bash
+git config --global init.defaultBranch main
 
 git config --global pull.rebase true
 git config --global color.ui    true
