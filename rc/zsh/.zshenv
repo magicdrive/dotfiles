@@ -133,11 +133,6 @@ if [ -e "${GOENV_ROOT}" ]; then
 fi
 
 
-if [[ -x "$(which direnv)" ]];then
-    eval "$(direnv hook zsh)"
-fi
-
-
 ### perl
 # plenv
 export PLENV_ROOT="$HOME/.plenv"
@@ -236,6 +231,10 @@ fi
 export ASDF_HOME="$HOME/.asdf"
 if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/asdf.sh"
+fi
+
+if [[ -x "$(which direnv)" ]];then
+    eval "$(direnv hook zsh)"
 fi
 
 # fzf
