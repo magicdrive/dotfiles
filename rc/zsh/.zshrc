@@ -9,7 +9,7 @@ zc() {
         fi
     done
 }
-zc ~/.zshrc ~/.zprofile ~/.zlogin ~/.zlogout
+zc ~/.zshrc ~/.zprofile ~/.zlogin ~/.zlogout ~/.zshenv
 
 
 ###############################################
