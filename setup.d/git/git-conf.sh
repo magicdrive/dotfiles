@@ -1,5 +1,5 @@
 #! /bin/bash
-git config --global init.defaultBranch main
+git config --global init.defaultBranch "main"
 
 git config --global pull.rebase true
 git config --global color.ui    true
@@ -11,7 +11,7 @@ git config --global gc.auto 256
 git config --global push.default tracking
 
 #git config --global core.pager 'less -FRX'
-git config --global core.pager 'bat'
+git config --global core.pager 'bat --plain'
 
 git config --global alias.fork  'clone --bare'
 
