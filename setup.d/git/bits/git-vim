@@ -1,6 +1,6 @@
 #! /bin/bash
 
-if [[ $* != 0 ]];then
+if [[ $# != 0 ]];then
     vim $@
 else
     files=$(git ls-files) &&
