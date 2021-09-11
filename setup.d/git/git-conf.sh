@@ -13,6 +13,21 @@ git config --global push.default tracking
 #git config --global core.pager 'less -FRX'
 git config --global core.pager 'bat --plain'
 
+git config --global alias.www  'browse-remote'
+git config --global alias.browse-remote  'browse-remote'
+git config --global alias.addf  'addf'
+git config --global alias.author-def  'author-def'
+git config --global alias.ignore  'ignore'
+git config --global alias.keepfile  'keepfile'
+git config --global alias.logf  'logf'
+git config --global alias.refs  'refs'
+git config --global alias.vim  'vim'
+git config --global alias.root  'root'
+git config --global alias.branch-name  'branch-name'
+git config --global alias.parallel  'parallel'
+git config --global alias.repl  'repl'
+git config --global alias.gh-diff-url  'gh-diff-url'
+
 git config --global alias.fork  'clone --bare'
 
 git config --global alias.st  '-p status'
@@ -25,6 +40,7 @@ git config --global alias.cam 'commit --amend -v'
 
 git config --global alias.psh push
 git config --global alias.pul pull
+git config --global alias.pll pull
 
 git config --global alias.parallel-pull 'parallel -c -j 4 -e "pull --rebase"'
 git config --global alias.multiple-pull 'parallel -c -j 4 -e "pull --rebase"'
@@ -97,5 +113,4 @@ git config --global alias.xs  'stash show'
 git config --global alias.xp  'stash show -p'
 git config --global alias.xup '!git xi && git up && git xo'
 
-git config --global alias.www  browse-remote
 
