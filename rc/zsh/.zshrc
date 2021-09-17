@@ -653,6 +653,12 @@ take-over-sudo(){ sudo PATH="$PATH" "$@" }
 alias tsudo=take-over-sudo
 alias eshl="manpath='';exec zsh -l"
 
+### fzf
+if [ -x $(which fzf) ];then
+    alias f="fzf"
+fi
+
+
 ### browser-mac
 if [ "$(uname -s)" = 'Darwin' ];then
     alias chrome="open -a Google\ Chrome"
