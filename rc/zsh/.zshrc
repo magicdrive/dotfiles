@@ -654,12 +654,12 @@ alias tsudo=take-over-sudo
 alias eshl="manpath='';exec zsh -l"
 
 ### fzf
-if [ -x $(which fzf) ];then
+if [[ -x $(which fzf) ]];then
     alias f="fzf"
 fi
 
 ### vagrant
-if [ -x $(which vagrant) ];then
+if [[ -x $(which vagrant) ]];then
     alias vg="vagrant"
 fi
 
