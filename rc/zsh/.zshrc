@@ -661,6 +661,7 @@ fi
 ### vagrant
 if [[ -x $(which vagrant) ]];then
     alias vg="vagrant"
+    compdef vg="vagrant"
 fi
 
 
