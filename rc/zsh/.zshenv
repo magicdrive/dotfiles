@@ -10,7 +10,7 @@ fi
 export CORE_PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:/usr/bin:/usr/sbin:/sbin:/bin:/sbin"
 export PATH="$CORE_PATH"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
-    find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
+find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
 ):$MANPATH"
 
 # nginx
@@ -173,7 +173,7 @@ fi
 # volta
 export VOLTA_HOME="$HOME/.volta"
 if [ -e "$VOLTA_HOME" ];then
-export PATH="$VOLTA_HOME/bin:$PATH"
+    export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
 export LLVM_HOME="/usr/local/llvm/current"
@@ -246,6 +246,12 @@ if [ -f ~/.fzf.zsh ];then
     fi
 fi
 
+# nix
+NIX_PROFILE_HOME="~/.nix-profile"
+if [ -d "${NIX_PROFILE_HOME}" ];then
+    source "${NIX_PROFILE_HOME}/etc/profile.d/nix.sh"
+fi
+
 
 # path
 NEPATH="" ;
@@ -263,3 +269,4 @@ done
 
 
 #__END__
+if [ -e /home/ikegami/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ikegami/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
