@@ -248,7 +248,8 @@ fi
 
 # nix
 NIX_PROFILE_HOME="~/.nix-profile"
-if [ -d "${NIX_PROFILE_HOME}" ];then
+NIX_ROOT="/nix"
+if [ -d "${NIX_PROFILE_HOME}" ] && [ -d "${NIX_ROOT}" ];then
     source "${NIX_PROFILE_HOME}/etc/profile.d/nix.sh"
 fi
 
