@@ -1,0 +1,28 @@
+#! /bin/bash
+
+set -eu
+
+usage_exit(){
+    cat << HELP >&2
+Usage:
+    * trash [FILE]       # Move FILE to trashbox.
+    *     [-h|--help]    # Show this help.
+HELP
+    exit 1
+}
+
+if [[ $1 = "--help" ]] || [[ $1 = "-h" ]];then
+    usage_exit
+fi
+
+if [[ $# = 1 ]];then
+    if [[ -e ${1} ]];then
+        mv "${1}" ~/.Trash/
+        exit 0
+    fi
+fi
+
+usage_exit
+
+
+

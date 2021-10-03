@@ -468,6 +468,7 @@ compinit -u
 # 補完される前にオリジナルのコマンドまで展開してチェックする
 setopt complete_aliases
 
+
 alias d="cd"
 
 if [ $(uname) = 'Darwin' ];then
