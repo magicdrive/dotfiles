@@ -1,0 +1,23 @@
+# coding: utf-8
+
+task :default => [:git]
+
+task :git do
+  sh %{git parallel -c auto -m 3 -j 8 -- "pull --rebase"}, verbose: false
+
+end
+
+
+task :brew do
+  sh %{brew update}
+  sh %{brew upgrade}
+  sh %{brew cleanup}
+
+end
+
+task :apt do
+  sh %{apt update}
+  sh %{apt upgrade -y}
+
+end
+
