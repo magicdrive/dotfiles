@@ -247,8 +247,8 @@ if [ -f ~/.fzf.zsh ];then
 fi
 
 # nix
-NIX_PROFILE_HOME="~/.nix-profile"
-NIX_ROOT="/nix"
+export NIX_PROFILE_HOME="~/.nix-profile"
+export NIX_ROOT="/nix"
 if [ -d "${NIX_PROFILE_HOME}" ] && [ -d "${NIX_ROOT}" ];then
     source "${NIX_PROFILE_HOME}/etc/profile.d/nix.sh"
 fi
@@ -270,4 +270,4 @@ done
 
 
 #__END__
-if [ -e /home/ikegami/.nix-profile/etc/profile.d/nix.sh ]; then . /home/ikegami/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+

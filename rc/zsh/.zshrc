@@ -13,7 +13,7 @@ zc ~/.zshrc ~/.zprofile ~/.zlogin ~/.zlogout ~/.zshenv
 
 
 ###############################################
-# キーバインド                                #
+# key-binding                                 #
 ###############################################
 
 # Vim like key binding
@@ -63,7 +63,7 @@ blank_to_git_status() {
 #bindkey '^G' blank_to_git_status
 
 ###############################################
-# 関数                                        #
+# functions                                   #
 ###############################################
 
 for x in `ls $HOME/.zsh/functions`;do
@@ -71,9 +71,9 @@ for x in `ls $HOME/.zsh/functions`;do
 done
 
 ###############################################
-# 補完関係                                    #
+# completions                                 #
 ###############################################
-# 標準の補完設定
+
 
 #autoload -U compinit;compinit
 
@@ -463,9 +463,9 @@ fi
 autoload -U compinit
 compinit -u
 ###############################################
-# エイリアス                                  #
+# aliases                                     #
 ###############################################
-# 補完される前にオリジナルのコマンドまで展開してチェックする
+
 setopt complete_aliases
 
 
@@ -525,12 +525,6 @@ alias h='history -E -32'
 
 pathdump() { echo $PATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g'; }
 
-if [ "$(uname -s)" = "Darwin" -a -d /Applications/TotalTerminal.app ];then
-    alias kt='killall Terminal'
-    alias qt='osascript -e "tell application \"Terminal\" to quit" && killall -SIGINT TotalTerminalCrashWatcher'
-    alias st='osascript -e "tell application \"Terminal\" to «event BATTinit»"'
-    alias rt='qt ; sleep 1 ; st'
-fi
 
 # ack with pager
 alias acl="ack --pager='less -R'"
