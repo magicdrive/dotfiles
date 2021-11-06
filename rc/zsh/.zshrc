@@ -679,6 +679,13 @@ if [ "$(uname -s)" = 'Darwin' ];then
     }
 fi
 
+sf() {
+     remote="$(cat ~/.ssh/config | grep -E "^Host\s[^*]" | perl -p -e 's/^Host\s//g' | sort | fzf)";
+     if [[ -n ${remote} ]];then
+         ssh ${remote}
+     fi
+}
+
 if [ "$(uname -s)" = 'Darwin' ];then
     if [[ -x "$(which reattach-to-user-namespace)" ]];then
         alias npbcopy="reattach-to-user-namespace pbcopy"
