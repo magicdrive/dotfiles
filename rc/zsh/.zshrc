@@ -679,21 +679,6 @@ if [ "$(uname -s)" = 'Darwin' ];then
     }
 fi
 
-sshl() {
-    remote="$(cat ~/.ssh/config | \
-        grep -E "^Host\s[^*]" | \
-        perl -p -e 's/^Host\s//g' \
-        && \
-        cat ~/.ssh/known_hosts | \
-        perl -p -e 's/^([0-9a-z.,-\[\]]*) .*$/$1/gi' | \
-        grep -v "," | grep -v "\[" | grep -v "\]" | \
-        \
-        sort -r | uniq | fzf)"
-
-     if [[ -n ${remote} ]] && [[ ! ${remote} =~ \n ]];then
-         ssh ${remote}
-     fi
-}
 
 if [ "$(uname -s)" = 'Darwin' ];then
     if [[ -x "$(which reattach-to-user-namespace)" ]];then

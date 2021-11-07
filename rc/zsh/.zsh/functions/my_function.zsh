@@ -6,6 +6,24 @@ backup() {
     fi
 }
 
+shl() {
+    remote="$(echo $(cat ~/.ssh/config | \
+        grep -E "^Host\s[^*]" | \
+        perl -p -e 's/^Host\s//g' \
+        && \
+        cat ~/.ssh/known_hosts | \
+        perl -p -e 's/^([0-9a-z.,-\[\]]*) .*$/$1/gi' | \
+        grep -v "," | grep -v "\[" | grep -v "\]"  \
+        ) | \
+        perl -p -e 's/\s/\n/g' | \
+        sort -r | uniq | fzf +m)"
+
+     if [[ -n ${remote} ]];then
+         echo ssh ${remote} $@
+         ssh ${remote} $@
+     fi
+}
+
 mkcd() {
     if [ $# -ne 1 ]; then
         return
