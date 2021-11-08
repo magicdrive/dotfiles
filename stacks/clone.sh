@@ -1,6 +1,6 @@
 #! /bin/bash
 
-stacks=(vimfiles git-parallel git-gh-diff-url t git-repl gemini docker-repl great-thing tmux-powerline)
+stacks=(vimfiles git-parallel git-gh-diff-url t git-repl gemini docker-repl great-thing tmux-powerline parasoul)
 
 mkdir -p "${HOME}/git"
 

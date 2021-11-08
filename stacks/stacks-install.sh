@@ -1,6 +1,6 @@
 #! /bin/bash
 
-stacks=(git-parallel git-gh-diff-url t git-repl gemini docker-repl)
+stacks=(git-parallel git-gh-diff-url t git-repl gemini docker-repl parasoul)
 
 mkdir -p "${HOME}/git"
 
