@@ -11,6 +11,10 @@ shl() {
         grep -E "^Host\s[^*]" | \
         perl -p -e 's/^Host\s//g' \
         && \
+        cat /etc/hosts | \
+        grep -v "^#" | \
+        perl -p -e 's/^.+\s(.+)(?:#.*)?$/$1/g' \
+        && \
         cat ~/.ssh/known_hosts | \
         perl -p -e 's/^([0-9a-z.,-\[\]]*) .*$/$1/gi' | \
         grep -v "," | grep -v "\[" | grep -v "\]"  \
