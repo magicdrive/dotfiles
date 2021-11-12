@@ -12,6 +12,7 @@ shl() {
         perl -p -e 's/^Host\s//g' \
         && \
         cat /etc/hosts | \
+        grep -v "localhost" | \
         grep -v "^#" | \
         perl -p -e 's/^.+\s(.+)(?:#.*)?$/$1/g' \
         && \
