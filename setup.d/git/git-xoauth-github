@@ -1,0 +1,13 @@
+#! /bin/bash
+
+if [[ -z $1 ]] || [[ $1 = "--help" ]];then
+    cat << HELP
+Usage:
+    $(basename $0) [GITHUB_TOKEN]
+HELP
+    exit 1
+fi
+
+git config --global url."https://$1:x-oauth-basic@github.com/".insteadOf "https://github.com/"
+
+exit 0
