@@ -1,5 +1,5 @@
 ### .zshrc ###
-echo "Loading $HOME/.zshrc"
+echo "Loading $(cd $HOME && pwd)/.zshrc"
 
 zc() {
     local src
