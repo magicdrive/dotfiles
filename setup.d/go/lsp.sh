@@ -2,7 +2,7 @@
 
 set -e
 
-GO111MODULE=on go get golang.org/x/tools/gopls@latest
+GO111MODULE=on go install golang.org/x/tools/gopls@latest
 
 
 exit 0
