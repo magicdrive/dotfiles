@@ -691,6 +691,17 @@ for x in $(echo supervisorctl supervisord);do
     [ -f "/usr/local/bin/${x}" ] && alias ${x}="sudo /usr/local/bin/${x}"
 done
 
+# fzf
+if [[ -f "$HOME/.fzf.zsh" ]];then
+    if [[ "$(basename $SHELL)" = 'zsh' ]];then
+        source "$HOME/.fzf.zsh"
+    else
+        source "$HOME/.fzf.bash"
+    fi
+fi
+
+
+
 ### if debian-based
 if [[ -f /etc/debian_version ]];then
     alias aptitude="sudo aptitude"

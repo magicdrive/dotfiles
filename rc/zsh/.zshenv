@@ -237,22 +237,12 @@ if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
 fi
 
-# fzf
-if [ -f ~/.fzf.zsh ];then
-    if [ "$(basename $SHELL)" = 'zsh' ];then
-        source ~/.fzf.zsh
-    else
-        source ~/.fzf.bash
-    fi
-fi
-
 # nix
 export NIX_PROFILE_HOME="~/.nix-profile"
 export NIX_ROOT="/nix"
 if [ -d "${NIX_PROFILE_HOME}" ] && [ -d "${NIX_ROOT}" ];then
     source "${NIX_PROFILE_HOME}/etc/profile.d/nix.sh"
 fi
-
 
 # path
 NEPATH="" ;
@@ -268,6 +258,8 @@ for x in $(echo $MANPATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | sort | un
     export MANPATH="$x:$MANPATH";
 done
 
+
+P_TTY=$(tty)
 
 #__END__
 
