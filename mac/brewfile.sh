@@ -57,5 +57,6 @@ brew install tree
 brew install wget
 brew install xz
 brew install zsh
+brew install sdl2 sdl2_image sdl2_ttf sdl2_mixer sdl2_gfx sdl2_net
 
 exit 0;
