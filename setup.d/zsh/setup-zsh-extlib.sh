@@ -6,7 +6,7 @@
 
 libs=('zsh-completions' 'zsh-syntax-highlighting' 'zsh-autosuggestions');
 
-for x in ${libs[@]}; do git clone git://github.com/zsh-users/$x $HOME/git/$x; done;
+for x in ${libs[@]}; do git clone https://github.com/zsh-users/$x $HOME/git/$x; done;
 
 # z
 git clone git@github.com:rupa/z.git $HOME/git/z
