@@ -233,8 +233,14 @@ if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/asdf.sh"
 fi
 
+# direnv
 if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
+fi
+
+# fzf
+if [[ -e "$HOME/git/fzf" ]];then
+    export CORE_PATH="$HOME/git/fzf/bin:$CORE_PATH"
 fi
 
 # nix
