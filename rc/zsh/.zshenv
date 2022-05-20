@@ -239,8 +239,8 @@ if [[ -x "$(which direnv)" ]];then
 fi
 
 # fzf
-if [[ -e "$HOME/git/fzf" ]];then
-    export CORE_PATH="$HOME/git/fzf/bin:$CORE_PATH"
+if [[ -e "$HOME/.fzf" ]];then
+    export CORE_PATH="$HOME/.fzf/bin:$CORE_PATH"
 fi
 
 # nix
