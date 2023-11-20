@@ -653,13 +653,6 @@ if [[ -x $(which fzf) ]];then
     alias f="fzf"
 fi
 
-### vagrant
-if [[ -x $(which vagrant) ]];then
-    alias vg="vagrant"
-    compdef vg="vagrant"
-fi
-
-
 ### browser-mac
 if [ "$(uname -s)" = 'Darwin' ];then
     alias chrome="open -a Google\ Chrome"
