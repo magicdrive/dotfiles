@@ -706,6 +706,8 @@ if [[ -f /etc/redhat-release ]] && [[ -x "$(which yum)" ]];then
     alias yum="sudo yum"
 fi
 
+export PATH="${CORE_PATH}:${PATH}"
+
 # read local setting
 [ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
 
