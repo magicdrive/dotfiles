@@ -268,5 +268,3 @@ done
 P_TTY=$(tty)
 
 #__END__
-
-. "$HOME/.cargo/env"

@@ -708,6 +708,10 @@ fi
 
 export PATH="${CORE_PATH}:${PATH}"
 
-# read local setting
-[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+# env read twice.
+source "$HOME/.zshenv"
 
+# read local setting
+[ -f "$HOME/.zshrc.local" ] && source $HOME/.zshrc.local
+
+# __END__
