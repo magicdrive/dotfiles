@@ -181,7 +181,15 @@ autoload -U colors; colors
 # ^[  は「エスケープ」
 #PROMPT="%B%{^[[36m%}%n@%m %c %#%{^[[m%}%b " # 通常のプロンプト
 #PROMPT="[%n@%m %4~\$(__git_ps1 ] \$ "
-PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}${HOST}%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
+
+
+export PROMPT_HOSTNAME="$HOST"
+
+configure_prompt() {
+    export PROMPT="%F{green}[%f%F{green}%n%f%F{green}@%f%F{green}${PROMPT_HOSTNAME}%f %F{yellow}%1~/%F{magenta}%B\$(__parse_git_branch)%f%b%F{green}]%f %B%#%b "
+}
+
+configure_prompt
 
 # forやwhile/複数行入力時などに表示されるプロンプト
 PROMPT2="%B%_>%b "
