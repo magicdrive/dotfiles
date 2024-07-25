@@ -335,10 +335,10 @@ if [ -e "${fzf_path}" ];then
             export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
             export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
             alias fzpd="fzf --preview 'ls --color=always -lha {}'"
-        elif [ -f "$HOME/local/bin/exa" ];then
-            export FZF_CTRL_O_OPTS="--preview 'exa --color=always -lha {}'"
-            export FZF_CTRL_J_OPTS="--preview 'exa --color=always -lha {}'"
-            alias fzpd="fzf --preview 'exa --color=always -lha {}'"
+        elif [[ -x "$(which eza)" ]];then
+            export FZF_CTRL_O_OPTS="--preview 'eza --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'eza --color=always -lha {}'"
+            alias fzpd="fzf --preview 'eza --color=always -lha {}'"
         elif [ -f /usr/local/bin/gls ];then
             export FZF_CTRL_O_OPTS="--preview 'gls --color=always -lha {}'"
             export FZF_CTRL_J_OPTS="--preview 'gls --color=always -lha {}'"
@@ -349,10 +349,10 @@ if [ -e "${fzf_path}" ];then
             alias fzpd="fzf --preview 'ls -G -lha {}'"
         fi
     else
-        if [ -f "$HOME/local/bin/exa" ];then
-            export FZF_CTRL_O_OPTS="--preview 'exa --color=always -lha {}'"
-            export FZF_CTRL_J_OPTS="--preview 'exa --color=always -lha {}'"
-            alias fzpd="fzf --preview 'exa --color=always -lha {}'"
+        if [[ -x $(which eza) ]];then
+            export FZF_CTRL_O_OPTS="--preview 'eza --color=always -lha {}'"
+            export FZF_CTRL_J_OPTS="--preview 'eza --color=always -lha {}'"
+            alias fzpd="fzf --preview 'eza --color=always -lha {}'"
         else
             export FZF_CTRL_O_OPTS="--preview 'ls --color=always -lha {}'"
             export FZF_CTRL_J_OPTS="--preview 'ls --color=always -lha {}'"
@@ -486,33 +486,33 @@ fi
 alias ls="$lscmd"
 
 modernize() {
-    if [ -f "$HOME/local/bin/bat" ];then
+    if [[ -x "$(which bat)" ]];then
         alias __cat="cat";
         alias cat="bat";
     fi
-    if [ -f "$HOME/local/bin/exa" ];then
+    if [[ -x  "$(which eza)" ]];then
 	    unalias ls 2>&1 > /dev/null
 	    alias __ls="${lscmd}"
-        alias ls="exa --color=auto"
+        alias ls="eza --color=auto"
     fi
 }
 
 modernize;
 
 ancientize() {
-    if [ -f "$HOME/local/bin/bat" ];then
+    if [[ -x "$(which bat)" ]];then
         unalias __cat 2>&1 > /dev/null
         unalias cat 2>&1 > /dev/null
     fi
 
-    if [ -f "$HOME/local/bin/exa" ];then
+    if [[ -x "$(which eza)" ]];then
 	    unalias __ls 2>&1 > /dev/null
 	    alias ls="$lscmd"
     fi
 }
 
 
-if [ -f $HOME/local/bin/bat ];then
+if [[ -x "$(which bat)" ]];then
     alias cat=bat
     alias _cat=/bin/cat
 fi

@@ -7,7 +7,7 @@ if [ "$(uname -s)" != 'Darwin' ];then
     setopt no_global_rcs
 fi
 
-export CORE_PATH="$HOME/local/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:/usr/bin:/usr/sbin:/sbin:/bin:/sbin"
+export CORE_PATH="$HOME/local/bin:$HOME/bin:/opt/homebrew/bin:/usr/local/sbin:/usr/local/bin:/usr/local/ssl/bin:/usr/bin:/usr/sbin:/sbin:/bin:/sbin"
 export PATH="$CORE_PATH"
 export MANPATH="$HOME/local/share/man:$HOME/share/man:$(
 find /usr/local -path "/usr/local/rbenv" -prune -regex '^[a-zA-Z0-9_-/\.]*man$' -type d 2>/dev/null | perl -pe 's/[\r\n]/:/'
@@ -269,3 +269,4 @@ P_TTY=$(tty)
 
 #__END__
 
+. "$HOME/.cargo/env"
