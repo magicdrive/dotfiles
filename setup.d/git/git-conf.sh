@@ -41,8 +41,7 @@ git config --global alias.psh push
 git config --global alias.pul pull
 git config --global alias.pll pull
 
-git config --global alias.parallel-pull 'parallel -c -j 4 -e "pull --rebase"'
-git config --global alias.multiple-pull 'parallel -c -j 4 -e "pull --rebase"'
+git config --global alias.parallel-pull 'git parallel --color auto --maxdepth 3 --jobs 4 -- "pull --rebase"'
 
 git config --global alias.sb   show-branch
 git config --global alias.sba  'show-branch --all'
@@ -112,4 +111,4 @@ git config --global alias.xs  'stash show'
 git config --global alias.xp  'stash show -p'
 git config --global alias.xup '!git xi && git up && git xo'
 
-
+git config --global url."ssh://git@github.com/".insteadOf https://github.com/
