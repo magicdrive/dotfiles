@@ -305,7 +305,7 @@ fi
 # kirke completions
 kirke_dir="${HOME}/git/kirke"
 if [ -d "${kirke_dir}" ];then
-    source "${kirke_dir}/misc/completion/kirke_completion.sh"
+    source "${kirke_dir}/misc/completion/kirke-completion.sh"
 fi
 
 # nvm completion

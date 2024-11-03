@@ -4,6 +4,7 @@ export PATH=/usr/local/bin/:/usr/local/sbin:$PATH
 #[ -e $HOME/.zshenv ] && source $HOME/.zshenv
 
 [ -e ~/.zsh/completions/git-completion.bash ] && source ~/.zsh/completions/git-completion.bash
+[ -e ~/git/kirke/misc/completion/kirke-completion.sh ] && source ~/git/kirke/misc/completion/kirke-completion.sh
 [ -e ~/git/z/z.sh ] && source ~/git/z/z.sh
 z_home=$HOME/git/z
 if [ -d ${z_home} ];then
