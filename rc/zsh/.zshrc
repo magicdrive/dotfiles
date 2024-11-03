@@ -302,6 +302,12 @@ if [ -d ${zsh_autosuggestions} ];then
     source "$zsh_autosuggestions/zsh-autosuggestions.zsh"
 fi
 
+# kirke completions
+kirke_dir="${HOME}/git/kirke"
+if [ -d "${kirke_dir}" ];then
+    source "${kirke_dir}/misc/completion/kirke_completion.sh"
+fi
+
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
 if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
