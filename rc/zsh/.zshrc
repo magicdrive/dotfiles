@@ -720,10 +720,9 @@ if [[ -f /etc/redhat-release ]] && [[ -x "$(which yum)" ]];then
     alias yum="sudo yum"
 fi
 
-export PATH="${CORE_PATH}:${PATH}"
-
-# env read twice.
-source "$HOME/.zshenv"
+### reconfigure path
+export PATH="${ORIGPATH}:${PATH}"
+typeset -U PATH
 
 # read local setting
 [ -f "$HOME/.zshrc.local" ] && source $HOME/.zshrc.local

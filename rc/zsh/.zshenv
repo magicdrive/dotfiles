@@ -256,6 +256,8 @@ for x in $(echo $PATH | perl -pe "s/::/:/g" | perl -pe 's/:/\n/g' | grep "$HOME/
     export NEPATH="$x:$NEPATH";
 done
 export PATH="$NEPATH:$CORE_PATH"
+export ORIGPATH="${PATH}"
+
 
 # manpath
 NEMANPATH="$MANPATH" ;
