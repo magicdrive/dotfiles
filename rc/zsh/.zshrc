@@ -333,7 +333,6 @@ if [ -e "${ASDF_HOME}" ];then
     source "${ASDF_HOME}/completions/asdf.bash"
 fi
 
-
 ### fzf
 fzf_path="$HOME/.fzf"
 if [ -e "${fzf_path}" ];then

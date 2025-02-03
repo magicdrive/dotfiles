@@ -40,9 +40,12 @@ export LC_ALL='en_US.UTF-8'
 # EDITOR
 export EDITOR=vim
 
-#PAGER
+# PAGER
 export PAGER='less'
 export LESS='-R'
+
+### forgit
+export FORGIT_NO_ALIASES=1
 
 
 if [ "$(uname -s)" = 'Darwin' ];then
@@ -237,6 +240,7 @@ fi
 if [[ -x "$(which direnv)" ]];then
     eval "$(direnv hook zsh)"
 fi
+
 
 # fzf
 if [[ -e "$HOME/.fzf" ]];then
