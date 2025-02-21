@@ -29,6 +29,7 @@ TOOLS=(
   "github.com/incu6us/goimports-reviser/v3"
   "github.com/koron/iferr"
   "github.com/magicdrive/kirke"
+  "github.com/magicdrive/goreg"
   "github.com/pilu/fresh"
   "github.com/mattn/goreman"
 )
