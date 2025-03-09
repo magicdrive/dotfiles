@@ -308,6 +308,18 @@ if [ -d "${kirke_dir}" ];then
     source "${kirke_dir}/misc/completion/kirke-completion.sh"
 fi
 
+# goreg completions
+goreg_dir="${HOME}/git/goreg"
+if [ -d "${goreg_dir}" ];then
+    source "${goreg_dir}/misc/completion/goreg-completion.sh"
+fi
+
+# t completions
+t_dir="${HOME}/git/t"
+if [ -d "${t_dir}" ];then
+    source "${t_dir}/misc/completion/t-completion.sh"
+fi
+
 # nvm completion
 nvm_completefile=~/.nvm/bash_completion
 if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
