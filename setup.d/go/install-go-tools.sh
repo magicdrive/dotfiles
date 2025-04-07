@@ -30,6 +30,7 @@ TOOLS=(
   "github.com/koron/iferr"
   "github.com/magicdrive/kirke"
   "github.com/magicdrive/goreg"
+  "github.com/magicdrive/enma"
   "github.com/pilu/fresh"
   "github.com/mattn/goreman"
 )
