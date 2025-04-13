@@ -7,7 +7,7 @@ mkdir -p ~/.gopath ~/.gopath/src ~/.gopath/bin ~/.gopath/pkg
 
 export GO111MODULE=on
 
-go clean --modcache
+#go clean --modcache
 
 TOOLS=(
   "github.com/mdempsky/gocode"
@@ -26,7 +26,7 @@ TOOLS=(
   "github.com/mgechev/revive"
   "honnef.co/go/tools/cmd/staticcheck"
   "mvdan.cc/gofumpt"
-  "github.com/incu6us/goimports-reviser/v3"
+#  "github.com/incu6us/goimports-reviser/v3"
   "github.com/koron/iferr"
   "github.com/magicdrive/kirke"
   "github.com/magicdrive/goreg"
