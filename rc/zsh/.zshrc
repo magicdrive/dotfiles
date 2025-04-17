@@ -314,6 +314,12 @@ if [ -d "${goreg_dir}" ];then
     source "${goreg_dir}/misc/completion/goreg-completion.sh"
 fi
 
+# enma completions
+enma_dir="${HOME}/git/enma"
+if [ -d "${enma_dir}" ];then
+    source "${enma_dir}/misc/completion/enma-completion.sh"
+fi
+
 # t completions
 t_dir="${HOME}/git/t"
 if [ -d "${t_dir}" ];then
