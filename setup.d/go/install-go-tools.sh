@@ -14,7 +14,7 @@ TOOLS=(
   "golang.org/x/tools/gopls"
   "golang.org/x/tools/cmd/goimports"
   "golang.org/x/tools/cmd/guru"
-  "golang.org/x/tools/cmd/gorename"
+#  "golang.org/x/tools/cmd/gorename"
   "github.com/rogpeppe/godef"
   "golang.org/x/lint/golint"
   "github.com/kisielk/errcheck"
@@ -40,7 +40,6 @@ echo "Install golang tools..."
 for tool in "${TOOLS[@]}"; do
   echo "Installing: $tool"
   go install "$tool@latest"
-  echo
   echo
 done
 
