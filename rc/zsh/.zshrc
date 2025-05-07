@@ -305,19 +305,19 @@ fi
 # kirke completions
 kirke_dir="${HOME}/git/kirke"
 if [ -d "${kirke_dir}" ];then
-    source "${kirke_dir}/misc/completion/kirke-completion.sh"
+    source "${kirke_dir}/misc/completions/kirke-completion.sh"
 fi
 
 # goreg completions
 goreg_dir="${HOME}/git/goreg"
 if [ -d "${goreg_dir}" ];then
-    source "${goreg_dir}/misc/completion/goreg-completion.sh"
+    source "${goreg_dir}/misc/completions/goreg-completion.sh"
 fi
 
 # enma completions
 enma_dir="${HOME}/git/enma"
 if [ -d "${enma_dir}" ];then
-    source "${enma_dir}/misc/completion/enma-completion.sh"
+    source "${enma_dir}/misc/completions/enma-completion.sh"
 fi
 
 # t completions
