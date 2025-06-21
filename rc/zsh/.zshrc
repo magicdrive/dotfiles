@@ -302,6 +302,12 @@ if [ -d ${zsh_autosuggestions} ];then
     source "$zsh_autosuggestions/zsh-autosuggestions.zsh"
 fi
 
+# ark completions
+ark_dir="${HOME}/git/ark"
+if [ -d "${ark_dir}" ];then
+    source "${ark_dir}/misc/completions/ark-completion.sh"
+fi
+
 # kirke completions
 kirke_dir="${HOME}/git/kirke"
 if [ -d "${kirke_dir}" ];then
