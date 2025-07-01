@@ -329,7 +329,7 @@ fi
 # t completions
 t_dir="${HOME}/git/t"
 if [ -d "${t_dir}" ];then
-    source "${t_dir}/misc/completion/t-completion.sh"
+    source "${t_dir}/misc/completions/t-completion.sh"
 fi
 
 # nvm completion
