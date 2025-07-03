@@ -338,10 +338,6 @@ if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
     source ${nvm_completefile}
 fi
 
-if [ -d ${NVM_DIR} ];then
-    nvm use default > /dev/null 2>&1
-fi
-
 npm_completefile=~/opt/etc/npm/bash_completion
 if [[ -x "$(which npm)" && -x "$(which node)" ]];then
     if [[ ! -r "$(which ${npm_completefile})" ]];then
