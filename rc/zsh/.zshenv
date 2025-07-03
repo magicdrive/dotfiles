@@ -173,12 +173,6 @@ if [ -e "/usr/local/ssl" ];then
 fi
 
 # node.js
-# volta
-export VOLTA_HOME="$HOME/.volta"
-if [ -e "$VOLTA_HOME" ];then
-    export PATH="$VOLTA_HOME/bin:$PATH"
-fi
-
 # nvm
 export NVM_DIR="${HOME}/git/nvm"
 if [ -d "${NVM_DIR}" ]; then
