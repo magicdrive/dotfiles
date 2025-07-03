@@ -30,7 +30,9 @@ task :update do
   exec npm_install
 end
 
-desc 'install volta'
-task :volta do
-  exec File.expand_path("./box/volta.sh", File.dirname(__FILE__))
+desc 'install nvm'
+task :nvm do
+  sh <<~SHELL
+    git clone https://github.com/nvm-sh/nvm ~/git/nvm
+  SHELL
 end
