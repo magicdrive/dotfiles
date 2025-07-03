@@ -333,9 +333,13 @@ if [ -d "${t_dir}" ];then
 fi
 
 # nvm completion
-nvm_completefile=~/.nvm/bash_completion
+nvm_completefile=~/nvm/bash_completion
 if [[ -f ${nvm_completefile} && -x "$(which node)" ]];then
     source ${nvm_completefile}
+fi
+
+if [ -d ${NVM_DIR} ];then
+    nvm use default > /dev/null 2>&1
 fi
 
 npm_completefile=~/opt/etc/npm/bash_completion

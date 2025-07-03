@@ -183,8 +183,8 @@ fi
 export NVM_DIR="${HOME}/git/nvm"
 if [ -s "$NVM_DIR/nvm.sh" ]; then
    source "$NVM_DIR/nvm.sh"
-   autoload -U add-zsh-hook
 
+   autoload -U add-zsh-hook
    load-nvmrc() {
      local nvmrc_path
      nvmrc_path="$(nvm_find_nvmrc)"
