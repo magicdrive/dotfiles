@@ -31,7 +31,6 @@ if [ -e "$HOME/opt/opencv" ];then
     fi
 fi
 
-
 ### laguage
 export LANG='en_US.UTF-8'
 export LC_CTYPE='en_US.UTF-8'
@@ -62,6 +61,11 @@ else
     export TMUXPLATFORM='linux'
 fi
 export TMUX_DEFAULTNAME='main'
+
+# mise
+if [ -x "$(which mise)" ];then
+    eval "$(mise activate)"
+fi
 
 ### java
 if [ "$(uname -s)" = 'Darwin' ];then
