@@ -160,7 +160,7 @@ set smartcase
 
 set hlsearch
 
-nnoremap <ESC><ESC> :nohl<CR>
+nnoremap <expr> <Esc> v:hlsearch ? ":nohlsearch\<CR>\<Esc>" : "\<Esc>"
 nnoremap <C-@><C-@> :nohl<CR>
 nnoremap <C-c><C-c> :nohl<CR>
 
