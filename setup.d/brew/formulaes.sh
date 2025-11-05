@@ -19,4 +19,8 @@ brew install \
     libyaml \
     eza \
     bat \
+    magicdrive/tap/ark \
+    magicdrive/tap/enma \
+    magicdrive/tap/goreg \
+    magicdrive/tap/kirke \
 ;
